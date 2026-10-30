@@ -516,45 +516,41 @@ button { font: inherit; color: inherit; }
 }
 }
 </style>
-<style data-8b-part="section:wheel">
+<style data-8b-part="section:gallery">
 @layer sections {
-/* featured work wheel: names on a curved wheel, the selected project's photo and link beside it */
-#tickets .wh { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 4vw, 64px); align-items: center; color: var(--color-1); }
-#tickets .wh-media { display: grid; gap: 18px; justify-items: start; }
-#tickets .wh-photo { position: relative; margin: 0; width: 100%; aspect-ratio: 4 / 3; border: 10px solid var(--color-1); border-radius: 30px; overflow: hidden; background: var(--color-1); }
-#tickets .wh-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 20px; transition: opacity .5s ease, scale .6s cubic-bezier(.2,.7,.2,1); }
-#tickets .wh-photo img.is-entering { opacity: 0; scale: 1.04; }
-#tickets .wh-info { display: grid; gap: 14px; justify-items: start; }
-#tickets .wh-badge { white-space: normal; line-height: 1.3; padding-block: 5px; }
-#tickets .wh-summary { max-width: 44ch; min-height: 2.7em; }
-#tickets .wh-cta { background: var(--color-1); color: var(--color-3); }
-#tickets .wh-cta::before { background-image: linear-gradient(100deg, var(--color-1) 0 40%, color-mix(in srgb, var(--color-5) 45%, var(--color-1)) 70%, var(--color-1) 100%); }
-#tickets .wh-cta::after { color: var(--color-1); }
-#tickets .wh-wheel { position: relative; }
-#tickets .wh-list { display: grid; gap: 10px; }
-#tickets .wh-item { font-family: var(--font-2); font-weight: 700; text-transform: uppercase; font-size: clamp(22px, 2.6vw, 38px); line-height: 1; letter-spacing: -.01em; color: color-mix(in srgb, var(--color-1) 38%, transparent); }
-#tickets .wh-item a { color: inherit; text-decoration: none; }
-#tickets .wh-item.is-selected { color: var(--color-1); }
-#tickets .wh-marker { display: none; }
-#tickets .wh-nav { display: none; }
-#tickets .wh-stage:focus-visible { outline: 2px solid var(--color-1); outline-offset: 4px; border-radius: 16px; }
-/* once the script runs, the list becomes the wheel */
-#tickets .wh.is-ready .wh-stage { position: relative; height: clamp(380px, 60svh, 560px); overflow: hidden; touch-action: none; user-select: none; cursor: grab;
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 24%, #000 76%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 24%, #000 76%, transparent); }
-#tickets .wh.is-ready .wh-stage.is-dragging { cursor: grabbing; }
-#tickets .wh.is-ready .wh-list { display: block; }
-#tickets .wh.is-ready .wh-item { position: absolute; left: 14%; top: 50%; transform-origin: left center; white-space: nowrap; will-change: transform, opacity; }
-#tickets .wh.is-ready .wh-marker { display: block; position: absolute; left: calc(14% - 34px); top: 50%; width: 16px; height: 16px; margin-top: -8px; border-radius: 50%; background: var(--color-5); z-index: 1; }
-#tickets .wh.is-ready .wh-nav { display: flex; flex-direction: column; gap: 10px; position: absolute; right: 0; top: 50%; translate: 0 -50%; }
-#tickets .wh-nav .m-iconbtn { color: var(--color-1); }
+/* featured work gallery: a row of photo panels; on desktop the hovered or focused panel (the first one at rest) grows and shows its details */
+#tickets .gl { display: flex; gap: 10px; color: var(--color-3); }
+#tickets .gl-link { position: relative; display: block; height: 100%; overflow: hidden; border-radius: 24px; background: var(--color-1); color: inherit; text-decoration: none; }
+#tickets .gl-link img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#tickets .gl-link::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 22%, color-mix(in srgb, var(--color-4) 72%, transparent) 52%, color-mix(in srgb, var(--color-4) 92%, transparent)); }
+#tickets .gl-link:focus-visible { outline: 3px solid var(--color-5); outline-offset: -6px; }
+#tickets .gl-info { position: absolute; left: 0; bottom: 0; z-index: 1; display: grid; gap: 10px; justify-items: start; padding: clamp(20px, 2.4vw, 32px); }
+#tickets .gl-badge { white-space: normal; line-height: 1.3; padding-block: 5px; }
+#tickets .gl-name { font-family: var(--font-2); font-weight: 700; text-transform: uppercase; font-size: clamp(26px, 2.6vw, 40px); line-height: 1; letter-spacing: -.01em; color: var(--color-5); }
+#tickets .gl-summary { max-width: 40ch; }
+#tickets .gl-more { font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+@media (min-width: 861px) {
+  #tickets .gl { height: clamp(400px, 62svh, 580px); }
+  #tickets .gl-item { flex: 1 1 0; min-width: 0; transition: flex-grow .6s cubic-bezier(.2,.7,.2,1); }
+  #tickets .gl-link img { transition: scale .6s cubic-bezier(.2,.7,.2,1); }
+  #tickets .gl-link::after { opacity: .55; transition: opacity .4s; }
+  /* fixed width so the text doesn't reflow while the panel grows; hidden until its panel is open */
+  #tickets .gl-info { width: min(460px, 40vw); opacity: 0; translate: 0 12px; transition: opacity .3s, translate .3s; }
+  #tickets .gl:not(:hover, :focus-within) .gl-item:first-child { flex-grow: 5; }
+  #tickets .gl-item:is(:hover, :focus-within) { flex-grow: 5; }
+  #tickets .gl-item:is(:hover, :focus-within) .gl-link::after, #tickets .gl:not(:hover, :focus-within) .gl-item:first-child .gl-link::after { opacity: 1; }
+  #tickets .gl-item:is(:hover, :focus-within) .gl-info, #tickets .gl:not(:hover, :focus-within) .gl-item:first-child .gl-info { opacity: 1; translate: 0 0; transition-delay: .2s; }
+  #tickets .gl-item:hover img { scale: 1.03; }
+}
 @media (max-width: 860px) {
-  #tickets .wh { grid-template-columns: minmax(0, 1fr); }
-  #tickets .wh-wheel { order: -1; }
-  #tickets .wh.is-ready .wh-stage { height: 300px; }
-  #tickets .wh-item { font-size: clamp(16px, 5vw, 22px); }
-  #tickets .wh.is-ready .wh-item { left: 16%; }
-  #tickets .wh.is-ready .wh-marker { left: calc(16% - 26px); width: 12px; height: 12px; margin-top: -6px; }
-  #tickets .wh.is-ready .wh-nav { flex-direction: row; position: static; translate: none; justify-content: center; margin-top: 8px; }
+  /* phones: no hover, so swipeable cards with details always showing */
+  #tickets .gl { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 4px; }
+  #tickets .gl::-webkit-scrollbar { display: none; }
+  #tickets .gl-item { flex: 0 0 84%; height: min(460px, 115vw); scroll-snap-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #tickets .gl-item, #tickets .gl-link img, #tickets .gl-link::after, #tickets .gl-info { transition: none; }
+  #tickets .gl-item:hover img { scale: 1; }
 }
 }
 </style>
@@ -753,41 +749,42 @@ button { font: inherit; color: inherit; }
     </div>
   </div>
 </section>
-<!-- tickets: featured work: three case study cards with category, project, what the case study covers and a button (animation: scene:tickets) -->
+<!-- tickets: featured work: a row of case study photos; the hovered or focused one widens to show its category, name and summary (swipeable cards on phones) -->
 <section id="tickets" class="slide slide--light" data-8b-section="tickets" aria-labelledby="tickets-title">
   <div class="tk-head wrap">
     <h2 class="m-text-3 m-text-3--long" id="tickets-title" data-8b-motion="rise">Thoughtful solutions. Real-world applications.</h2>
     <p class="m-text-5" data-8b-motion="rise">Every business has different needs. Explore how we approach design and technology to create digital experiences and systems that solve real problems.</p>
   </div>
-  <div class="wh wrap" data-wheel>
-    <div class="wh-media">
-      <figure class="wh-photo"><img src="assets/work/bcba-login.jpg" alt="The Beach City Baseball Academy staff sign-in screen" style="object-position: 20% 50%" width="1440" height="900"></figure>
-      <div class="wh-info">
-        <span class="m-badge wh-badge">Custom Software &amp; Business Systems</span>
-        <p class="wh-summary m-text-5">The staff portal Beach City Baseball Academy runs on: lesson scheduling, members, sales, payroll and reports.</p>
-        <a class="m-btn wh-cta" href="/work/beach-city-baseball"><span class="m-btn__label">View case study</span></a>
-      </div>
-    </div>
-    <div class="wh-wheel">
-      <div class="wh-stage" role="listbox" tabindex="0" data-lenis-prevent aria-label="Case studies: scroll, drag or use the arrow keys" aria-activedescendant="wh-item-0">
-        <span class="wh-marker" aria-hidden="true"></span>
-        <ol class="wh-list">
-        <li class="wh-item" role="option" id="wh-item-0" aria-selected="true" data-href="/work/beach-city-baseball" data-image="assets/work/bcba-login.jpg" data-pos="20% 50%" data-badge="Custom Software &amp; Business Systems" data-summary="The staff portal Beach City Baseball Academy runs on: lesson scheduling, members, sales, payroll and reports." data-alt="The Beach City Baseball Academy staff sign-in screen"><a href="/work/beach-city-baseball">Beach City Baseball</a></li>
-        <li class="wh-item" role="option" id="wh-item-1" aria-selected="false" data-href="/work/this-is-it-team" data-image="assets/work/tii-wheel.jpg" data-pos="55% 40%" data-badge="Website Design &amp; Branding" data-summary="The information site This Is It Team shares with people they introduce to LifeWave X39." data-alt="A woman with her hands behind her neck wearing a small patch on her upper back"><a href="/work/this-is-it-team">This Is It Team</a></li>
-        <li class="wh-item" role="option" id="wh-item-2" aria-selected="false" data-href="/work/material-distributors" data-image="assets/work/md-card.jpg" data-pos="50% 50%" data-badge="Website Design &amp; Branding" data-summary="A website for a family-owned specialty building products distributor serving construction since 1947." data-alt="Glass towers in Philadelphia at sunset"><a href="/work/material-distributors">Material Distributors</a></li>
-        <li class="wh-item" role="option" id="wh-item-3" aria-selected="false" data-href="/work/light-it-up-dashboard" data-image="assets/work/liu-wheel.jpg" data-pos="50% 50%" data-badge="Custom Software &amp; Business Systems" data-summary="A personal dashboard for every attendee: event-day info, live stream, replays, photos and more." data-alt="Welcome to Light It Up: the event title slide with purple and orange lightning"><a href="/work/light-it-up-dashboard">Light It Up Dashboard</a></li>
-        <li class="wh-item" role="option" id="wh-item-4" aria-selected="false" data-href="/work/personalized-performance" data-image="assets/work/pp-home.jpg" data-pos="50% 50%" data-badge="Website Design &amp; Branding" data-summary="A website for Luke&#x27;s personal training business in Somers Point, NJ." data-alt="A barbell on a gym floor"><a href="/work/personalized-performance">Personalized Performance</a></li>
-        <li class="wh-item" role="option" id="wh-item-5" aria-selected="false" data-href="/work/ever-clear-pools" data-image="assets/work/ec-home.jpg" data-pos="50% 60%" data-badge="Website Design &amp; Branding" data-summary="A bright, local-first website for a family-owned pool company in Telford, PA." data-alt="A sparkling pool beside a beach house"><a href="/work/ever-clear-pools">Ever-Clear Pools</a></li>
-        <li class="wh-item" role="option" id="wh-item-6" aria-selected="false" data-href="/work/light-it-up" data-image="assets/work/liu-wheel.jpg" data-pos="50% 50%" data-badge="Custom Software &amp; Business Systems" data-summary="Registration, live translation and check-in tools for This Is It Team&#x27;s event in Anaheim." data-alt="Welcome to Light It Up: the event title slide with purple and orange lightning"><a href="/work/light-it-up">Light It Up</a></li>
-        </ol>
-      </div>
-      <div class="wh-nav">
-        <button class="m-iconbtn wh-prev" type="button" aria-label="Previous project"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg></button>
-        <button class="m-iconbtn wh-next" type="button" aria-label="Next project"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
-      </div>
-    </div>
-    <p class="visually-hidden wh-live" aria-live="polite"></p>
-  </div>
+  <ul class="gl wrap" role="list">
+    <li class="gl-item"><a class="gl-link" href="/work/beach-city-baseball">
+      <img src="assets/work/bcba-login.jpg" alt="" style="object-position: 20% 50%" width="1440" height="900" loading="lazy">
+      <span class="gl-info"><span class="m-badge gl-badge">Custom Software &amp; Business Systems</span><span class="gl-name">Beach City Baseball</span><span class="gl-summary m-text-5">The staff portal Beach City Baseball Academy runs on: lesson scheduling, members, sales, payroll and reports.</span><span class="gl-more">View case study &rarr;</span></span>
+    </a></li>
+    <li class="gl-item"><a class="gl-link" href="/work/this-is-it-team">
+      <img src="assets/work/tii-wheel.jpg" alt="" style="object-position: 55% 40%" width="1200" height="800" loading="lazy">
+      <span class="gl-info"><span class="m-badge gl-badge">Website Design &amp; Branding</span><span class="gl-name">This Is It Team</span><span class="gl-summary m-text-5">The information site This Is It Team shares with people they introduce to LifeWave X39.</span><span class="gl-more">View case study &rarr;</span></span>
+    </a></li>
+    <li class="gl-item"><a class="gl-link" href="/work/material-distributors">
+      <img src="assets/work/md-card.jpg" alt="" style="object-position: 50% 50%" width="1010" height="674" loading="lazy">
+      <span class="gl-info"><span class="m-badge gl-badge">Website Design &amp; Branding</span><span class="gl-name">Material Distributors</span><span class="gl-summary m-text-5">A website for a family-owned specialty building products distributor serving construction since 1947.</span><span class="gl-more">View case study &rarr;</span></span>
+    </a></li>
+    <li class="gl-item"><a class="gl-link" href="/work/light-it-up-dashboard">
+      <img src="assets/work/liu-wheel.jpg" alt="" style="object-position: 50% 50%" width="1440" height="1080" loading="lazy">
+      <span class="gl-info"><span class="m-badge gl-badge">Custom Software &amp; Business Systems</span><span class="gl-name">Light It Up Dashboard</span><span class="gl-summary m-text-5">A personal dashboard for every attendee: event-day info, live stream, replays, photos and more.</span><span class="gl-more">View case study &rarr;</span></span>
+    </a></li>
+    <li class="gl-item"><a class="gl-link" href="/work/personalized-performance">
+      <img src="assets/work/pp-home.jpg" alt="" style="object-position: 50% 50%" width="1440" height="900" loading="lazy">
+      <span class="gl-info"><span class="m-badge gl-badge">Website Design &amp; Branding</span><span class="gl-name">Personalized Performance</span><span class="gl-summary m-text-5">A website for Luke&#x27;s personal training business in Somers Point, NJ.</span><span class="gl-more">View case study &rarr;</span></span>
+    </a></li>
+    <li class="gl-item"><a class="gl-link" href="/work/ever-clear-pools">
+      <img src="assets/work/ec-home.jpg" alt="" style="object-position: 50% 60%" width="1440" height="900" loading="lazy">
+      <span class="gl-info"><span class="m-badge gl-badge">Website Design &amp; Branding</span><span class="gl-name">Ever-Clear Pools</span><span class="gl-summary m-text-5">A bright, local-first website for a family-owned pool company in Telford, PA.</span><span class="gl-more">View case study &rarr;</span></span>
+    </a></li>
+    <li class="gl-item"><a class="gl-link" href="/work/light-it-up">
+      <img src="assets/work/liu-wheel.jpg" alt="" style="object-position: 50% 50%" width="1440" height="1080" loading="lazy">
+      <span class="gl-info"><span class="m-badge gl-badge">Custom Software &amp; Business Systems</span><span class="gl-name">Light It Up</span><span class="gl-summary m-text-5">Registration, live translation and check-in tools for This Is It Team&#x27;s event in Anaheim.</span><span class="gl-more">View case study &rarr;</span></span>
+    </a></li>
+  </ul>
 </section>
 <!-- contact: final call to action over the wave pattern: headline, copy, project inquiry button, email (animation: scene:contact) -->
 <section id="contact" class="slide" data-8b-section="contact" aria-labelledby="contact-title">
@@ -1017,143 +1014,6 @@ queueMotion(() => {
     return () => section.removeAttribute('data-track');
   });
 });
-</script>
-<script data-8b-part="section-script:tickets">
-(() => {
-  const root = document.querySelector('#tickets [data-wheel]');
-  if (!root) return;
-  const stage = root.querySelector('.wh-stage');
-  const items = [...root.querySelectorAll('.wh-item')];
-  const photo = root.querySelector('.wh-photo');
-  const badge = root.querySelector('.wh-badge');
-  const summary = root.querySelector('.wh-summary');
-  const cta = root.querySelector('.wh-cta');
-  const live = root.querySelector('.wh-live');
-  const still = matchMedia('(prefers-reduced-motion: reduce)');
-  const narrow = matchMedia('(max-width: 860px)');
-  const count = items.length, SPACING = 15, VISIBLE = 4, DRAG_SPEED = .02, SCROLL_SPEED = .004;
-  let rotation = 0, selected = 0, velocity = 0, target = null, frame = null, drag = null;
-  const wrap = i => ((i % count) + count) % count;
-  const offsetOf = i => { let o = i - rotation; while (o > count / 2) o -= count; while (o < -count / 2) o += count; return o; };
-  const shortest = d => { d = wrap(d); return d > count / 2 ? d - count : d; };
-
-  items.forEach(item => { item.querySelector('a').tabIndex = -1; new Image().src = item.dataset.image; });
-  root.classList.add('is-ready');
-
-  function select(index) {
-    selected = index;
-    const item = items[index], data = item.dataset;
-    items.forEach((el, i) => el.setAttribute('aria-selected', String(i === index)));
-    stage.setAttribute('aria-activedescendant', item.id);
-    badge.innerHTML = data.badge;
-    summary.textContent = data.summary;
-    cta.href = data.href;
-    live.textContent = `${item.textContent.trim()}, ${index + 1} of ${count}`;
-    const img = document.createElement('img');
-    img.src = data.image; img.alt = data.alt || ''; img.style.objectPosition = data.pos || '';
-    const old = [...photo.querySelectorAll('img')];
-    if (still.matches) { old.forEach(el => el.remove()); photo.append(img); return; }
-    img.className = 'is-entering';
-    photo.append(img);
-    requestAnimationFrame(() => requestAnimationFrame(() => img.classList.remove('is-entering')));
-    setTimeout(() => old.forEach(el => el.remove()), 650);
-  }
-
-  function render() {
-    const radius = narrow.matches ? 230 : 340;
-    items.forEach((item, i) => {
-      const offset = offsetOf(i);
-      item.hidden = Math.abs(offset) > VISIBLE + .5;
-      if (item.hidden) return;
-      const angle = offset * SPACING, rad = angle * Math.PI / 180;
-      const x = -radius * (1 - Math.cos(rad)), y = radius * Math.sin(rad);
-      item.style.opacity = Math.cos(Math.min(Math.abs(offset) / VISIBLE, 1) * Math.PI / 2);
-      item.style.transform = `translate(${x}px, ${y}px) translateY(-50%) rotate(${angle}deg) scale(${1 - Math.min(Math.abs(offset) * .05, .4)})`;
-      item.classList.toggle('is-selected', Math.abs(offset) < .5);
-    });
-    const index = wrap(Math.round(rotation));
-    if (index !== selected) select(index);
-  }
-  const setRotation = r => { rotation = r; render(); };
-
-  // momentum after a flick, then an eased snap to the nearest (or requested) project
-  function animate() {
-    if (frame !== null) return;
-    const tick = () => {
-      let more = false;
-      if (!drag && target === null && Math.abs(velocity) > .0008) {
-        setRotation(rotation + velocity);
-        velocity *= still.matches ? .8 : .9;
-        more = true;
-      } else if (!drag) {
-        velocity = 0;
-        const goal = target ?? Math.round(rotation), delta = goal - rotation;
-        if (Math.abs(delta) > .001 && !still.matches) { setRotation(rotation + delta * .2); more = true; }
-        else { setRotation(goal); target = null; }
-      }
-      frame = more ? requestAnimationFrame(tick) : null;
-    };
-    frame = requestAnimationFrame(tick);
-  }
-  const goTo = index => { velocity = 0; target = Math.round(rotation) + shortest(index - wrap(Math.round(rotation))); animate(); };
-  const open = () => { location.href = items[selected].dataset.href; };
-
-  stage.addEventListener('wheel', event => {
-    if (event.ctrlKey || event.metaKey) return;
-    event.preventDefault();
-    event.stopPropagation();
-    target = null;
-    const delta = (Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX) * SCROLL_SPEED;
-    setRotation(rotation + delta);
-    velocity = delta * .2;
-    animate();
-  }, { passive: false });
-
-  stage.addEventListener('pointerdown', event => {
-    if (!event.isPrimary || event.button !== 0) return;
-    drag = { y: event.clientY, start: rotation, prev: rotation, moved: false, item: event.target.closest('.wh-item') };
-    velocity = 0; target = null;
-    stage.setPointerCapture(event.pointerId);
-  });
-  stage.addEventListener('pointermove', event => {
-    if (!drag) return;
-    const distance = event.clientY - drag.y;
-    if (!drag.moved && Math.abs(distance) < 5) return;
-    drag.moved = true;
-    stage.classList.add('is-dragging');
-    const next = drag.start - distance * DRAG_SPEED;
-    velocity = next - drag.prev; drag.prev = next;
-    setRotation(next);
-  });
-  const endDrag = event => {
-    if (!drag) return;
-    const ended = drag; drag = null;
-    stage.classList.remove('is-dragging');
-    if (stage.hasPointerCapture(event.pointerId)) stage.releasePointerCapture(event.pointerId);
-    // a tap on the selected name opens its case study; a tap on another name turns the wheel to it
-    if (!ended.moved && ended.item && event.type === 'pointerup') {
-      const index = items.indexOf(ended.item);
-      if (index === selected) return open();
-      goTo(index);
-    }
-    animate();
-  };
-  stage.addEventListener('pointerup', endDrag);
-  stage.addEventListener('pointercancel', endDrag);
-  stage.addEventListener('click', event => { if (event.target.closest('a')) event.preventDefault(); });
-
-  stage.addEventListener('keydown', event => {
-    const keys = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
-    if (event.key in keys) { event.preventDefault(); goTo(selected + keys[event.key]); }
-    else if (event.key === 'Home') { event.preventDefault(); goTo(0); }
-    else if (event.key === 'End') { event.preventDefault(); goTo(count - 1); }
-    else if (event.key === 'Enter') { event.preventDefault(); open(); }
-  });
-  root.querySelector('.wh-prev').addEventListener('click', () => goTo(selected - 1));
-  root.querySelector('.wh-next').addEventListener('click', () => goTo(selected + 1));
-  narrow.addEventListener('change', render);
-  render();
-})();
 </script>
 <script data-8b-part="section-script:contact">
 (() => {
