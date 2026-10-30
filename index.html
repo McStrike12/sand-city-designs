@@ -335,7 +335,9 @@ button { font: inherit; color: inherit; }
 #looks .lk-head .m-text-3 { color: var(--color-1); background-image: none; -webkit-text-fill-color: currentColor; }
 #looks .lk-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; align-items: end; margin-bottom: clamp(24px, 4svh, 48px); }
 #looks .lk-head h2 { grid-column: 1 / 8; }
-#looks .lk-head p { grid-column: 8 / -1; max-width: 40ch; }
+#looks .lk-head p { grid-column: 8 / -1; max-width: 46ch; position: relative; padding: 26px 34px; }
+/* hand-drawn wavy frame in brand brown (the SVG is a mask, so the colour is the token) */
+#looks .lk-head p::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--color-1); -webkit-mask: url(assets/wavy-frame.svg) center / 100% 100% no-repeat; mask: url(assets/wavy-frame.svg) center / 100% 100% no-repeat; }
 /* tabs: a brown pill bar; the light pill slides under the chosen tab (shown once the script is running) */
 #looks .lk-tablist { position: relative; display: none; grid-template-columns: 1fr 1fr; width: min(100%, 560px); padding: 5px; margin-bottom: clamp(28px, 4svh, 48px); border-radius: 999px; background: var(--color-1); }
 #looks .lk-tabs.is-ready .lk-tablist { display: grid; }
