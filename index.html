@@ -331,21 +331,20 @@ button { font: inherit; color: inherit; }
 </style>
 <style data-8b-part="section:looks">
 @layer sections {
-#looks { color: var(--color-1); padding: clamp(48px, 7svh, 80px) 0 clamp(40px, 6svh, 72px); }
-#looks .lk-head .m-text-3 { color: var(--color-1); background-image: none; -webkit-text-fill-color: currentColor; }
+#looks { background: var(--color-6); color: var(--color-2-deep); padding: clamp(48px, 7svh, 80px) 0 clamp(40px, 6svh, 72px); }
+#looks .lk-head .m-text-3 { color: var(--color-2-deep); background-image: none; -webkit-text-fill-color: currentColor; }
 #looks .lk-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; align-items: end; margin-bottom: clamp(24px, 4svh, 44px); }
 #looks .lk-head h2 { grid-column: 1 / 8; }
 #looks .lk-head p { grid-column: 8 / -1; max-width: 46ch; position: relative; padding: 26px 34px; }
-/* hand-drawn wavy frame in brand brown (the SVG is a mask, so the colour is the token) */
-#looks .lk-head p::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--color-1); -webkit-mask: url(assets/wavy-frame.svg) center / 100% 100% no-repeat; mask: url(assets/wavy-frame.svg) center / 100% 100% no-repeat; }
-/* two offers side by side, each a card with the same thin brown border as the Featured Work cards */
+/* hand-drawn wavy frame in dark blue (the SVG is a mask, so the colour is the token) */
+#looks .lk-head p::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--color-2-deep); -webkit-mask: url(assets/wavy-frame.svg) center / 100% 100% no-repeat; mask: url(assets/wavy-frame.svg) center / 100% 100% no-repeat; }
+/* two offers side by side, dark blue cards with light blue type (same pairing as #team) */
 #looks .lk-offers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); }
-#looks .lk-offer { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: clamp(24px, 3vw, 40px); border: 3px solid var(--color-1); border-radius: 24px; background: var(--color-5); }
+#looks .lk-offer { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: clamp(24px, 3vw, 40px); border-radius: 24px; background: var(--color-2-deep); color: var(--color-6); }
 #looks .lk-offer h3 { font-size: clamp(26px, 2.4vw, 38px); }
 #looks .lk-offer .m-btn-2 { margin-top: auto; }
-#looks .lk-steps { display: grid; gap: 0; width: 100%; border-top: 1px solid color-mix(in srgb, var(--color-1) 30%, transparent); }
-#looks .lk-steps li { padding: 10px 0; border-bottom: 1px solid color-mix(in srgb, var(--color-1) 30%, transparent); }
-#looks .lk-badge { color: var(--color-1); }
+#looks .lk-steps { display: grid; gap: 0; width: 100%; border-top: 1px solid color-mix(in srgb, currentColor 35%, transparent); }
+#looks .lk-steps li { padding: 10px 0; border-bottom: 1px solid color-mix(in srgb, currentColor 35%, transparent); }
 @media (max-width: 860px) {
   #looks .lk-head { grid-template-columns: minmax(0, 1fr); row-gap: 16px; }
   #looks .lk-head h2, #looks .lk-head p { grid-column: 1; }
@@ -452,8 +451,9 @@ button { font: inherit; color: inherit; }
 <style data-8b-part="section:sand-city">
 @layer sections {
 .m-text-3--long { font-size: clamp(32px, 4.2vw, 64px); line-height: .95; }
-#looks .lk-offer .m-btn-2 { color: var(--color-1); }
-#looks :focus-visible { outline-color: var(--color-1); }
+#looks .lk-offer .m-btn-2 { color: var(--color-6); }
+#looks :focus-visible { outline-color: var(--color-2-deep); }
+#looks .lk-offer :focus-visible { outline-color: var(--color-6); }
 #looks .lk-badge { white-space: normal; text-align: left; line-height: 1.3; padding-block: 5px; }
 #tickets .tk-pass .m-badge { white-space: normal; line-height: 1.3; padding-block: 5px; }
 #tickets .tk-name { font-size: clamp(34px, 3.4vw, 52px); }
