@@ -84,10 +84,58 @@
 .wd-svc__nav .m-iconbtn { background: color-mix(in srgb, var(--color-3) 88%, transparent); color: var(--color-1); }
 .wd-svc__pause [hidden] { display: none; }
 .wd-svc__nav .m-iconbtn:focus-visible { outline: 2px solid var(--color-1); outline-offset: 2px; }
-.wd-reviews { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); }
-.wd-review { position: relative; margin: 0; padding: clamp(26px, 3vw, 40px); padding-top: clamp(56px, 6vw, 72px); border: 2px solid var(--color-1); border-radius: 22px; }
-.wd-review::before { content: "\201C"; position: absolute; top: 10px; left: clamp(22px, 2.6vw, 36px); font-family: var(--font-2); font-size: 72px; line-height: 1; color: var(--color-5); }
-.wd-review blockquote p { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.45; }
+/* client reviews: one quote at a time, all brown on light yellow. Without JS every quote shows, stacked. */
+.wd-rev { color: var(--color-1); overflow: clip; }
+.wd-rev .pg-sec__head h2 { color: var(--color-1); background-image: none; -webkit-text-fill-color: currentColor; }
+.wd-rev :focus-visible { outline-color: var(--color-1); }
+.wd-rev__stage { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); max-width: 1080px; }
+/* oversized faint number behind the quote; drifts a little with the pointer */
+.wd-rev__num { position: absolute; left: -2vw; top: 50%; z-index: 0; pointer-events: none; user-select: none; font-family: var(--font-2); font-weight: 700; font-size: clamp(180px, 28vw, 420px); line-height: .8; letter-spacing: -.04em; color: color-mix(in srgb, var(--color-1) 6%, transparent); translate: var(--px, 0) calc(-50% + var(--py, 0px)); transition: translate .6s cubic-bezier(.22,1,.36,1); }
+.wd-rev__num span { display: block; }
+.wd-rev__num span.is-in { animation: wd-num .6s cubic-bezier(.22,1,.36,1); }
+@keyframes wd-num { from { opacity: 0; scale: .85; filter: blur(10px); } }
+.wd-rev__rail { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 24px; padding-right: clamp(24px, 4vw, 56px); border-right: 1px solid color-mix(in srgb, var(--color-1) 25%, transparent); }
+.wd-rev__label { writing-mode: vertical-rl; font-size: 12px; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; opacity: .75; }
+.wd-rev__track { position: relative; width: 1px; height: 120px; background: color-mix(in srgb, var(--color-1) 22%, transparent); }
+.wd-rev__fill { position: absolute; inset: 0 0 auto; height: var(--progress, 25%); background: var(--color-1); transition: height .5s cubic-bezier(.22,1,.36,1); }
+.wd-rev__main { position: relative; z-index: 1; padding: clamp(16px, 3vw, 40px) 0 clamp(16px, 3vw, 40px) clamp(24px, 4vw, 56px); }
+.wd-rev__list { display: grid; gap: 40px; }
+.wd-rev__badge { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 22px; padding: 4px 12px; border: 1px solid color-mix(in srgb, var(--color-1) 35%, transparent); border-radius: 999px; font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+.wd-rev__badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--color-5); }
+.wd-rev__quote p { font-size: clamp(22px, 2.3vw, 34px); font-weight: 300; line-height: 1.3; letter-spacing: -.01em; }
+.wd-rev__foot { display: none; align-items: center; justify-content: space-between; gap: 20px; margin-top: 36px; }
+.wd-rev__count { display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.wd-rev__count::before { content: ""; width: 32px; height: 1px; background: currentColor; }
+.wd-rev__nav { display: flex; gap: 10px; }
+.wd-rev__nav button { position: relative; overflow: hidden; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--color-1) 35%, transparent); background: none; color: var(--color-1); cursor: pointer; transition: color .3s; }
+.wd-rev__nav button::before { content: ""; position: absolute; inset: 0; background: var(--color-1); translate: var(--from, -100%) 0; transition: translate .3s cubic-bezier(.22,1,.36,1); }
+.wd-rev__nav .wd-rev__next::before { --from: 100%; }
+.wd-rev__nav button:hover { color: var(--color-3); }
+.wd-rev__nav button:hover::before { translate: 0 0; }
+.wd-rev__nav svg { position: relative; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.wd-rev__nav [hidden] { display: none; }
+/* faint repeating line along the bottom */
+.wd-rev__ticker { overflow: hidden; margin-top: clamp(24px, 4vw, 48px); pointer-events: none; user-select: none; }
+.wd-rev__ticker div { display: flex; width: max-content; font-family: var(--font-2); font-weight: 700; font-size: clamp(40px, 5vw, 72px); line-height: 1; text-transform: uppercase; white-space: nowrap; color: color-mix(in srgb, var(--color-1) 9%, transparent); }
+.wd-rev__ticker span { padding-right: .5em; }
+/* once the script runs: quotes share one cell (height never jumps), one shows at a time */
+.wd-rev.is-ready .wd-rev__list { gap: 0; }
+.wd-rev.is-ready .wd-rev__slide { grid-area: 1 / 1; }
+.wd-rev.is-ready .wd-rev__slide:not(.is-active) { visibility: hidden; opacity: 0; }
+.wd-rev.is-ready .wd-rev__foot { display: flex; }
+.wd-rev:not(.is-ready) .wd-rev__num, .wd-rev:not(.is-ready) .wd-rev__track { display: none; }
+.wd-rev__words { display: inline; }
+.wd-rev__words .w { display: inline-block; white-space: pre; }
+@media (prefers-reduced-motion: no-preference) {
+  .wd-rev.is-ready .wd-rev__slide { transition: opacity .3s, visibility .3s; }
+  .wd-rev__slide.is-active .wd-rev__badge { animation: wd-badge .4s cubic-bezier(.22,1,.36,1) both; }
+  .wd-rev__slide.is-active .w { animation: wd-word .5s cubic-bezier(.22,1,.36,1) both; animation-delay: calc(var(--i) * 22ms); }
+  .wd-rev__ticker div { animation: wd-tick 40s linear infinite; }
+}
+@keyframes wd-badge { from { opacity: 0; translate: -20px 0; } }
+@keyframes wd-word { from { opacity: 0; translate: 0 18px; rotate: x 70deg; } }
+@keyframes wd-tick { to { translate: -50% 0; } }
+@media (prefers-reduced-motion: reduce) { .wd-rev__num span.is-in { animation: none; } .wd-rev__num { transition: none; } }
 .wd-cta h2 { max-width: 22ch; font-size: clamp(32px, 4.2vw, 64px); }
 @media (prefers-reduced-motion: reduce) {
   .wd-plan__more, .wd-svc.is-ready .wd-svc__media img { transition: none; }
@@ -103,7 +151,11 @@
   .wd-plan__toggle { flex-wrap: wrap; row-gap: 4px; padding: 20px 22px; }
   .wd-plan__price { margin-left: 0; flex-basis: 100%; }
   .wd-plan__body { padding: 0 22px 22px; }
-  .wd-reviews { grid-template-columns: minmax(0, 1fr); }
+  .wd-rev__stage { grid-template-columns: minmax(0, 1fr); }
+  .wd-rev__rail { display: none; }
+  .wd-rev__main { padding-left: 0; }
+  .wd-rev__num { left: auto; right: -4vw; top: 30%; }
+  .wd-rev__foot { flex-wrap: wrap; }
 }
 </style>
 </head>
@@ -207,15 +259,42 @@
     </div>
   </div>
 </section>
-<section class="slide pg-sec slide--light" aria-labelledby="reviews-title">
+<section class="slide pg-sec slide--light wd-rev" aria-labelledby="reviews-title" data-reviews>
   <div class="wrap">
     <div class="pg-sec__head"><h2 class="m-text-3" id="reviews-title">Client Reviews</h2><p class="m-text-5">Graciously shared</p></div>
-    <div class="wd-reviews">
-      <figure class="wd-review"><blockquote><p>She went above and beyond my expectations, delivering a highly professional website that perfectly meets our needs. The site seamlessly integrates all the necessary features and is visually appealing. Overall, we are very impressed with Sarah's work and highly recommend her services!</p></blockquote></figure>
-      <figure class="wd-review"><blockquote><p>If you're looking to work with someone who's going to meet you where you're at, make this process fun, enjoyable and easy - Sarah's a no brainer. She loves what she does, she's good at it and she's going to hold your hand every step of the way.</p></blockquote></figure>
-      <figure class="wd-review"><blockquote><p>Your patience and work ethics made it very comfortable for me to work with you. I trusted you with the process from day one. And was super impressed by the outcome of our project.</p></blockquote></figure>
-      <figure class="wd-review"><blockquote><p>You are so easy to work with and you are such a light of realness, with real timelines and presented simple tasks that made things much easier for me. I loved working with you and love my landing page so much.</p></blockquote></figure>
+    <div class="wd-rev__stage">
+      <div class="wd-rev__num" aria-hidden="true"><span>01</span></div>
+      <div class="wd-rev__rail" aria-hidden="true"><span class="wd-rev__label">Testimonials</span><span class="wd-rev__track"><span class="wd-rev__fill"></span></span></div>
+      <div class="wd-rev__main">
+        <ol class="wd-rev__list">
+        <li class="wd-rev__slide is-active">
+          <span class="wd-rev__badge">Client 01</span>
+          <blockquote class="wd-rev__quote"><p>She went above and beyond my expectations, delivering a highly professional website that perfectly meets our needs. The site seamlessly integrates all the necessary features and is visually appealing. Overall, we are very impressed with Sarah's work and highly recommend her services!</p></blockquote>
+        </li>
+        <li class="wd-rev__slide">
+          <span class="wd-rev__badge">Client 02</span>
+          <blockquote class="wd-rev__quote"><p>If you're looking to work with someone who's going to meet you where you're at, make this process fun, enjoyable and easy - Sarah's a no brainer. She loves what she does, she's good at it and she's going to hold your hand every step of the way.</p></blockquote>
+        </li>
+        <li class="wd-rev__slide">
+          <span class="wd-rev__badge">Client 03</span>
+          <blockquote class="wd-rev__quote"><p>Your patience and work ethics made it very comfortable for me to work with you. I trusted you with the process from day one. And was super impressed by the outcome of our project.</p></blockquote>
+        </li>
+        <li class="wd-rev__slide">
+          <span class="wd-rev__badge">Client 04</span>
+          <blockquote class="wd-rev__quote"><p>You are so easy to work with and you are such a light of realness, with real timelines and presented simple tasks that made things much easier for me. I loved working with you and love my landing page so much.</p></blockquote>
+        </li>
+        </ol>
+        <div class="wd-rev__foot">
+          <p class="wd-rev__count" aria-live="polite"><span><span class="wd-rev__current">01</span> / 04</span></p>
+          <div class="wd-rev__nav">
+            <button class="wd-rev__pause" type="button" aria-label="Pause rotating reviews" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 16 16"><path class="wd-ico-pause" d="M6 4v8M10 4v8"/><path class="wd-ico-play" d="M5.5 3.5l7 4.5-7 4.5z" hidden/></svg></button>
+            <button class="wd-rev__prev" type="button" aria-label="Previous review"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M10 12L6 8l4-4"/></svg></button>
+            <button class="wd-rev__next" type="button" aria-label="Next review"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M6 4l4 4-4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="wd-rev__ticker" aria-hidden="true"><div><span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span></div></div>
   </div>
 </section>
 <section class="slide pg-cta pg--blue wd-cta" aria-labelledby="cta-title">
@@ -352,6 +431,76 @@
   new IntersectionObserver(([entry]) => { if (entry.isIntersecting) restart(); else { clearTimeout(timer); root.classList.remove('is-playing'); } }, { threshold: .4 }).observe(root);
 
   if (still.matches) stop();
+  root.classList.add('is-ready');
+})();
+</script>
+<script>
+// client reviews: one quote at a time, words rising in; rotates until the visitor interacts, hovers or focuses,
+// and never on its own with reduced motion
+(() => {
+  const root = document.querySelector('[data-reviews]');
+  if (!root) return;
+  const slides = [...root.querySelectorAll('.wd-rev__slide')];
+  const num = root.querySelector('.wd-rev__num');
+  const current = root.querySelector('.wd-rev__current');
+  const pause = root.querySelector('.wd-rev__pause');
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  const DURATION = 9000;
+  let active = 0, timer = null, stopped = still.matches, held = false;
+  const pad = n => String(n + 1).padStart(2, '0');
+
+  // split each quote into word spans for the reveal; screen readers get the plain sentence
+  slides.forEach(slide => {
+    const p = slide.querySelector('p');
+    const text = p.textContent;
+    p.innerHTML = '';
+    const plain = document.createElement('span'); plain.className = 'visually-hidden'; plain.textContent = text;
+    const words = document.createElement('span'); words.className = 'wd-rev__words'; words.setAttribute('aria-hidden', 'true');
+    text.split(' ').forEach((word, i) => {
+      const w = document.createElement('span'); w.className = 'w'; w.style.setProperty('--i', i); w.textContent = word + ' ';
+      words.append(w);
+    });
+    p.append(plain, words);
+  });
+
+  const show = index => {
+    index = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => { slide.classList.toggle('is-active', i === index); slide.toggleAttribute('inert', i !== index); });
+    const span = document.createElement('span'); span.textContent = pad(index); span.className = 'is-in';
+    num.replaceChildren(span);
+    current.textContent = pad(index);
+    root.style.setProperty('--progress', `${(index + 1) / slides.length * 100}%`);
+    active = index;
+    restart();
+  };
+  function restart() {
+    clearTimeout(timer);
+    if (!stopped && !held) timer = setTimeout(() => show(active + 1), DURATION);
+  }
+  const setStopped = value => {
+    stopped = value;
+    pause.setAttribute('aria-pressed', String(value));
+    pause.setAttribute('aria-label', value ? 'Play rotating reviews' : 'Pause rotating reviews');
+    pause.querySelector('.wd-ico-pause').toggleAttribute('hidden', value);
+    pause.querySelector('.wd-ico-play').toggleAttribute('hidden', !value);
+    restart();
+  };
+  root.querySelector('.wd-rev__prev').addEventListener('click', () => { setStopped(true); show(active - 1); });
+  root.querySelector('.wd-rev__next').addEventListener('click', () => { setStopped(true); show(active + 1); });
+  pause.addEventListener('click', () => setStopped(!stopped));
+  root.addEventListener('pointerenter', () => { held = true; restart(); });
+  root.addEventListener('pointerleave', () => { held = false; restart(); });
+  root.addEventListener('focusin', () => { held = true; restart(); });
+  root.addEventListener('focusout', event => { if (!root.contains(event.relatedTarget)) { held = false; restart(); } });
+  new IntersectionObserver(([entry]) => { if (entry.isIntersecting) restart(); else clearTimeout(timer); }, { threshold: .4 }).observe(root);
+  // the big number drifts slightly toward the pointer
+  if (!still.matches) root.addEventListener('pointermove', event => {
+    const r = root.getBoundingClientRect();
+    root.style.setProperty('--px', `${(event.clientX - r.left - r.width / 2) / r.width * 40}px`);
+    root.style.setProperty('--py', `${(event.clientY - r.top - r.height / 2) / r.height * 20}px`);
+  });
+  slides.forEach((slide, i) => slide.toggleAttribute('inert', i !== 0));
+  if (still.matches) setStopped(true);
   root.classList.add('is-ready');
 })();
 </script>
