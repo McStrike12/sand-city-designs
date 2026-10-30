@@ -45,7 +45,7 @@
 .wd-approach h2 { grid-column: 1 / 7; font-size: clamp(40px, 5vw, 80px); }
 .wd-approach__copy { grid-column: 7 / -1; display: grid; gap: 18px; max-width: 58ch; }
 /* services: feature showcase on cream, brown type. Left: heading, chips and the two services as an accordion;
-   right: a photo panel with a pill switcher, kept in step with the accordion. Works as plain open/close without JS. */
+   right: one tall photo. Works as plain open/close without JS. */
 .wd-svc { background: var(--color-3); color: var(--color-1); }
 .wd-svc :focus-visible { outline-color: var(--color-1); }
 .wd-svc__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; row-gap: 40px; align-items: start; }
@@ -69,16 +69,8 @@
 .wd-plan__intro { font-weight: 500; }
 .wd-plan[open] .wd-plan__body { animation: wd-open .35s cubic-bezier(.23,1,.32,1); }
 @keyframes wd-open { from { opacity: 0; translate: 0 -6px; } }
-/* photo panel */
-.wd-svc__media { grid-column: 7 / -1; position: relative; height: clamp(460px, 72svh, 720px); overflow: hidden; border-radius: 22px; border: 1px solid color-mix(in srgb, var(--color-1) 20%, transparent); background: var(--color-1); box-shadow: 0 10px 30px color-mix(in srgb, var(--color-1) 14%, transparent); }
-.wd-svc__media [role="tabpanel"] { position: absolute; inset: 0; margin: 0; }
+.wd-svc__media { grid-column: 7 / -1; position: relative; height: clamp(460px, 72svh, 720px); overflow: hidden; border-radius: 22px; border: 1px solid color-mix(in srgb, var(--color-1) 20%, transparent); margin: 0; background: #6f665c; box-shadow: 0 10px 30px color-mix(in srgb, var(--color-1) 14%, transparent); }
 .wd-svc__media img { width: 100%; height: 100%; object-fit: cover; }
-.wd-svc__media [role="tabpanel"][hidden] { display: none; }
-.wd-svc__tabs { position: absolute; left: 50%; bottom: 18px; z-index: 1; display: flex; gap: 4px; padding: 4px; translate: -50% 0; border-radius: 14px; border: 1px solid color-mix(in srgb, var(--color-1) 20%, transparent); background: color-mix(in srgb, var(--color-3) 86%, transparent); backdrop-filter: blur(8px); }
-.wd-svc__tabs button { padding: 9px 16px; border: 0; border-radius: 10px; background: none; color: var(--color-1); font-size: 14px; font-weight: 500; white-space: nowrap; cursor: pointer; transition: background-color .25s, color .25s; }
-.wd-svc__tabs button[aria-selected="true"] { background: var(--color-1); color: var(--color-3); }
-.wd-svc__tabs button:focus-visible { outline: 2px solid var(--color-1); outline-offset: 2px; }
-.wd-svc:not(.is-ready) .wd-svc__tabs { display: none; }
 /* client reviews: one quote at a time, all brown on light yellow. Without JS every quote shows, stacked. */
 .wd-rev { color: var(--color-1); overflow: clip; }
 .wd-rev .pg-sec__head h2 { color: var(--color-1); background-image: none; -webkit-text-fill-color: currentColor; }
@@ -248,7 +240,7 @@
       <h2 class="m-text-3" id="services-title">What I Can Do For You</h2>
       <ul class="wd-svc__chips" aria-label="Included in every package"><li>Custom design</li><li>SEO built in</li><li>Payment plans available</li></ul>
       <div class="wd-plans">
-        <details class="wd-plan" name="wd-plans" data-tab="0" open>
+        <details class="wd-plan" name="wd-plans" open>
           <summary><span class="wd-plan__num" aria-hidden="true">/01</span><span class="wd-plan__title">Landing Page</span><span class="wd-plan__price">$1,700</span></summary>
           <div class="wd-plan__body">
             <p class="wd-plan__terms">Payment plans available</p>
@@ -257,7 +249,7 @@
             <a class="m-btn m-btn--dark" href="/start-a-project"><span class="m-btn__label">Book Service<span class="visually-hidden">: Landing Page</span></span></a>
           </div>
         </details>
-        <details class="wd-plan" name="wd-plans" data-tab="1">
+        <details class="wd-plan" name="wd-plans">
           <summary><span class="wd-plan__num" aria-hidden="true">/02</span><span class="wd-plan__title">Full Website Redesign</span><span class="wd-plan__price">$3,250</span></summary>
           <div class="wd-plan__body">
             <p class="wd-plan__terms">Payment plans available</p>
@@ -268,13 +260,7 @@
         </details>
       </div>
     </div>
-    <div class="wd-svc__media">
-      <figure role="tabpanel" id="svc-panel-landing" aria-labelledby="svc-tab-landing"><img style="background:#604f45; object-position: 50% 78%" src="/assets/services-beach-laptop.jpg" alt="A laptop on a red towel on the sand at the beach" width="1200" height="1497" loading="eager"></figure>
-      <figure role="tabpanel" id="svc-panel-redesign" aria-labelledby="svc-tab-redesign" hidden><img style="background:#9c9588; object-position: 50% 72%" src="/assets/services-laptop-studio.jpg" alt="A black laptop open on a stone counter beside a cane chair" width="1200" height="2133" loading="lazy"></figure>
-      <div class="wd-svc__tabs" role="tablist" aria-label="Service photos">
-        <button type="button" role="tab" id="svc-tab-landing" aria-controls="svc-panel-landing" aria-selected="true">Landing Page</button>
-        <button type="button" role="tab" id="svc-tab-redesign" aria-controls="svc-panel-redesign" aria-selected="false" tabindex="-1">Full Redesign</button>
-      </div>
+    <figure class="wd-svc__media"><img src="/assets/services-laptop-sofa.jpg" alt="An open laptop resting on a stack of books on the arm of a soft grey sofa" width="1000" height="1500" loading="lazy"></figure>
     </div>
   </div>
 </section>
@@ -378,36 +364,12 @@
 })();
 </script>
 <script>
-// services: the photo tabs and the accordion stay in step; only one service is open at a time
+// services: only one service open at a time, also in browsers without <details name>
 (() => {
-  const root = document.querySelector('[data-svc]');
-  if (!root) return;
-  const plans = [...root.querySelectorAll('.wd-plan')];
-  const tabs = [...root.querySelectorAll('[role="tab"]')];
-  const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
-  const select = (index, focus) => {
-    tabs.forEach((tab, i) => {
-      tab.setAttribute('aria-selected', String(i === index));
-      tab.tabIndex = i === index ? 0 : -1;
-      panels[i].hidden = i !== index;
-    });
-    if (focus) tabs[index].focus();
-  };
-  tabs.forEach((tab, i) => tab.addEventListener('click', () => { select(i); plans[i].open = true; }));
-  root.querySelector('[role="tablist"]').addEventListener('keydown', event => {
-    const current = tabs.findIndex(tab => tab.getAttribute('aria-selected') === 'true');
-    const next = { ArrowRight: current + 1, ArrowLeft: current - 1, Home: 0, End: tabs.length - 1 }[event.key];
-    if (next === undefined) return;
-    event.preventDefault();
-    const index = (next + tabs.length) % tabs.length;
-    select(index, true);
-    plans[index].open = true;
-  });
-  plans.forEach((plan, i) => plan.addEventListener('toggle', () => {
-    // one open at a time, also in browsers without <details name>
-    if (plan.open) { plans.forEach(other => { if (other !== plan) other.open = false; }); select(i); }
+  const plans = [...document.querySelectorAll('[data-svc] .wd-plan')];
+  plans.forEach(plan => plan.addEventListener('toggle', () => {
+    if (plan.open) plans.forEach(other => { if (other !== plan) other.open = false; });
   }));
-  root.classList.add('is-ready');
 })();
 </script>
 <script>
