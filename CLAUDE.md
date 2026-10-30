@@ -21,7 +21,7 @@ Plain static HTML, CSS and JavaScript. No build step, no React, no Tailwind, no 
 - `CREDITS.md`: photo credits; keep it in sync when photos change.
 
 ## Homepage sections, in order
-Hero (beach video) · `#lineup` five sliding pain-point cards · `#about` and `#team` · `#looks` services in two tabs (`section-script:looks`) · `#tickets` Featured Work gallery: a row of photo panels that widen on hover, swipeable cards on phones (items in the `.gl` markup, styles in `section:gallery`, no script) · `#contact` · footer.
+Hero (beach video) · `#lineup` five sliding pain-point cards · `#about` and `#team` · `#looks` services as two offer cards side by side · `#tickets` Featured Work gallery: a row of photo panels that widen on hover, swipeable cards on phones (items in the `.gl` markup, styles in `section:gallery`, no script) · `#contact` · footer.
 
 ## Brand
 Colours are tokens in `:root`: `--color-1` #452b25 brown, `--color-2` #57809d blue, `--color-3` #fbf1c0 light yellow, `--color-4` #000, `--color-5` #ddb24e dark yellow, `--color-6` #c3dded light blue, `--color-7` #fff. Headings use the Hero font (`assets/Hero-Bold.otf`, `--font-2`). Use the tokens, not new hex values. Body text needs 4.5:1 contrast, and the page must read fully with reduced motion.

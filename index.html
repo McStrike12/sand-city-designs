@@ -331,46 +331,25 @@ button { font: inherit; color: inherit; }
 </style>
 <style data-8b-part="section:looks">
 @layer sections {
-#looks { color: var(--color-1); padding: clamp(56px, 9svh, 100px) 0 clamp(48px, 7svh, 90px); }
+#looks { color: var(--color-1); padding: clamp(48px, 7svh, 80px) 0 clamp(40px, 6svh, 72px); }
 #looks .lk-head .m-text-3 { color: var(--color-1); background-image: none; -webkit-text-fill-color: currentColor; }
-#looks .lk-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; align-items: end; margin-bottom: clamp(24px, 4svh, 48px); }
+#looks .lk-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; align-items: end; margin-bottom: clamp(24px, 4svh, 44px); }
 #looks .lk-head h2 { grid-column: 1 / 8; }
 #looks .lk-head p { grid-column: 8 / -1; max-width: 46ch; position: relative; padding: 26px 34px; }
 /* hand-drawn wavy frame in brand brown (the SVG is a mask, so the colour is the token) */
 #looks .lk-head p::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--color-1); -webkit-mask: url(assets/wavy-frame.svg) center / 100% 100% no-repeat; mask: url(assets/wavy-frame.svg) center / 100% 100% no-repeat; }
-/* tabs: a brown pill bar; the light pill slides under the chosen tab (shown once the script is running) */
-#looks .lk-tablist { position: relative; display: none; grid-template-columns: 1fr 1fr; width: min(100%, 560px); padding: 5px; margin: 0 auto clamp(28px, 4svh, 48px); border-radius: 999px; background: var(--color-1); }
-#looks .lk-tabs.is-ready .lk-tablist { display: grid; }
-#looks .lk-pill { position: absolute; top: 5px; bottom: 5px; left: 0; width: var(--pill-w, 0); translate: var(--pill-x, 0) 0; border-radius: 999px; background: var(--color-3); box-shadow: 0 4px 14px rgb(0 0 0 / .25); transition: translate .5s cubic-bezier(.3,1.3,.5,1), width .5s cubic-bezier(.3,1.3,.5,1); }
-#looks .lk-tab { position: relative; z-index: 1; min-height: 44px; padding: 8px 18px; border: 0; border-radius: 999px; background: none; color: var(--color-3); font-size: 15px; font-weight: 500; line-height: 1.2; cursor: pointer; transition: color .3s; }
-#looks .lk-tab[aria-selected="true"] { color: var(--color-1); }
-#looks .lk-tab:focus-visible { outline: 2px solid var(--color-3); outline-offset: -4px; }
-/* panels share one grid cell, so switching never changes the section height */
-#looks .lk-panels { display: grid; gap: clamp(48px, 8svh, 90px); }
-#looks .lk-tabs.is-ready .lk-panels { gap: 0; }
-#looks .lk-tabs.is-ready .lk-panel { grid-area: 1 / 1; }
-#looks .lk-tabs.is-ready .lk-panel:not(.is-active) { visibility: hidden; opacity: 0; }
-/* photo and text sit as one centred pair, capped so wide screens don't leave an empty strip */
-#looks .lk-panels { width: min(100%, 1240px); margin-inline: auto; }
-#looks .lk-panel { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); column-gap: clamp(32px, 5vw, 80px); align-items: center; }
-#looks .lk-panel.is-entering { animation: lk-in .55s cubic-bezier(.2,.7,.2,1); }
-@keyframes lk-in { from { opacity: 0; scale: .97; translate: -12px 0; filter: blur(10px); } }
-#looks .lk-photo { margin: 0; aspect-ratio: 3 / 2; max-height: 72svh; overflow: hidden; background: var(--color-1); border: 10px solid var(--color-1); border-radius: 30px; }
-#looks .lk-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
-#looks .lk-text { display: grid; gap: 16px; justify-items: start; }
+/* two offers side by side, each a card with the same thin brown border as the Featured Work cards */
+#looks .lk-offers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); }
+#looks .lk-offer { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: clamp(24px, 3vw, 40px); border: 3px solid var(--color-1); border-radius: 24px; }
+#looks .lk-offer h3 { font-size: clamp(26px, 2.4vw, 38px); }
+#looks .lk-offer .m-btn-2 { margin-top: auto; }
 #looks .lk-steps { display: grid; gap: 0; width: 100%; border-top: 1px solid color-mix(in srgb, var(--color-1) 30%, transparent); }
 #looks .lk-steps li { padding: 10px 0; border-bottom: 1px solid color-mix(in srgb, var(--color-1) 30%, transparent); }
 #looks .lk-badge { color: var(--color-1); }
 @media (max-width: 860px) {
   #looks .lk-head { grid-template-columns: minmax(0, 1fr); row-gap: 16px; }
   #looks .lk-head h2, #looks .lk-head p { grid-column: 1; }
-  #looks .lk-tab { padding: 8px 10px; font-size: 14px; }
-  #looks .lk-panel { grid-template-columns: minmax(0, 1fr); row-gap: 20px; align-items: start; }
-  #looks .lk-photo { aspect-ratio: 4 / 3; max-height: 44svh; width: 100%; }
-}
-@media (prefers-reduced-motion: reduce) {
-  #looks .lk-pill, #looks .lk-tab { transition: none; }
-  #looks .lk-panel.is-entering { animation: none; }
+  #looks .lk-offers { grid-template-columns: minmax(0, 1fr); }
 }
 }
 </style>
@@ -473,8 +452,7 @@ button { font: inherit; color: inherit; }
 <style data-8b-part="section:sand-city">
 @layer sections {
 .m-text-3--long { font-size: clamp(32px, 4.2vw, 64px); line-height: .95; }
-#looks .lk-text h3 { font-size: clamp(28px, 2.9vw, 44px); }
-#looks .lk-text .m-btn-2 { color: var(--color-1); }
+#looks .lk-offer .m-btn-2 { color: var(--color-1); }
 #looks :focus-visible { outline-color: var(--color-1); }
 #looks .lk-badge { white-space: normal; text-align: left; line-height: 1.3; padding-block: 5px; }
 #tickets .tk-pass .m-badge { white-space: normal; line-height: 1.3; padding-block: 5px; }
@@ -717,56 +695,43 @@ button { font: inherit; color: inherit; }
     </article>
   </div>
 </section>
-<!-- looks: services: two tabs (website design, custom software); the chosen one shows its photo, headline, description, list and button (section-script:looks) -->
+<!-- looks: services: two offer cards side by side (website design, custom software), each with headline, description, list and button -->
 <section id="looks" class="slide slide--light" data-8b-section="looks" aria-labelledby="looks-title">
   <div class="lk-head wrap">
     <h2 class="m-text-3" id="looks-title" data-8b-motion="rise">What we do</h2>
     <p class="m-text-5" data-8b-motion="rise">From how your brand shows up online to the systems that keep your business running behind the scenes.</p>
   </div>
-  <div class="lk-tabs wrap" data-tabs>
-    <div class="lk-tablist" role="tablist" aria-label="Our services">
-      <span class="lk-pill" aria-hidden="true"></span>
-      <button class="lk-tab" type="button" role="tab" id="lk-tab-1" aria-controls="lk-panel-1" aria-selected="true">Website Design &amp; Branding</button>
-      <button class="lk-tab" type="button" role="tab" id="lk-tab-2" aria-controls="lk-panel-2" aria-selected="false" tabindex="-1">Custom Software &amp; Systems</button>
-    </div>
-    <div class="lk-panels">
-        <div class="lk-panel is-active" role="tabpanel" id="lk-panel-1" aria-labelledby="lk-tab-1">
-          <figure class="lk-photo"><img style="background:#604f45; object-position: 50% 78%" src="assets/services-beach-laptop.jpg" alt="A laptop on a red towel on the sand, facing the sea at dusk" width="1200" height="1497" loading="lazy"></figure>
-          <div class="lk-text">
-            <span class="lk-badge m-badge">01 · Website Design · Branding · SEO</span>
-            <h3 class="m-text-6">Build a stronger online presence.</h3>
-            <p>We create thoughtful, strategic digital experiences that help businesses communicate their value, reflect their brand, and connect with the right audience. From custom website design to branding and SEO, we help build an online presence that supports your business goals.</p>
-            <ul class="lk-steps m-text-4">
-              <li>Custom website design and development</li>
-              <li>Brand identity and visual direction</li>
-              <li>Search engine optimization and on-page SEO</li>
-              <li>Website redesigns and refreshes</li>
-              <li>Website maintenance and ongoing optimization</li>
-            </ul>
-            <a class="m-btn-2" href="/services/website-design-branding"><span class="m-btn-2__label">Explore Digital Presence</span></a>
-          </div>
-        </div>
-        <div class="lk-panel" role="tabpanel" id="lk-panel-2" aria-labelledby="lk-tab-2">
-          <figure class="lk-photo"><img style="background:#9c9588; object-position: 50% 72%" src="assets/services-laptop-studio.jpg" alt="A black laptop open on a stone counter in a bright room with a cane chair" width="1200" height="2133" loading="lazy"></figure>
-          <div class="lk-text">
-            <span class="lk-badge m-badge">02 · Custom Software · Workflow Automation · Business Operations</span>
-            <h3 class="m-text-6">Technology built around your business.</h3>
-            <p>We build tailored software and digital tools that simplify operations, connect workflows, and help businesses run more efficiently. Instead of forcing your business to adapt to generic platforms, we create solutions around the way you actually work.</p>
-            <ul class="lk-steps m-text-4">
-              <li>Custom business management platforms</li>
-              <li>Client portals and account dashboards</li>
-              <li>Scheduling, registration, and booking systems</li>
-              <li>Team, staff, and customer management tools</li>
-              <li>Automated workflows and reporting dashboards</li>
-              <li>Integrations between existing platforms</li>
-            </ul>
-            <a class="m-btn-2" href="/services/custom-software-systems"><span class="m-btn-2__label">Explore Custom Systems</span></a>
-          </div>
-        </div>
-    </div>
+  <div class="lk-offers wrap">
+    <article class="lk-offer">
+      <span class="lk-badge m-badge">01 · Website Design · Branding · SEO</span>
+      <h3 class="m-text-6">Build a stronger online presence.</h3>
+      <p>We create thoughtful, strategic digital experiences that help businesses communicate their value, reflect their brand, and connect with the right audience. From custom website design to branding and SEO, we help build an online presence that supports your business goals.</p>
+      <ul class="lk-steps m-text-4">
+        <li>Custom website design and development</li>
+        <li>Brand identity and visual direction</li>
+        <li>Search engine optimization and on-page SEO</li>
+        <li>Website redesigns and refreshes</li>
+        <li>Website maintenance and ongoing optimization</li>
+      </ul>
+      <a class="m-btn-2" href="/services/website-design-branding"><span class="m-btn-2__label">Explore Digital Presence</span></a>
+    </article>
+    <article class="lk-offer">
+      <span class="lk-badge m-badge">02 · Custom Software · Workflow Automation · Business Operations</span>
+      <h3 class="m-text-6">Technology built around your business.</h3>
+      <p>We build tailored software and digital tools that simplify operations, connect workflows, and help businesses run more efficiently. Instead of forcing your business to adapt to generic platforms, we create solutions around the way you actually work.</p>
+      <ul class="lk-steps m-text-4">
+        <li>Custom business management platforms</li>
+        <li>Client portals and account dashboards</li>
+        <li>Scheduling, registration, and booking systems</li>
+        <li>Team, staff, and customer management tools</li>
+        <li>Automated workflows and reporting dashboards</li>
+        <li>Integrations between existing platforms</li>
+      </ul>
+      <a class="m-btn-2" href="/services/custom-software-systems"><span class="m-btn-2__label">Explore Custom Systems</span></a>
+    </article>
   </div>
 </section>
-<!-- tickets: featured work: a row of case study photos; the hovered or focused one widens to show its category, name and summary (swipeable cards on phones) -->
+<!-- tickets: featured work: a row of case study photos; the hovered or focused one widens to show its category and name (swipeable cards on phones) -->
 <section id="tickets" class="slide slide--light" data-8b-section="tickets" aria-labelledby="tickets-title">
   <div class="tk-head wrap">
     <h2 class="m-text-3 m-text-3--long" id="tickets-title" data-8b-motion="rise">Thoughtful solutions. Real-world applications.</h2>
@@ -1005,46 +970,6 @@ queueMotion(() => {
     return () => section.removeAttribute('data-track');
   });
 });
-</script>
-<script data-8b-part="section-script:looks">
-(() => {
-  const root = document.querySelector('#looks [data-tabs]');
-  if (!root) return;
-  const tabs = [...root.querySelectorAll('[role="tab"]')];
-  const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
-  const tablist = root.querySelector('[role="tablist"]');
-  let active = 0;
-  // the light pill follows the chosen tab
-  const placePill = () => {
-    const tab = tabs[active];
-    tablist.style.setProperty('--pill-x', `${tab.offsetLeft}px`);
-    tablist.style.setProperty('--pill-w', `${tab.offsetWidth}px`);
-  };
-  const select = (index, focus) => {
-    if (index === active) return;
-    tabs.forEach((tab, i) => {
-      tab.setAttribute('aria-selected', String(i === index));
-      tab.tabIndex = i === index ? 0 : -1;
-    });
-    panels[active].classList.remove('is-active', 'is-entering');
-    panels[index].classList.add('is-active', 'is-entering');
-    active = index;
-    placePill();
-    if (focus) tabs[index].focus();
-  };
-  panels.forEach(panel => panel.addEventListener('animationend', () => panel.classList.remove('is-entering')));
-  tabs.forEach((tab, i) => tab.addEventListener('click', () => select(i)));
-  tablist.addEventListener('keydown', event => {
-    const last = tabs.length - 1;
-    const next = { ArrowRight: active === last ? 0 : active + 1, ArrowLeft: active === 0 ? last : active - 1, Home: 0, End: last }[event.key];
-    if (next === undefined) return;
-    event.preventDefault();
-    select(next, true);
-  });
-  root.classList.add('is-ready');
-  placePill();
-  new ResizeObserver(placePill).observe(tablist);
-})();
 </script>
 <script data-8b-part="section-script:contact">
 (() => {
