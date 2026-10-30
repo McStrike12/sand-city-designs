@@ -338,7 +338,7 @@ button { font: inherit; color: inherit; }
 #looks .lk-head p { grid-column: 8 / -1; max-width: 46ch; position: relative; padding: 26px 34px; }
 /* hand-drawn wavy frame in dark blue (the SVG is a mask, so the colour is the token) */
 #looks .lk-head p::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--color-2-deep); -webkit-mask: url(assets/wavy-frame.svg) center / 100% 100% no-repeat; mask: url(assets/wavy-frame.svg) center / 100% 100% no-repeat; }
-/* two offers side by side, dark blue cards with light blue type (same pairing as #team) */
+/* two offers side by side, dark blue cards with light blue type (~5:1) */
 #looks .lk-offers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); }
 #looks .lk-offer { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: clamp(24px, 3vw, 40px); border-radius: 24px; background: var(--color-2-deep); color: var(--color-6); }
 #looks .lk-offer h3 { font-size: clamp(26px, 2.4vw, 38px); }
@@ -428,12 +428,12 @@ button { font: inherit; color: inherit; }
 #about .ab-intro .m-badge { grid-column: 1 / -1; justify-self: start; }
 #about h2 { grid-column: 1 / 11; font-size: clamp(40px, 5.6vw, 92px); }
 #about .ab-copy { grid-column: 6 / -1; justify-self: end; display: grid; gap: 18px; max-width: 54ch; }
-#team { background: var(--color-2-deep); color: var(--color-6); padding: clamp(70px, 11svh, 130px) 0; }
-#team .ab-name { color: var(--color-6); background-image: none; -webkit-text-fill-color: currentColor; }
-#team :focus-visible { outline-color: var(--color-6); }
+#team { background: var(--color-3); color: var(--color-1); padding: clamp(70px, 11svh, 130px) 0; }
+#team .ab-name { color: var(--color-5); background-image: none; -webkit-text-fill-color: currentColor; }
+#team :focus-visible { outline-color: var(--color-1); }
 #team .ab-team { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 #team .ab-card { display: grid; gap: 20px; align-content: start; justify-items: center; text-align: center; padding: 8px clamp(24px, 4vw, 64px); }
-#team .ab-card + .ab-card { border-left: 1px solid color-mix(in srgb, var(--color-6) 40%, transparent); }
+#team .ab-card + .ab-card { border-left: 1px solid color-mix(in srgb, var(--color-1) 30%, transparent); }
 #team .ab-role { opacity: .8; }
 #team .ab-name { font-size: clamp(64px, 8.6vw, 140px); }
 #team .ab-bio { max-width: 38ch; }
@@ -443,7 +443,7 @@ button { font: inherit; color: inherit; }
   #about .ab-copy { justify-self: start; }
   #team .ab-team { grid-template-columns: minmax(0, 1fr); gap: 48px; }
   #team .ab-card, #team .ab-card + .ab-card { padding: 0; border-left: 0; }
-  #team .ab-card + .ab-card { padding-top: 48px; border-top: 1px solid color-mix(in srgb, var(--color-6) 40%, transparent); }
+  #team .ab-card + .ab-card { padding-top: 48px; border-top: 1px solid color-mix(in srgb, var(--color-1) 30%, transparent); }
   #team .ab-name { font-size: clamp(64px, 24vw, 110px); }
 }
 }
