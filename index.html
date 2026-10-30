@@ -339,7 +339,7 @@ button { font: inherit; color: inherit; }
 /* hand-drawn wavy frame in brand brown (the SVG is a mask, so the colour is the token) */
 #looks .lk-head p::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--color-1); -webkit-mask: url(assets/wavy-frame.svg) center / 100% 100% no-repeat; mask: url(assets/wavy-frame.svg) center / 100% 100% no-repeat; }
 /* tabs: a brown pill bar; the light pill slides under the chosen tab (shown once the script is running) */
-#looks .lk-tablist { position: relative; display: none; grid-template-columns: 1fr 1fr; width: min(100%, 560px); padding: 5px; margin-bottom: clamp(28px, 4svh, 48px); border-radius: 999px; background: var(--color-1); }
+#looks .lk-tablist { position: relative; display: none; grid-template-columns: 1fr 1fr; width: min(100%, 560px); padding: 5px; margin: 0 auto clamp(28px, 4svh, 48px); border-radius: 999px; background: var(--color-1); }
 #looks .lk-tabs.is-ready .lk-tablist { display: grid; }
 #looks .lk-pill { position: absolute; top: 5px; bottom: 5px; left: 0; width: var(--pill-w, 0); translate: var(--pill-x, 0) 0; border-radius: 999px; background: var(--color-3); box-shadow: 0 4px 14px rgb(0 0 0 / .25); transition: translate .5s cubic-bezier(.3,1.3,.5,1), width .5s cubic-bezier(.3,1.3,.5,1); }
 #looks .lk-tab { position: relative; z-index: 1; min-height: 44px; padding: 8px 18px; border: 0; border-radius: 999px; background: none; color: var(--color-3); font-size: 15px; font-weight: 500; line-height: 1.2; cursor: pointer; transition: color .3s; }
@@ -350,12 +350,14 @@ button { font: inherit; color: inherit; }
 #looks .lk-tabs.is-ready .lk-panels { gap: 0; }
 #looks .lk-tabs.is-ready .lk-panel { grid-area: 1 / 1; }
 #looks .lk-tabs.is-ready .lk-panel:not(.is-active) { visibility: hidden; opacity: 0; }
-#looks .lk-panel { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; align-items: center; }
+/* photo and text sit as one centred pair, capped so wide screens don't leave an empty strip */
+#looks .lk-panels { width: min(100%, 1240px); margin-inline: auto; }
+#looks .lk-panel { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); column-gap: clamp(32px, 5vw, 80px); align-items: center; }
 #looks .lk-panel.is-entering { animation: lk-in .55s cubic-bezier(.2,.7,.2,1); }
 @keyframes lk-in { from { opacity: 0; scale: .97; translate: -12px 0; filter: blur(10px); } }
-#looks .lk-photo { grid-column: 1 / 7; margin: 0; aspect-ratio: 3 / 2; max-height: 72svh; overflow: hidden; background: var(--color-1); border: 10px solid var(--color-1); border-radius: 30px; }
+#looks .lk-photo { margin: 0; aspect-ratio: 3 / 2; max-height: 72svh; overflow: hidden; background: var(--color-1); border: 10px solid var(--color-1); border-radius: 30px; }
 #looks .lk-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
-#looks .lk-text { grid-column: 8 / -1; display: grid; gap: 16px; justify-items: start; max-width: 46ch; }
+#looks .lk-text { display: grid; gap: 16px; justify-items: start; }
 #looks .lk-steps { display: grid; gap: 0; width: 100%; border-top: 1px solid color-mix(in srgb, var(--color-1) 30%, transparent); }
 #looks .lk-steps li { padding: 10px 0; border-bottom: 1px solid color-mix(in srgb, var(--color-1) 30%, transparent); }
 #looks .lk-badge { color: var(--color-1); }
@@ -364,7 +366,6 @@ button { font: inherit; color: inherit; }
   #looks .lk-head h2, #looks .lk-head p { grid-column: 1; }
   #looks .lk-tab { padding: 8px 10px; font-size: 14px; }
   #looks .lk-panel { grid-template-columns: minmax(0, 1fr); row-gap: 20px; align-items: start; }
-  #looks .lk-photo, #looks .lk-text { grid-column: 1; }
   #looks .lk-photo { aspect-ratio: 4 / 3; max-height: 44svh; width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
