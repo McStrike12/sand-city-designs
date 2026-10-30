@@ -44,45 +44,41 @@
 .wd-approach { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; row-gap: 24px; align-items: start; }
 .wd-approach h2 { grid-column: 1 / 7; font-size: clamp(40px, 5vw, 80px); }
 .wd-approach__copy { grid-column: 7 / -1; display: grid; gap: 18px; max-width: 58ch; }
-/* services: vertical tabs on dark yellow; light yellow cards, brown type. Without JS every card shows open. */
-.wd-svc { background: var(--color-5); color: var(--color-1); }
+/* services: feature showcase on cream, brown type. Left: heading, chips and the two services as an accordion;
+   right: a photo panel with a pill switcher, kept in step with the accordion. Works as plain open/close without JS. */
+.wd-svc { background: var(--color-3); color: var(--color-1); }
 .wd-svc :focus-visible { outline-color: var(--color-1); }
-.wd-svc__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; row-gap: 32px; align-items: start; }
-.wd-svc__list { grid-column: 1 / 6; display: grid; gap: 14px; }
-.wd-svc__head { display: grid; gap: 6px; margin-bottom: 14px; }
-.wd-svc__head h2 { font-size: clamp(36px, 4.4vw, 68px); color: var(--color-1); background-image: none; -webkit-text-fill-color: currentColor; }
-.wd-svc__kicker { font-size: 12px; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; opacity: .8; }
-.wd-plan { position: relative; overflow: hidden; border-radius: 22px; background: var(--color-3); transition: box-shadow .3s; }
-.wd-plan.is-active { box-shadow: 0 10px 30px color-mix(in srgb, var(--color-1) 22%, transparent); }
-/* the bar down the left edge fills while a card is showing, then the next one opens */
-.wd-plan__bar { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: color-mix(in srgb, var(--color-1) 14%, transparent); }
-.wd-plan__bar::after { content: ""; position: absolute; inset: 0; background: var(--color-1); transform-origin: top; scale: 1 0; }
-.wd-plan.is-active .wd-plan__bar::after { scale: 1 1; }
-.wd-svc.is-playing .wd-plan.is-active .wd-plan__bar::after { animation: wd-fill var(--wd-dur, 6s) linear; }
-@keyframes wd-fill { from { scale: 1 0; } to { scale: 1 1; } }
-.wd-plan__toggle { display: flex; align-items: baseline; gap: 14px; width: 100%; padding: 22px 26px; border: 0; background: none; color: inherit; text-align: left; cursor: pointer; }
+.wd-svc__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; row-gap: 40px; align-items: start; }
+.wd-svc__list { grid-column: 1 / 7; }
+.wd-svc__eyebrow { display: inline-flex; margin-bottom: 22px; padding: 5px 12px; border: 1px solid color-mix(in srgb, var(--color-1) 40%, transparent); border-radius: 999px; font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
+.wd-svc__list h2 { font-size: clamp(38px, 4.8vw, 74px); line-height: .95; color: var(--color-1); background-image: none; -webkit-text-fill-color: currentColor; }
+.wd-svc__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.wd-svc__chips li { padding: 6px 12px; border-radius: 999px; background: color-mix(in srgb, var(--color-1) 9%, transparent); font-size: 13px; font-weight: 500; }
+.wd-plans { margin-top: 36px; max-width: 600px; border-top: 1px solid color-mix(in srgb, var(--color-1) 25%, transparent); }
+.wd-plan { border-bottom: 1px solid color-mix(in srgb, var(--color-1) 25%, transparent); }
+.wd-plan summary { display: flex; align-items: baseline; gap: 14px; padding: 22px 0; cursor: pointer; list-style: none; }
+.wd-plan summary::-webkit-details-marker { display: none; }
+.wd-plan summary:hover .wd-plan__title { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; }
+.wd-plan summary::after { content: ""; flex: none; align-self: center; width: 9px; height: 9px; margin-left: 4px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; rotate: 45deg; translate: 0 -3px; transition: rotate .25s, translate .25s; }
+.wd-plan[open] summary::after { rotate: 225deg; translate: 0 2px; }
 .wd-plan__num { font-size: 12px; font-weight: 500; opacity: .65; font-variant-numeric: tabular-nums; }
-.wd-plan__title { font-family: var(--font-2); font-weight: 700; font-size: clamp(24px, 2.3vw, 34px); line-height: 1.05; text-transform: uppercase; letter-spacing: .01em; }
-.wd-plan__price { margin-left: auto; font-size: clamp(18px, 1.6vw, 22px); font-weight: 500; white-space: nowrap; }
-.wd-plan__more { display: grid; grid-template-rows: 1fr; transition: grid-template-rows .45s cubic-bezier(.23,1,.32,1); }
-.wd-plan__inner { overflow: hidden; }
-.wd-plan__body { display: grid; gap: 14px; justify-items: start; padding: 0 26px 26px 52px; }
+.wd-plan__title { font-family: var(--font-2); font-weight: 700; font-size: clamp(22px, 2vw, 30px); line-height: 1.05; text-transform: uppercase; letter-spacing: .01em; }
+.wd-plan__price { margin-left: auto; font-size: clamp(17px, 1.5vw, 21px); font-weight: 500; white-space: nowrap; }
+.wd-plan__body { display: grid; gap: 14px; justify-items: start; padding: 0 0 26px 30px; }
 .wd-plan__terms { font-size: 14px; opacity: .8; }
 .wd-plan__intro { font-weight: 500; }
-.wd-svc.is-ready .wd-plan:not(.is-active) .wd-plan__more { grid-template-rows: 0fr; }
-.wd-svc.is-ready .wd-plan:not(.is-active) .wd-plan__body { visibility: hidden; }
-.wd-svc.is-ready .wd-plan:not(.is-active) { opacity: .8; }
-.wd-svc.is-ready .wd-plan:not(.is-active):hover { opacity: 1; }
-/* photo panel: the photos slide vertically as the services change */
-.wd-svc__media { grid-column: 7 / -1; position: relative; aspect-ratio: 16 / 13; overflow: hidden; border-radius: 30px; border: 8px solid var(--color-3); background: var(--color-3); }
-.wd-svc__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 22px; }
-.wd-svc.is-ready .wd-svc__media img { opacity: 0; transition: translate .7s cubic-bezier(.2,.8,.2,1), opacity .45s; }
-.wd-svc.is-ready .wd-svc__media img.is-active { opacity: 1; }
-.wd-svc:not(.is-ready) .wd-svc__media img:not(:first-of-type), .wd-svc:not(.is-ready) .wd-svc__nav { display: none; }
-.wd-svc__nav { position: absolute; right: 18px; bottom: 18px; z-index: 2; display: flex; gap: 8px; }
-.wd-svc__nav .m-iconbtn { background: color-mix(in srgb, var(--color-3) 88%, transparent); color: var(--color-1); }
-.wd-svc__pause [hidden] { display: none; }
-.wd-svc__nav .m-iconbtn:focus-visible { outline: 2px solid var(--color-1); outline-offset: 2px; }
+.wd-plan[open] .wd-plan__body { animation: wd-open .35s cubic-bezier(.23,1,.32,1); }
+@keyframes wd-open { from { opacity: 0; translate: 0 -6px; } }
+/* photo panel */
+.wd-svc__media { grid-column: 7 / -1; position: relative; height: clamp(460px, 72svh, 720px); overflow: hidden; border-radius: 22px; border: 1px solid color-mix(in srgb, var(--color-1) 20%, transparent); background: var(--color-1); box-shadow: 0 10px 30px color-mix(in srgb, var(--color-1) 14%, transparent); }
+.wd-svc__media [role="tabpanel"] { position: absolute; inset: 0; margin: 0; }
+.wd-svc__media img { width: 100%; height: 100%; object-fit: cover; }
+.wd-svc__media [role="tabpanel"][hidden] { display: none; }
+.wd-svc__tabs { position: absolute; left: 50%; bottom: 18px; z-index: 1; display: flex; gap: 4px; padding: 4px; translate: -50% 0; border-radius: 14px; border: 1px solid color-mix(in srgb, var(--color-1) 20%, transparent); background: color-mix(in srgb, var(--color-3) 86%, transparent); backdrop-filter: blur(8px); }
+.wd-svc__tabs button { padding: 9px 16px; border: 0; border-radius: 10px; background: none; color: var(--color-1); font-size: 14px; font-weight: 500; white-space: nowrap; cursor: pointer; transition: background-color .25s, color .25s; }
+.wd-svc__tabs button[aria-selected="true"] { background: var(--color-1); color: var(--color-3); }
+.wd-svc__tabs button:focus-visible { outline: 2px solid var(--color-1); outline-offset: 2px; }
+.wd-svc:not(.is-ready) .wd-svc__tabs { display: none; }
 /* client reviews: one quote at a time, all brown on light yellow. Without JS every quote shows, stacked. */
 .wd-rev { color: var(--color-1); overflow: clip; }
 .wd-rev .pg-sec__head h2 { color: var(--color-1); background-image: none; -webkit-text-fill-color: currentColor; }
@@ -157,7 +153,8 @@
 .wd-cta__btn:focus-visible { outline: 2px solid var(--color-3); outline-offset: 4px; border-radius: 999px; }
 @media (prefers-reduced-motion: reduce) { .wd-cta__btn > span, .wd-cta__arrow svg { transition: none; } }
 @media (prefers-reduced-motion: reduce) {
-  .wd-plan__more, .wd-svc.is-ready .wd-svc__media img { transition: none; }
+  .wd-plan[open] .wd-plan__body { animation: none; }
+  .wd-plan summary::after { transition: none; }
 }
 @media (max-width: 860px) {
   .wd-problems-intro, .wd-problems { grid-column: 1 / -1; }
@@ -166,10 +163,11 @@
   .wd-hero::before { background: color-mix(in srgb, var(--color-1) 80%, transparent); }
   .wd-approach h2, .wd-approach__copy { grid-column: 1 / -1; }
   .wd-svc__list, .wd-svc__media { grid-column: 1 / -1; }
-  .wd-svc__media { order: -1; aspect-ratio: 4 / 3; }
-  .wd-plan__toggle { flex-wrap: wrap; row-gap: 4px; padding: 20px 22px; }
+  .wd-svc__media { height: auto; aspect-ratio: 4 / 5; }
+  .wd-plan summary { position: relative; flex-wrap: wrap; row-gap: 4px; padding-right: 28px; }
   .wd-plan__price { margin-left: 0; flex-basis: 100%; }
-  .wd-plan__body { padding: 0 22px 22px; }
+  .wd-plan summary::after { position: absolute; right: 4px; top: 30px; margin: 0; }
+  .wd-plan__body { padding-left: 0; }
   .wd-cta__lines { grid-template-columns: 1fr 2fr 1fr; }
   .wd-cta__lines span:nth-child(n + 4) { display: none; }
   .wd-rev__stage { grid-template-columns: minmax(0, 1fr); }
@@ -246,35 +244,36 @@
 <section class="slide pg-sec wd-svc" aria-labelledby="services-title" data-svc>
   <div class="wrap wd-svc__grid">
     <div class="wd-svc__list">
-      <div class="wd-svc__head"><h2 class="m-text-3" id="services-title">What I Can Do For You</h2><span class="wd-svc__kicker">(Services)</span></div>
-        <article class="wd-plan is-active" data-plan>
-          <span class="wd-plan__bar" aria-hidden="true"></span>
-          <h3><button class="wd-plan__toggle" type="button" aria-expanded="true" aria-controls="plan-landing-more"><span class="wd-plan__num" aria-hidden="true">/01</span><span class="wd-plan__title">Landing Page</span><span class="wd-plan__price">$1,700</span></button></h3>
-          <div class="wd-plan__more" id="plan-landing-more"><div class="wd-plan__inner"><div class="wd-plan__body">
+      <span class="wd-svc__eyebrow">Services</span>
+      <h2 class="m-text-3" id="services-title">What I Can Do For You</h2>
+      <ul class="wd-svc__chips" aria-label="Included in every package"><li>Custom design</li><li>SEO built in</li><li>Payment plans available</li></ul>
+      <div class="wd-plans">
+        <details class="wd-plan" name="wd-plans" data-tab="0" open>
+          <summary><span class="wd-plan__num" aria-hidden="true">/01</span><span class="wd-plan__title">Landing Page</span><span class="wd-plan__price">$1,700</span></summary>
+          <div class="wd-plan__body">
             <p class="wd-plan__terms">Payment plans available</p>
             <p class="wd-plan__intro">Perfect for newer businesses or service providers who need a professional online presence without the investment of a full multi-page website.</p>
             <p>This custom designed landing page combines branding/design, copy support, and foundational SEO setup to help your business look credible, communicate your services clearly, and begin showing up in Google search results.</p>
             <a class="m-btn m-btn--dark" href="/start-a-project"><span class="m-btn__label">Book Service<span class="visually-hidden">: Landing Page</span></span></a>
-          </div></div></div>
-        </article>
-        <article class="wd-plan" data-plan>
-          <span class="wd-plan__bar" aria-hidden="true"></span>
-          <h3><button class="wd-plan__toggle" type="button" aria-expanded="false" aria-controls="plan-redesign-more"><span class="wd-plan__num" aria-hidden="true">/02</span><span class="wd-plan__title">Full Website Redesign</span><span class="wd-plan__price">$3,250</span></button></h3>
-          <div class="wd-plan__more" id="plan-redesign-more"><div class="wd-plan__inner"><div class="wd-plan__body">
+          </div>
+        </details>
+        <details class="wd-plan" name="wd-plans" data-tab="1">
+          <summary><span class="wd-plan__num" aria-hidden="true">/02</span><span class="wd-plan__title">Full Website Redesign</span><span class="wd-plan__price">$3,250</span></summary>
+          <div class="wd-plan__body">
             <p class="wd-plan__terms">Payment plans available</p>
             <p class="wd-plan__intro">A fully custom website experience designed to help your business grow online through intentional design, user experience, and SEO-focused structure.</p>
             <p>This package is ideal for businesses ready to establish a stronger digital presence, improve credibility, and create a website that not only looks good, but also supports visibility on Google.</p>
             <a class="m-btn m-btn--dark" href="/start-a-project"><span class="m-btn__label">Book Service<span class="visually-hidden">: Full Website Redesign</span></span></a>
-          </div></div></div>
-        </article>
+          </div>
+        </details>
+      </div>
     </div>
     <div class="wd-svc__media">
-        <img class="is-active" style="background:#604f45; object-position: 50% 78%" src="/assets/services-beach-laptop.jpg" alt="A laptop on a red towel on the sand at the beach" width="1200" height="1497" loading="lazy">
-        <img class="" style="background:#9c9588; object-position: 50% 72%" src="/assets/services-laptop-studio.jpg" alt="A black laptop open on a stone counter beside a cane chair" width="1200" height="2133" loading="lazy">
-      <div class="wd-svc__nav">
-        <button class="m-iconbtn wd-svc__pause" type="button" aria-label="Pause rotating services" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path class="wd-ico-pause" d="M9 6v12M15 6v12"/><path class="wd-ico-play" d="M8 5l11 7-11 7z" hidden/></svg></button>
-        <button class="m-iconbtn wd-svc__prev" type="button" aria-label="Previous service"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
-        <button class="m-iconbtn wd-svc__next" type="button" aria-label="Next service"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+      <figure role="tabpanel" id="svc-panel-landing" aria-labelledby="svc-tab-landing"><img style="background:#604f45; object-position: 50% 78%" src="/assets/services-beach-laptop.jpg" alt="A laptop on a red towel on the sand at the beach" width="1200" height="1497" loading="eager"></figure>
+      <figure role="tabpanel" id="svc-panel-redesign" aria-labelledby="svc-tab-redesign" hidden><img style="background:#9c9588; object-position: 50% 72%" src="/assets/services-laptop-studio.jpg" alt="A black laptop open on a stone counter beside a cane chair" width="1200" height="2133" loading="lazy"></figure>
+      <div class="wd-svc__tabs" role="tablist" aria-label="Service photos">
+        <button type="button" role="tab" id="svc-tab-landing" aria-controls="svc-panel-landing" aria-selected="true">Landing Page</button>
+        <button type="button" role="tab" id="svc-tab-redesign" aria-controls="svc-panel-redesign" aria-selected="false" tabindex="-1">Full Redesign</button>
       </div>
     </div>
   </div>
@@ -379,79 +378,35 @@
 })();
 </script>
 <script>
-// services: one card open at a time; rotates every few seconds until the visitor interacts, hovers or focuses,
-// and never on its own with reduced motion
+// services: the photo tabs and the accordion stay in step; only one service is open at a time
 (() => {
   const root = document.querySelector('[data-svc]');
   if (!root) return;
-  const plans = [...root.querySelectorAll('[data-plan]')];
-  const imgs = [...root.querySelectorAll('.wd-svc__media img')];
-  const pause = root.querySelector('.wd-svc__pause');
-  const DURATION = 6000;
-  const still = matchMedia('(prefers-reduced-motion: reduce)');
-  let active = 0, timer = null, stopped = still.matches, held = false;
-  root.style.setProperty('--wd-dur', `${DURATION / 1000}s`);
-
-  const place = (img, y, animate) => {
-    if (!animate) img.style.transition = 'none';
-    img.style.translate = `0 ${y}`;
-    if (!animate) { img.offsetWidth; img.style.transition = ''; }
-  };
-  const show = (index, dir) => {
-    index = (index + plans.length) % plans.length;
-    if (index === active) return;
-    const moving = !still.matches;
-    if (moving) place(imgs[index], dir > 0 ? '-100%' : '100%', false);
-    imgs[active].classList.remove('is-active');
-    if (moving) place(imgs[active], dir > 0 ? '100%' : '-100%', true);
-    imgs[index].classList.add('is-active');
-    if (moving) place(imgs[index], '0', true);
-    plans.forEach((plan, i) => {
-      plan.classList.toggle('is-active', i === index);
-      plan.querySelector('.wd-plan__toggle').setAttribute('aria-expanded', String(i === index));
+  const plans = [...root.querySelectorAll('.wd-plan')];
+  const tabs = [...root.querySelectorAll('[role="tab"]')];
+  const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
+  const select = (index, focus) => {
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('aria-selected', String(i === index));
+      tab.tabIndex = i === index ? 0 : -1;
+      panels[i].hidden = i !== index;
     });
-    active = index;
-    restart();
+    if (focus) tabs[index].focus();
   };
-  const playing = () => !stopped && !held;
-  function restart() {
-    clearTimeout(timer);
-    root.classList.remove('is-playing');
-    if (!playing()) return;
-    root.offsetWidth;
-    root.classList.add('is-playing');
-    timer = setTimeout(() => show(active + 1, 1), DURATION);
-  }
-  const stop = () => {
-    stopped = true;
-    pause.setAttribute('aria-pressed', 'true');
-    pause.setAttribute('aria-label', 'Play rotating services');
-    pause.querySelector('.wd-ico-pause').setAttribute('hidden', '');
-    pause.querySelector('.wd-ico-play').removeAttribute('hidden');
-    restart();
-  };
-
-  plans.forEach((plan, i) => plan.querySelector('.wd-plan__toggle').addEventListener('click', () => { stop(); show(i, i > active ? 1 : -1); }));
-  root.querySelector('.wd-svc__prev').addEventListener('click', () => { stop(); show(active - 1, -1); });
-  root.querySelector('.wd-svc__next').addEventListener('click', () => { stop(); show(active + 1, 1); });
-  pause.addEventListener('click', () => {
-    if (!stopped) return stop();
-    stopped = false;
-    pause.setAttribute('aria-pressed', 'false');
-    pause.setAttribute('aria-label', 'Pause rotating services');
-    pause.querySelector('.wd-ico-play').setAttribute('hidden', '');
-    pause.querySelector('.wd-ico-pause').removeAttribute('hidden');
-    restart();
+  tabs.forEach((tab, i) => tab.addEventListener('click', () => { select(i); plans[i].open = true; }));
+  root.querySelector('[role="tablist"]').addEventListener('keydown', event => {
+    const current = tabs.findIndex(tab => tab.getAttribute('aria-selected') === 'true');
+    const next = { ArrowRight: current + 1, ArrowLeft: current - 1, Home: 0, End: tabs.length - 1 }[event.key];
+    if (next === undefined) return;
+    event.preventDefault();
+    const index = (next + tabs.length) % tabs.length;
+    select(index, true);
+    plans[index].open = true;
   });
-  // hold while the pointer or keyboard focus is in the section, so text never changes while being read
-  root.addEventListener('pointerenter', () => { held = true; restart(); });
-  root.addEventListener('pointerleave', () => { held = false; restart(); });
-  root.addEventListener('focusin', () => { held = true; restart(); });
-  root.addEventListener('focusout', event => { if (!root.contains(event.relatedTarget)) { held = false; restart(); } });
-  // only rotate while the section is on screen
-  new IntersectionObserver(([entry]) => { if (entry.isIntersecting) restart(); else { clearTimeout(timer); root.classList.remove('is-playing'); } }, { threshold: .4 }).observe(root);
-
-  if (still.matches) stop();
+  plans.forEach((plan, i) => plan.addEventListener('toggle', () => {
+    // one open at a time, also in browsers without <details name>
+    if (plan.open) { plans.forEach(other => { if (other !== plan) other.open = false; }); select(i); }
+  }));
   root.classList.add('is-ready');
 })();
 </script>
