@@ -434,7 +434,7 @@ button { font: inherit; color: inherit; }
 #about .ab-intro { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; row-gap: 26px; }
 #about .ab-intro .m-badge { grid-column: 1 / -1; justify-self: start; }
 #about h2 { grid-column: 1 / 11; font-size: clamp(40px, 5.6vw, 92px); }
-#about .ab-copy { grid-column: 6 / -1; display: grid; gap: 18px; max-width: 54ch; }
+#about .ab-copy { grid-column: 6 / -1; justify-self: end; display: grid; gap: 18px; max-width: 54ch; }
 #team { background: var(--color-2-deep); color: var(--color-6); padding: clamp(70px, 11svh, 130px) 0; }
 #team .ab-name { color: var(--color-6); background-image: none; -webkit-text-fill-color: currentColor; }
 #team :focus-visible { outline-color: var(--color-6); }
@@ -447,6 +447,7 @@ button { font: inherit; color: inherit; }
 #team .ab-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
 @media (max-width: 860px) {
   #about h2, #about .ab-copy { grid-column: 1 / -1; }
+  #about .ab-copy { justify-self: start; }
   #team .ab-team { grid-template-columns: minmax(0, 1fr); gap: 48px; }
   #team .ab-card, #team .ab-card + .ab-card { padding: 0; border-left: 0; }
   #team .ab-card + .ab-card { padding-top: 48px; border-top: 1px solid color-mix(in srgb, var(--color-6) 40%, transparent); }
