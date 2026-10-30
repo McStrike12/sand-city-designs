@@ -37,11 +37,10 @@
   .wd-problems li:nth-child(4) { animation-delay: 1.55s; }
 }
 @keyframes wd-rise { from { opacity: 0; translate: 0 14px; } }
-.wd-hero .pg-hero__photo { grid-row: 1 / span 6; }
 /* looping sunset-waves video behind the hero, under a brown wash that keeps the text readable */
-.wd-hero { position: relative; isolation: isolate; overflow: clip; }
+.wd-hero { position: relative; isolation: isolate; overflow: clip; min-height: 100svh; display: grid; align-content: center; }
 .wd-hero__video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; background: #8c7a66 url(/assets/hero-design-poster.jpg) center / cover; }
-.wd-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, color-mix(in srgb, var(--color-1) 86%, transparent) 0 45%, color-mix(in srgb, var(--color-1) 55%, transparent)); }
+.wd-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, color-mix(in srgb, var(--color-1) 84%, transparent) 0 38%, color-mix(in srgb, var(--color-1) 55%, transparent) 62%, color-mix(in srgb, var(--color-1) 22%, transparent)); }
 .wd-approach { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; row-gap: 24px; align-items: start; }
 .wd-approach h2 { grid-column: 1 / 7; font-size: clamp(40px, 5vw, 80px); }
 .wd-approach__copy { grid-column: 7 / -1; display: grid; gap: 18px; max-width: 58ch; }
@@ -143,8 +142,8 @@
 @media (max-width: 860px) {
   .wd-problems-intro, .wd-problems { grid-column: 1 / -1; }
   .wd-problems { grid-template-columns: minmax(0, 1fr); }
-  .wd-hero .pg-hero__photo { grid-row: auto; }
-  .wd-hero::before { background: color-mix(in srgb, var(--color-1) 84%, transparent); }
+  .wd-hero { min-height: 0; }
+  .wd-hero::before { background: color-mix(in srgb, var(--color-1) 80%, transparent); }
   .wd-approach h2, .wd-approach__copy { grid-column: 1 / -1; }
   .wd-svc__list, .wd-svc__media { grid-column: 1 / -1; }
   .wd-svc__media { order: -1; aspect-ratio: 4 / 3; }
@@ -210,7 +209,6 @@
       <li>isn't optimized for search visibility</li>
     </ul>
     <p class="pg-hero__lead m-text-5">My goal is to create websites that not only reflect your brand beautifully, but also support the growth of your business long-term.</p>
-    <figure class="pg-hero__photo"><img style="background:#6f665c" src="/assets/services-laptop-sofa.jpg" alt="An open laptop resting on a stack of books on the arm of a soft grey sofa" width="1000" height="1500"></figure>
   </div>
 </section>
 <section class="slide pg-sec slide--light" aria-labelledby="approach-title">
