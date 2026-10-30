@@ -183,6 +183,7 @@ button { font: inherit; color: inherit; }
 #navigation .nav__logo img { height: 30px; width: auto; }
 @media (max-width: 860px) { #navigation .nav__logo img { height: 24px; } }
 #navigation .nav__links { display: flex; gap: 26px; margin-left: auto; }
+#navigation > nav { margin-left: 24px; }
 #navigation .nav__links a { font-size: 14px; }
 #navigation .nav__cta { min-height: 40px; padding: 0 18px; font-size: 14px; }
 #navigation .nav__menu { display: none; }
