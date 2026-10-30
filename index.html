@@ -331,38 +331,43 @@ button { font: inherit; color: inherit; }
 </style>
 <style data-8b-part="section:looks">
 @layer sections {
-#looks { color: var(--color-1); padding: clamp(56px, 9svh, 100px) 0 clamp(36px, 5svh, 64px); }
+#looks { color: var(--color-1); padding: clamp(56px, 9svh, 100px) 0 clamp(48px, 7svh, 90px); }
 #looks .lk-head .m-text-3 { color: var(--color-1); background-image: none; -webkit-text-fill-color: currentColor; }
-#looks .lk-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; align-items: end; margin-bottom: clamp(20px, 3svh, 40px); }
+#looks .lk-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; align-items: end; margin-bottom: clamp(24px, 4svh, 48px); }
 #looks .lk-head h2 { grid-column: 1 / 8; }
 #looks .lk-head p { grid-column: 8 / -1; max-width: 40ch; }
-#looks .lk-track { display: grid; gap: clamp(48px, 8svh, 90px); }
-#looks .lk-panel { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; align-items: center; padding-inline: var(--space-2); }
-#looks .lk-photo { grid-column: 2 / 7; margin: 0; aspect-ratio: 4 / 5; max-height: 76svh; overflow: hidden; clip-path: circle(80% at 50% 42%); background: var(--color-1); border: 10px solid var(--color-1); border-radius: 30px; }
-#looks .lk-photo img { border-radius: 20px; }
-#looks .lk-photo img { width: 100%; height: 100%; object-fit: cover; }
-#looks .lk-text { grid-column: 8 / -1; display: grid; gap: 16px; justify-items: start; max-width: 42ch; }
-#looks .lk-text h3 { font-size: clamp(34px, 4.2vw, 64px); }
+/* tabs: a brown pill bar; the light pill slides under the chosen tab (shown once the script is running) */
+#looks .lk-tablist { position: relative; display: none; grid-template-columns: 1fr 1fr; width: min(100%, 560px); padding: 5px; margin-bottom: clamp(28px, 4svh, 48px); border-radius: 999px; background: var(--color-1); }
+#looks .lk-tabs.is-ready .lk-tablist { display: grid; }
+#looks .lk-pill { position: absolute; top: 5px; bottom: 5px; left: 0; width: var(--pill-w, 0); translate: var(--pill-x, 0) 0; border-radius: 999px; background: var(--color-3); box-shadow: 0 4px 14px rgb(0 0 0 / .25); transition: translate .5s cubic-bezier(.3,1.3,.5,1), width .5s cubic-bezier(.3,1.3,.5,1); }
+#looks .lk-tab { position: relative; z-index: 1; min-height: 44px; padding: 8px 18px; border: 0; border-radius: 999px; background: none; color: var(--color-3); font-size: 15px; font-weight: 500; line-height: 1.2; cursor: pointer; transition: color .3s; }
+#looks .lk-tab[aria-selected="true"] { color: var(--color-1); }
+#looks .lk-tab:focus-visible { outline: 2px solid var(--color-3); outline-offset: -4px; }
+/* panels share one grid cell, so switching never changes the section height */
+#looks .lk-panels { display: grid; gap: clamp(48px, 8svh, 90px); }
+#looks .lk-tabs.is-ready .lk-panels { gap: 0; }
+#looks .lk-tabs.is-ready .lk-panel { grid-area: 1 / 1; }
+#looks .lk-tabs.is-ready .lk-panel:not(.is-active) { visibility: hidden; opacity: 0; }
+#looks .lk-panel { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; align-items: center; }
+#looks .lk-panel.is-entering { animation: lk-in .55s cubic-bezier(.2,.7,.2,1); }
+@keyframes lk-in { from { opacity: 0; scale: .97; translate: -12px 0; filter: blur(10px); } }
+#looks .lk-photo { grid-column: 1 / 6; margin: 0; aspect-ratio: 4 / 5; max-height: 72svh; overflow: hidden; background: var(--color-1); border: 10px solid var(--color-1); border-radius: 30px; }
+#looks .lk-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
+#looks .lk-text { grid-column: 7 / -1; display: grid; gap: 16px; justify-items: start; max-width: 46ch; }
 #looks .lk-steps { display: grid; gap: 0; width: 100%; border-top: 1px solid color-mix(in srgb, var(--color-1) 30%, transparent); }
 #looks .lk-steps li { padding: 10px 0; border-bottom: 1px solid color-mix(in srgb, var(--color-1) 30%, transparent); }
 #looks .lk-badge { color: var(--color-1); }
 @media (max-width: 860px) {
   #looks .lk-head { grid-template-columns: minmax(0, 1fr); row-gap: 16px; }
   #looks .lk-head h2, #looks .lk-head p { grid-column: 1; }
-  #looks .lk-panel { grid-template-columns: minmax(0, 1fr); row-gap: 20px; }
+  #looks .lk-tab { padding: 8px 10px; font-size: 14px; }
+  #looks .lk-panel { grid-template-columns: minmax(0, 1fr); row-gap: 20px; align-items: start; }
   #looks .lk-photo, #looks .lk-text { grid-column: 1; }
-  #looks .lk-photo { max-height: 52svh; width: 100%; }
+  #looks .lk-photo { aspect-ratio: 4 / 3; max-height: 44svh; width: 100%; }
 }
-}
-</style>
-<style data-8b-part="scene-style:looks">
-@layer scenes {
-@media (prefers-reduced-motion: no-preference) and (min-width: 861px) {
-  #looks[data-track] .lk-scroll { height: 230svh; }
-  #looks[data-track] .lk-viewport { position: sticky; top: 0; height: 100svh; overflow: hidden; display: flex; align-items: center; }
-  #looks[data-track] .lk-track { display: flex; gap: 0; width: max-content; }
-  #looks[data-track] .lk-panel { width: calc(100vw - 2 * var(--space-1)); flex: none; }
-  #looks[data-track] .lk-photo { max-height: 78svh; }
+@media (prefers-reduced-motion: reduce) {
+  #looks .lk-pill, #looks .lk-tab { transition: none; }
+  #looks .lk-panel.is-entering { animation: none; }
 }
 }
 </style>
@@ -708,16 +713,20 @@ button { font: inherit; color: inherit; }
     </article>
   </div>
 </section>
-<!-- looks: services: sideways track of two service blocks, each a tall photo with services, headline, description, list and a button (animation: scene:looks) -->
+<!-- looks: services: two tabs (website design, custom software); the chosen one shows its photo, headline, description, list and button (section-script:looks) -->
 <section id="looks" class="slide slide--light" data-8b-section="looks" aria-labelledby="looks-title">
   <div class="lk-head wrap">
     <h2 class="m-text-3" id="looks-title" data-8b-motion="rise">What we do</h2>
     <p class="m-text-5" data-8b-motion="rise">From how your brand shows up online to the systems that keep your business running behind the scenes.</p>
   </div>
-  <div class="lk-scroll">
-    <div class="lk-viewport">
-      <ol class="lk-track">
-        <li class="lk-panel">
+  <div class="lk-tabs wrap" data-tabs>
+    <div class="lk-tablist" role="tablist" aria-label="Our services">
+      <span class="lk-pill" aria-hidden="true"></span>
+      <button class="lk-tab" type="button" role="tab" id="lk-tab-1" aria-controls="lk-panel-1" aria-selected="true">Website Design &amp; Branding</button>
+      <button class="lk-tab" type="button" role="tab" id="lk-tab-2" aria-controls="lk-panel-2" aria-selected="false" tabindex="-1">Custom Software &amp; Systems</button>
+    </div>
+    <div class="lk-panels">
+        <div class="lk-panel is-active" role="tabpanel" id="lk-panel-1" aria-labelledby="lk-tab-1">
           <figure class="lk-photo"><img style="background:#604f45" src="assets/services-beach-laptop.jpg" alt="A laptop on a red towel on the sand, facing the sea at dusk" width="1200" height="1497" loading="lazy"></figure>
           <div class="lk-text">
             <span class="lk-badge m-badge">01 · Website Design · Branding · SEO</span>
@@ -732,8 +741,8 @@ button { font: inherit; color: inherit; }
             </ul>
             <a class="m-btn-2" href="/services/website-design-branding"><span class="m-btn-2__label">Explore Digital Presence</span></a>
           </div>
-        </li>
-        <li class="lk-panel">
+        </div>
+        <div class="lk-panel" role="tabpanel" id="lk-panel-2" aria-labelledby="lk-tab-2">
           <figure class="lk-photo"><img style="background:#9c9588; object-position: 50% 72%" src="assets/services-laptop-studio.jpg" alt="A black laptop open on a stone counter in a bright room with a cane chair" width="1200" height="2133" loading="lazy"></figure>
           <div class="lk-text">
             <span class="lk-badge m-badge">02 · Custom Software · Workflow Automation · Business Operations</span>
@@ -749,8 +758,7 @@ button { font: inherit; color: inherit; }
             </ul>
             <a class="m-btn-2" href="/services/custom-software-systems"><span class="m-btn-2__label">Explore Custom Systems</span></a>
           </div>
-        </li>
-      </ol>
+        </div>
     </div>
   </div>
 </section>
@@ -994,27 +1002,45 @@ queueMotion(() => {
   });
 });
 </script>
-<script data-8b-part="scene:looks">
-queueMotion(() => {
-  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
-    const section = document.getElementById('looks');
-    if (innerWidth < 861) return;
-    const scroller = section.querySelector('.lk-scroll');
-    const track = section.querySelector('.lk-track');
-    const photos = [...section.querySelectorAll('.lk-photo')];
-    section.setAttribute('data-track', '');
-    const travel = () => -(track.scrollWidth - track.parentElement.clientWidth);
-    const timeline = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: {
-      id: 'looks', trigger: scroller, start: 'top bottom', end: 'bottom bottom', scrub: .5, invalidateOnRefresh: true
-    }});
-    timeline.fromTo(photos[0], { clipPath: 'circle(10% at 50% 42%)' }, { clipPath: 'circle(80% at 50% 42%)', duration: 1, ease: 'power2.out' }, 0);
-    timeline.fromTo(track, { x: 0 }, { x: travel, duration: 1.7 }, 1);
-    photos.slice(1).forEach((photo, index) => {
-      timeline.fromTo(photo, { clipPath: 'circle(10% at 50% 42%)' }, { clipPath: 'circle(80% at 50% 42%)', duration: .6, ease: 'power2.out' }, 1 + index * .85 + .25);
+<script data-8b-part="section-script:looks">
+(() => {
+  const root = document.querySelector('#looks [data-tabs]');
+  if (!root) return;
+  const tabs = [...root.querySelectorAll('[role="tab"]')];
+  const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
+  const tablist = root.querySelector('[role="tablist"]');
+  let active = 0;
+  // the light pill follows the chosen tab
+  const placePill = () => {
+    const tab = tabs[active];
+    tablist.style.setProperty('--pill-x', `${tab.offsetLeft}px`);
+    tablist.style.setProperty('--pill-w', `${tab.offsetWidth}px`);
+  };
+  const select = (index, focus) => {
+    if (index === active) return;
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('aria-selected', String(i === index));
+      tab.tabIndex = i === index ? 0 : -1;
     });
-    return () => section.removeAttribute('data-track');
+    panels[active].classList.remove('is-active', 'is-entering');
+    panels[index].classList.add('is-active', 'is-entering');
+    active = index;
+    placePill();
+    if (focus) tabs[index].focus();
+  };
+  panels.forEach(panel => panel.addEventListener('animationend', () => panel.classList.remove('is-entering')));
+  tabs.forEach((tab, i) => tab.addEventListener('click', () => select(i)));
+  tablist.addEventListener('keydown', event => {
+    const last = tabs.length - 1;
+    const next = { ArrowRight: active === last ? 0 : active + 1, ArrowLeft: active === 0 ? last : active - 1, Home: 0, End: last }[event.key];
+    if (next === undefined) return;
+    event.preventDefault();
+    select(next, true);
   });
-});
+  root.classList.add('is-ready');
+  placePill();
+  new ResizeObserver(placePill).observe(tablist);
+})();
 </script>
 <script data-8b-part="section-script:contact">
 (() => {
