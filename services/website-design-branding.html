@@ -28,6 +28,15 @@
 .wd-problems { grid-column: 1 / 8; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 24px; }
 .wd-problems li { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid color-mix(in srgb, currentColor 30%, transparent); }
 .wd-problems li::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--color-5); }
+/* the four problems fade up one after another as the page opens */
+@media (prefers-reduced-motion: no-preference) {
+  .wd-problems li { animation: wd-rise .7s cubic-bezier(.2,.7,.2,1) both; }
+  .wd-problems li:nth-child(1) { animation-delay: .5s; }
+  .wd-problems li:nth-child(2) { animation-delay: .85s; }
+  .wd-problems li:nth-child(3) { animation-delay: 1.2s; }
+  .wd-problems li:nth-child(4) { animation-delay: 1.55s; }
+}
+@keyframes wd-rise { from { opacity: 0; translate: 0 14px; } }
 .wd-hero .pg-hero__photo { grid-row: 1 / span 6; }
 .wd-approach { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; row-gap: 24px; align-items: start; }
 .wd-approach h2 { grid-column: 1 / 7; font-size: clamp(40px, 5vw, 80px); }
