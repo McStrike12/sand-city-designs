@@ -1,0 +1,283 @@
+<!doctype html>
+<!--
+  Free website template by 8B: https://8b.com/templates/ondo/
+  Source: https://github.com/8bsite/event-website-template
+  MIT License (code) https://8b.com/ · Fonts: Google Fonts (OFL)
+  Start a Project: the project inquiry form. Shares its styles with index.html; posts to /api/inquiry.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start a Project — Sand City Designs</title>
+<meta name="description" content="Tell Sand City Designs about your project: website design, branding, SEO or custom business systems.">
+<meta name="generator" content="8B Templates">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Start a Project — Sand City Designs">
+<meta property="og:description" content="Tell Sand City Designs about your project: website design, branding, SEO or custom business systems.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png">
+<link rel="apple-touch-icon" href="/assets/favicon-180.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.gstatic.com/s/astasans/v3/XoHk2Y74XaWovvhMb0cduPcs.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/Hero-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<style data-8b-part="section:start">
+@layer sections {
+#start { padding: calc(60px + clamp(60px, 10svh, 120px)) 0 clamp(60px, 9svh, 100px); background: var(--color-1); }
+#start .st-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; row-gap: 24px; align-items: end; }
+#start .st-head h1 { grid-column: 1 / 8; font-size: clamp(44px, 6.4vw, 104px); }
+#start .st-head p { grid-column: 8 / -1; max-width: 42ch; }
+#start .st-direct { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 12px; padding-top: 16px; border-top: 1px solid color-mix(in srgb, var(--color-3) 30%, transparent); }
+#start .st-direct dt { opacity: .78; }
+
+#inquiry { color: var(--color-1); padding: clamp(56px, 9svh, 100px) 0 clamp(70px, 11svh, 130px); }
+#inquiry .iq-form { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; row-gap: 28px; }
+#inquiry .iq-group { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 20px; margin: 0; padding: 0; border: 0; min-width: 0; }
+#inquiry .iq-group[hidden] { display: none; }
+#inquiry .iq-group > legend { grid-column: 1 / -1; float: left; width: 100%; padding: 0 0 14px; margin-bottom: 4px; border-bottom: 1px solid color-mix(in srgb, var(--color-1) 25%, transparent); }
+#inquiry .iq-group > legend span { display: block; opacity: .7; margin-top: 6px; font-family: var(--font-1); font-size: 14px; font-weight: 400; letter-spacing: 0; }
+#inquiry .iq-field { display: grid; gap: 8px; align-content: start; min-width: 0; }
+#inquiry .iq-field--wide { grid-column: 1 / -1; }
+#inquiry label, #inquiry .iq-label { font-size: 14px; font-weight: 500; }
+#inquiry .iq-optional { font-weight: 400; opacity: .65; }
+#inquiry input, #inquiry select, #inquiry textarea {
+  width: 100%; min-height: 50px; padding: 12px 14px; border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--color-1) 30%, transparent); background: var(--color-7); color: var(--color-1);
+  font: 400 16px/1.4 var(--font-1);
+}
+#inquiry textarea { min-height: 132px; resize: vertical; }
+#inquiry ::placeholder { color: color-mix(in srgb, var(--color-1) 55%, transparent); }
+#inquiry select { appearance: none; padding-right: 42px; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23452b25' stroke-width='1.6'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center; background-size: 18px; }
+#inquiry input:focus-visible, #inquiry select:focus-visible, #inquiry textarea:focus-visible { outline: 2px solid var(--color-2); outline-offset: 1px; border-color: var(--color-2); }
+#inquiry [aria-invalid="true"] { border-color: #a3271a; }
+#inquiry .iq-hint { font-size: 13px; opacity: .7; }
+#inquiry .iq-trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+#inquiry .iq-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; padding-top: 8px; }
+#inquiry .iq-submit { background: var(--color-1); color: var(--color-3); min-height: 54px; padding: 0 30px; font-size: 16px; }
+#inquiry .iq-submit::before { background-image: linear-gradient(100deg, var(--color-1) 0 40%, color-mix(in srgb, var(--color-5) 45%, var(--color-1)) 70%, var(--color-1) 100%); }
+#inquiry .iq-submit::after { color: var(--color-1); }
+#inquiry .iq-submit[disabled] { opacity: .6; cursor: progress; }
+#inquiry .iq-status { font-size: 15px; max-width: 60ch; }
+#inquiry .iq-status--error { color: #a3271a; }
+#inquiry .iq-done { grid-column: 1 / -1; display: grid; gap: 16px; justify-items: start; padding: 36px 32px; border-radius: 22px; background: var(--color-2-deep); color: var(--color-3); }
+#inquiry .iq-done[hidden] { display: none; }
+#inquiry .iq-done h2 { font-size: clamp(34px, 4vw, 56px); }
+#inquiry .iq-done .m-btn { margin-top: 6px; }
+@media (max-width: 860px) {
+  #start .st-head { grid-template-columns: minmax(0, 1fr); }
+  #start .st-head h1, #start .st-head p { grid-column: 1; }
+  #inquiry .iq-group { grid-template-columns: minmax(0, 1fr); }
+}
+}
+</style>
+</head>
+<body class="m-text">
+<a class="skip m-text-4" href="#main">Skip to content</a>
+<!-- navigation: top bar: logo, section links, Start a Project button; phone menu overlay -->
+<header id="navigation" data-8b-section="navigation">
+  <a class="nav__logo" href="/" aria-label="Sand City Designs, home"><img src="/assets/logo-light.png" alt="" width="1200" height="246"></a>
+  <nav aria-label="Main">
+    <ul class="nav__links">
+      <li class="nav__drop"><a class="m-link" href="/#looks">Services</a>
+        <ul class="nav__sub">
+          <li><a class="m-link" href="/services/website-design-branding">Website Design &amp; Branding</a></li>
+          <li><a class="m-link" href="/services/custom-software-systems">Custom Software &amp; Systems</a></li>
+        </ul>
+      </li>
+      <li><a class="m-link" href="/#tickets">Our Work</a></li>
+      <li><a class="m-link" href="/#about">About</a></li>
+    </ul>
+  </nav>
+  <a class="m-btn nav__cta" href="/start-a-project" aria-current="page"><span class="m-btn__label">Start a Project</span></a>
+  <button class="m-iconbtn nav__menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg></button>
+  <div class="menu" id="menu" hidden>
+    <button class="m-iconbtn menu__close" type="button" aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/#looks">Services</a></li>
+      <li class="menu__sub"><a href="/services/website-design-branding">Website Design &amp; Branding</a></li>
+      <li class="menu__sub"><a href="/services/custom-software-systems">Custom Software &amp; Systems</a></li>
+      <li><a href="/#tickets">Our Work</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/start-a-project">Start a Project</a></li>
+    </ul>
+    <p class="menu__meta m-text-4">Website design · Branding · SEO · Custom business systems</p>
+  </div>
+</header>
+<main id="main">
+<!-- start: page head: headline, intro, direct contact -->
+<section id="start" class="slide" data-8b-section="start" aria-labelledby="start-title">
+  <div class="st-head wrap">
+    <h1 class="m-text-3" id="start-title">Let's build<br>something better.</h1>
+    <p class="m-text-5">Whether you need a stronger online presence or a better way to run your business, we'd love to hear what you're working on. Tell us about your goals, challenges, and ideas, and let's explore how we can help.</p>
+    <dl class="st-direct m-text-4">
+      <div><dt>Email</dt><dd><a class="m-link" href="mailto:sandcitysites@gmail.com">sandcitysites@gmail.com</a></dd></div>
+    </dl>
+  </div>
+</section>
+<!-- inquiry: the project inquiry form; website and software questions appear based on the service picked -->
+<section id="inquiry" class="slide slide--light" data-8b-section="inquiry" aria-labelledby="inquiry-title">
+  <div class="wrap">
+    <h2 class="visually-hidden" id="inquiry-title">Project inquiry</h2>
+    <form class="iq-form" id="inquiry-form" action="/api/inquiry" method="post" novalidate>
+      <fieldset class="iq-group">
+        <legend class="m-text-6">About you</legend>
+        <div class="iq-field"><label for="iq-name">Name</label><input id="iq-name" name="name" autocomplete="name" required maxlength="120"></div>
+        <div class="iq-field"><label for="iq-email">Email address</label><input id="iq-email" name="email" type="email" autocomplete="email" required maxlength="200"></div>
+        <div class="iq-field"><label for="iq-business">Business name</label><input id="iq-business" name="business" autocomplete="organization" required maxlength="200"></div>
+        <div class="iq-field"><label for="iq-website">Current website <span class="iq-optional">(if applicable)</span></label><input id="iq-website" name="website" type="url" inputmode="url" autocomplete="url" maxlength="300" placeholder="https://"></div>
+      </fieldset>
+
+      <fieldset class="iq-group">
+        <legend class="m-text-6">Your project</legend>
+        <div class="iq-field iq-field--wide"><label for="iq-service">Service of interest</label>
+          <select id="iq-service" name="service" required>
+            <option value="">Choose one</option>
+            <option>Website Design</option>
+            <option>Branding</option>
+            <option>SEO</option>
+            <option>Custom Software</option>
+            <option>Multiple Services</option>
+          </select>
+        </div>
+        <div class="iq-field iq-field--wide"><label for="iq-description">Brief description of the project or challenge</label><textarea id="iq-description" name="description" required maxlength="5000"></textarea></div>
+      </fieldset>
+
+      <fieldset class="iq-group" id="iq-web" data-show-for="Website Design|Branding|SEO|Multiple Services" hidden>
+        <legend class="m-text-6">Design and content<span>For website, branding and SEO projects.</span></legend>
+        <div class="iq-field"><label for="iq-brand">Do you have existing branding (logo, colors, fonts)?</label>
+          <select id="iq-brand" name="existing_branding"><option value="">Choose one</option><option>Yes, a full brand</option><option>Some pieces</option><option>Not yet</option></select></div>
+        <div class="iq-field"><label for="iq-content">Who will provide the written content and photos?</label>
+          <select id="iq-content" name="content"><option value="">Choose one</option><option>We have it ready</option><option>We'll need help</option><option>Not sure yet</option></select></div>
+        <div class="iq-field iq-field--wide"><label for="iq-design-needs">What should the site do, and which sites do you like the look of? <span class="iq-optional">(optional)</span></label><textarea id="iq-design-needs" name="design_needs" maxlength="3000"></textarea></div>
+      </fieldset>
+
+      <fieldset class="iq-group" id="iq-software" data-show-for="Custom Software|Multiple Services" hidden>
+        <legend class="m-text-6">Your tools and operations<span>For custom software and business systems.</span></legend>
+        <div class="iq-field iq-field--wide"><label for="iq-tools">What tools, platforms or spreadsheets do you use today?</label><textarea id="iq-tools" name="current_tools" maxlength="3000"></textarea></div>
+        <div class="iq-field iq-field--wide"><label for="iq-challenge">What operational challenge should a new system solve?</label><textarea id="iq-challenge" name="operational_challenge" maxlength="3000"></textarea></div>
+        <div class="iq-field"><label for="iq-users">Who would use it? <span class="iq-optional">(optional)</span></label><input id="iq-users" name="users" maxlength="200" placeholder="e.g. staff, clients, parents"></div>
+      </fieldset>
+
+      <fieldset class="iq-group">
+        <legend class="m-text-6">Anything else</legend>
+        <div class="iq-field iq-field--wide"><label for="iq-more">Additional information <span class="iq-optional">(optional)</span></label><textarea id="iq-more" name="additional" maxlength="5000"></textarea></div>
+      </fieldset>
+
+      <div class="iq-trap" aria-hidden="true"><label for="iq-company-url">Leave this empty</label><input id="iq-company-url" name="company_url" tabindex="-1" autocomplete="off"></div>
+
+      <div class="iq-actions">
+        <button class="m-btn iq-submit" type="submit"><span class="m-btn__label">Send project details</span></button>
+        <p class="iq-status" id="iq-status" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="iq-done" id="iq-done" tabindex="-1" hidden>
+        <h2 class="m-text-3">Thank you.</h2>
+        <p class="m-text-5">Your project details are on their way to us. We'll be in touch soon.</p>
+        <a class="m-btn" href="/"><span class="m-btn__label">Back to the homepage</span></a>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+<!-- footer: width-filling Sand City wordmark, brand line, links, copyright and the Design: 8B credit -->
+<footer id="footer" class="slide" data-8b-section="footer">
+  <p class="ft-mark m-text-2" style="--len:9">Sand City</p>
+  <p class="ft-desc m-text-5">Sand City Designs helps businesses build a stronger digital foundation through strategic website design, branding, SEO, and custom business systems.</p>
+  <div class="ft-row m-text-4">
+    <small>© 2026 Sand City Designs · Design: <a href="https://8b.com/" style="color:inherit" data-8b-credit>8B</a></small>
+  </div>
+</footer>
+<script data-8b-part="section-script:navigation">
+(() => {
+  const nav = document.getElementById('navigation');
+  const menu = nav.querySelector('.menu');
+  const openButton = nav.querySelector('.nav__menu');
+  const closeButton = menu.querySelector('.menu__close');
+  let lastY = scrollY, run = 0, hidden = false;
+  addEventListener('scroll', () => {
+    const y = scrollY, delta = y - lastY;
+    lastY = y;
+    if (!delta) return;
+    if (Math.sign(delta) !== Math.sign(run)) run = 0;
+    run += delta;
+    let next = hidden;
+    if (y < 80) next = false;
+    else if (run > 30) next = true;
+    else if (run < -60) next = false;
+    if (next !== hidden) { hidden = next; nav.classList.toggle('is-hidden', hidden); }
+  }, { passive: true });
+  nav.addEventListener('focusin', () => { hidden = false; nav.classList.remove('is-hidden'); });
+  const setOpen = open => {
+    menu.hidden = !open;
+    openButton.setAttribute('aria-expanded', String(open));
+    if (open) { hidden = false; nav.classList.remove('is-hidden'); window.lenis?.stop(); closeButton.focus(); }
+    else { window.lenis?.start(); openButton.focus(); }
+  };
+  openButton.addEventListener('click', () => setOpen(true));
+  closeButton.addEventListener('click', () => setOpen(false));
+  menu.addEventListener('keydown', event => { if (event.key === 'Escape') setOpen(false); });
+  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.hidden = true; openButton.setAttribute('aria-expanded', 'false'); window.lenis?.start(); }));
+})();
+</script>
+<script data-8b-part="section-script:inquiry">
+(() => {
+  const form = document.getElementById('inquiry-form');
+  const service = form.elements.service;
+  const groups = [...form.querySelectorAll('[data-show-for]')];
+  const status = document.getElementById('iq-status');
+  const done = document.getElementById('iq-done');
+  const submit = form.querySelector('.iq-submit');
+
+  // website and software questions follow the service picked
+  const sync = () => groups.forEach(group => { group.hidden = !group.dataset.showFor.split('|').includes(service.value); });
+  service.addEventListener('change', sync);
+  sync();
+
+  if (new URLSearchParams(location.search).has('sent')) showDone();
+
+  function showDone() {
+    [...form.children].forEach(child => { if (child !== done) child.hidden = true; });
+    done.hidden = false;
+    done.focus();
+  }
+
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    status.textContent = '';
+    status.classList.remove('iq-status--error');
+    const invalid = [...form.querySelectorAll('[required]')].filter(field => !field.checkValidity() || !field.value.trim());
+    form.querySelectorAll('[aria-invalid]').forEach(field => field.removeAttribute('aria-invalid'));
+    if (invalid.length) {
+      invalid.forEach(field => field.setAttribute('aria-invalid', 'true'));
+      status.classList.add('iq-status--error');
+      status.textContent = 'Please fill in your name, a valid email, your business name, the service and a short description.';
+      invalid[0].focus();
+      return;
+    }
+    submit.disabled = true;
+    status.textContent = 'Sending…';
+    const data = Object.fromEntries([...new FormData(form)].filter(([name]) => {
+      const group = form.elements[name]?.closest?.('[data-show-for]');
+      return !group || !group.hidden;
+    }));
+    try {
+      const response = await fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || 'Something went wrong.');
+      status.textContent = '';
+      showDone();
+    } catch (error) {
+      status.classList.add('iq-status--error');
+      status.textContent = `${error.message} Please try again, or email us at sandcitysites@gmail.com.`;
+    } finally {
+      submit.disabled = false;
+    }
+  });
+})();
+</script>
+</body>
+</html>

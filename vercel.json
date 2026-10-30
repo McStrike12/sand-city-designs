@@ -1,0 +1,7 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/work", "destination": "/#tickets", "permanent": false },
+    { "source": "/work/gvl-golf-lounge", "destination": "/#tickets", "permanent": false }
+  ]
+}

@@ -1,0 +1,1161 @@
+<!doctype html>
+<!--
+  Free website template by 8B: https://8b.com/templates/ondo/
+  Source: https://github.com/8bsite/event-website-template
+  MIT License (code) https://8b.com/ · Photos: Unsplash License, see CREDITS.md · Fonts: Google Fonts (OFL)
+  One HTML file, no build step. Notes for people and AI agents: README.md and AGENTS.md.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sand City Designs — Website design, branding &amp; custom business systems</title>
+<meta name="description" content="Sand City Designs helps businesses build a stronger digital foundation through strategic website design, branding, SEO, and custom business systems.">
+<meta name="generator" content="8B Templates">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sand City Designs — Website design, branding &amp; custom business systems">
+<meta property="og:description" content="Sand City Designs helps businesses build a stronger digital foundation through strategic website design, branding, SEO, and custom business systems.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="preload" href="assets/hero-poster.jpg" as="image">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.gstatic.com/s/astasans/v3/XoHk2Y74XaWovvhMb0cduPcs.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/Hero-Bold.otf" as="font" type="font/otf" crossorigin>
+<style>
+/* latin */
+@font-face {
+  font-family: 'Asta Sans';
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/astasans/v3/XoHk2Y74XaWovvhMb0cduPcs.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* headings: Hero Bold, the brand font (one weight, mapped across the range so nothing is synthesised) */
+@font-face {
+  font-family: 'Hero';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url(assets/Hero-Bold.otf) format('opentype');
+}
+</style>
+<style data-8b-part="layers">
+@layer tokens, base, atoms, layout, sections, scenes;
+</style>
+<style data-8b-part="tokens">
+@layer tokens {
+:root {
+  --color-1: #452b25; /* brown: page, nav, cards */
+  --color-2: #57809d; /* dark blue: slides (deepened for text contrast) and photo tint */
+  --color-3: #fbf1c0; /* light yellow: text, buttons, light slides */
+  --color-4: #000000; /* black: dark slides, text on light slides */
+  --color-5: #ddb24e; /* dark yellow: hot edge, hover sweeps */
+  --color-6: #c3dded; /* light blue: gradients */
+  --color-7: #ffffff; /* white */
+  --color-2-deep: color-mix(in srgb, var(--color-2) 72%, #000);
+  --font-1: "Asta Sans", "Asta Sans Fallback", Arial, sans-serif;
+  --font-2: "Hero", "Asta Sans", "Asta Sans Fallback", Arial, sans-serif;
+  --space-1: clamp(8px, 1vw, 14px);
+  --space-2: clamp(20px, 4vw, 64px);
+  --radius-1: 999px;
+}
+}
+</style>
+<style data-8b-part="base">
+@layer base {
+/* font fallbacks */
+@font-face { font-family: "Asta Sans Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"); font-weight: 550 799; size-adjust: 92%; ascent-override: 103.2%; descent-override: 26.1%; line-gap-override: 0%; }
+@font-face { font-family: "Asta Sans Fallback"; src: local("Arial"), local("ArialMT"), local("Helvetica"); font-weight: 100 549; size-adjust: 100.5%; ascent-override: 94.5%; descent-override: 23.9%; line-gap-override: 0%; }
+/* end font fallbacks */
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--color-1); color: var(--color-3); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+body { margin: 0; background: var(--color-1); overflow-x: clip; }
+h1, h2, h3, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--color-3); outline-offset: 3px; }
+.slide--light :focus-visible { outline-color: var(--color-4); }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 30; padding: 10px 16px; background: var(--color-3); color: var(--color-4); }
+.skip:focus { top: 12px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+</style>
+<style data-8b-part="system">
+@layer atoms {
+.m-text { font-family: var(--font-1); font-size: clamp(15px, 1.05vw, 17px); font-weight: 400; line-height: 1.5; letter-spacing: 0; text-transform: none; font-style: normal; }
+
+.m-text-2 {
+  font-family: var(--font-2); font-weight: 700; font-synthesis: none; line-height: .84; letter-spacing: -.02em; text-transform: uppercase; font-style: normal;
+  --heat: 1;
+  color: var(--color-3);
+  background-image: linear-gradient(100deg, color-mix(in srgb, var(--color-3) 30%, transparent) 0 22%, var(--color-3) 44% 84%, color-mix(in srgb, var(--color-5) 60%, var(--color-3)) 97% 100%);
+  background-size: 300% 100%; background-position: calc(var(--heat) * 100%) 0;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.m-text-3 {
+  font-family: var(--font-2); font-size: clamp(40px, 6.2vw, 96px); font-weight: 700; font-synthesis: none; line-height: .9; letter-spacing: -.02em; text-transform: uppercase; font-style: normal;
+  --heat: 1;
+  color: var(--color-3);
+  background-image: linear-gradient(100deg, color-mix(in srgb, var(--color-3) 30%, transparent) 0 22%, var(--color-3) 44% 84%, color-mix(in srgb, var(--color-5) 60%, var(--color-3)) 97% 100%);
+  background-size: 300% 100%; background-position: calc(var(--heat) * 100%) 0;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.m-text-4 { font-family: var(--font-1); font-size: 13px; font-weight: 500; line-height: 1.3; letter-spacing: .01em; text-transform: none; font-style: normal; }
+
+.m-text-5 { font-family: var(--font-1); font-size: clamp(17px, 1.45vw, 21px); font-weight: 400; line-height: 1.35; letter-spacing: -.005em; text-transform: none; font-style: normal; }
+
+.m-text-6 { font-family: var(--font-2); font-size: clamp(21px, 2vw, 28px); font-weight: 700; font-synthesis: none; line-height: 1.1; letter-spacing: -.01em; text-transform: none; font-style: normal; }
+
+.m-btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px;
+  border: 0; border-radius: var(--radius-1); cursor: pointer; text-decoration: none;
+  font-family: var(--font-1); font-size: 15px; font-weight: 500; line-height: 1; letter-spacing: .005em;
+  color: var(--color-1);
+  background-color: var(--color-3);
+}
+.m-btn::before { content: ""; position: absolute; inset: 0; border-radius: inherit; opacity: 0; pointer-events: none;
+  background-image: linear-gradient(100deg, var(--color-3) 0 40%, color-mix(in srgb, var(--color-5) 40%, var(--color-3)) 70%, var(--color-3) 100%);
+  background-size: 250% 100%; background-position: 0 0;
+  transition: background-position .6s cubic-bezier(.2,.7,.2,1), opacity .2s; }
+.m-btn::after { content: ""; position: absolute; inset: -9px; border: 1px solid currentColor; border-radius: inherit; opacity: 0; transition: inset .45s cubic-bezier(.2,.7,.2,1), opacity .3s; pointer-events: none; }
+.m-btn > .m-btn__label { position: relative; }
+@media (hover: hover) {
+  .m-btn:hover::before { opacity: 1; background-position: 100% 0; }
+  .m-btn:hover::after { inset: -4px; opacity: .55; }
+}
+.m-btn::after { color: var(--color-3); }
+
+.m-btn-2 {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px;
+  border: 1px solid currentColor; border-radius: var(--radius-1); cursor: pointer; text-decoration: none;
+  font-family: var(--font-1); font-size: 15px; font-weight: 500; line-height: 1; letter-spacing: .005em;
+  color: var(--color-3); background-color: transparent;
+}
+.m-btn-2::before { content: ""; position: absolute; inset: 0; border-radius: inherit; opacity: 0; pointer-events: none;
+  background-image: linear-gradient(100deg, transparent 0 40%, color-mix(in srgb, var(--color-3) 22%, transparent) 70%, color-mix(in srgb, var(--color-3) 14%, transparent) 100%);
+  background-size: 250% 100%; background-position: 0 0;
+  transition: background-position .6s cubic-bezier(.2,.7,.2,1), opacity .2s; }
+.m-btn-2::after { content: ""; position: absolute; inset: -9px; border: 1px solid currentColor; border-radius: inherit; opacity: 0; transition: inset .45s cubic-bezier(.2,.7,.2,1), opacity .3s; pointer-events: none; }
+.m-btn-2 > .m-btn-2__label { position: relative; }
+@media (hover: hover) {
+  .m-btn-2:hover::before { opacity: 1; background-position: 100% 0; }
+  .m-btn-2:hover::after { inset: -4px; opacity: .55; }
+}
+
+.m-link {
+  color: inherit; text-decoration: none;
+  background-image: linear-gradient(90deg, currentColor 0 50%, var(--color-5) 70%, currentColor 90%);
+  background-size: 300% 1px; background-repeat: no-repeat; background-position: 0 100%;
+  padding-bottom: 2px;
+  transition: background-position .7s cubic-bezier(.2,.7,.2,1);
+}
+@media (hover: hover) { .m-link:hover { background-position: 100% 100%; } }
+
+.m-iconbtn {
+  position: relative; display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0;
+  border: 1px solid currentColor; border-radius: 50%; background: transparent; color: var(--color-3); cursor: pointer;
+}
+.m-iconbtn::before { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: currentColor; opacity: .18; scale: 0; transition: scale .4s cubic-bezier(.2,.7,.2,1); }
+.m-iconbtn svg { position: relative; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+@media (hover: hover) { .m-iconbtn:hover::before { scale: 1; } }
+
+.m-ring {
+  display: grid; place-content: center; gap: 4px; aspect-ratio: 1; border-radius: 50%; text-align: center;
+  border: 1px solid color-mix(in srgb, var(--color-3) 65%, transparent);
+  color: var(--color-3);
+}
+.m-ring > .m-ring__time { font-family: var(--font-1); font-size: clamp(16px, 1.45vw, 21px); font-weight: 500; line-height: 1; letter-spacing: -.01em; }
+.m-ring > .m-ring__label { font-family: var(--font-1); font-size: clamp(11px, .95vw, 13px); font-weight: 400; line-height: 1.2; letter-spacing: 0; padding-inline: 10px; }
+
+.m-surface {
+  position: relative; color: var(--color-3);
+  background: color-mix(in srgb, var(--color-4) 32%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-3) 24%, transparent);
+}
+.m-surface::before, .m-surface::after { content: ""; position: absolute; background: color-mix(in srgb, var(--color-3) 80%, transparent); pointer-events: none; }
+.m-surface::before { top: 18px; right: 4px; width: 30px; height: 1px; }
+.m-surface::after { top: 4px; right: 18px; width: 1px; height: 30px; }
+
+.m-badge {
+  display: inline-flex; align-items: center; min-height: 26px; padding: 0 11px; border: 1px solid currentColor; border-radius: var(--radius-1);
+  font-family: var(--font-1); font-size: 12px; font-weight: 500; line-height: 1; letter-spacing: .02em; text-transform: none; font-style: normal; white-space: nowrap;
+}
+}
+</style>
+<style data-8b-part="layout">
+@layer layout {
+.slide { position: relative; margin: 0 var(--space-1) var(--space-1); }
+.slide--light { background: var(--color-3); color: var(--color-4); }
+.wrap { padding-inline: var(--space-2); }
+}
+</style>
+<style data-8b-part="section:navigation">
+@layer sections {
+#navigation {
+  position: fixed; inset: 0 0 auto; z-index: 20; height: 60px; display: flex; align-items: center; gap: 28px;
+  padding: 0 calc(var(--space-1) + var(--space-2) - 8px);
+  background: var(--color-1); color: var(--color-3);
+  transition: translate .45s cubic-bezier(.2,.7,.2,1);
+}
+#navigation.is-hidden { translate: 0 -100%; }
+#navigation .nav__logo { display: inline-flex; align-items: baseline; gap: 8px; text-decoration: none; font-weight: 600; font-size: 21px; letter-spacing: -.04em; }
+#navigation .nav__logo img { height: 30px; width: auto; }
+@media (max-width: 860px) { #navigation .nav__logo img { height: 24px; } }
+#navigation .nav__links { display: flex; gap: 26px; margin-left: auto; }
+#navigation .nav__links a { font-size: 14px; }
+#navigation .nav__cta { min-height: 40px; padding: 0 18px; font-size: 14px; }
+#navigation .nav__menu { display: none; }
+#navigation .nav__drop { position: relative; }
+#navigation .nav__drop::after { content: ""; position: absolute; left: -12px; right: -12px; top: 100%; height: 24px; }
+#navigation .nav__sub { position: absolute; top: calc(100% + 18px); left: -18px; z-index: 2; display: grid; gap: 12px; min-width: 250px; padding: 16px 18px; border-radius: 16px; background: var(--color-1); border: 1px solid color-mix(in srgb, var(--color-3) 22%, transparent); box-shadow: 0 18px 40px rgb(0 0 0 / .3); opacity: 0; visibility: hidden; translate: 0 6px; transition: opacity .25s, translate .25s, visibility .25s; }
+#navigation .nav__drop:hover .nav__sub, #navigation .nav__drop:focus-within .nav__sub { opacity: 1; visibility: visible; translate: 0 0; }
+#navigation .menu ul .menu__sub a { font-size: clamp(20px, 6vw, 28px); padding-left: 18px; opacity: .85; }
+#navigation .nav__links [aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; }
+@media (max-width: 860px) {
+  #navigation { height: 56px; gap: 12px; padding: 0 calc(var(--space-1) + 12px); }
+  #navigation .nav__links { display: none; }
+  #navigation .nav__cta { margin-left: auto; }
+  #navigation .nav__menu { display: inline-grid; }
+}
+#navigation .menu { position: fixed; inset: 0; z-index: 40; background: var(--color-1); color: var(--color-3); padding: 14px calc(var(--space-1) + 12px) 32px; display: flex; flex-direction: column; }
+#navigation .menu[hidden] { display: none; }
+#navigation .menu .menu__close { align-self: flex-end; }
+#navigation .menu ul { margin-top: 6vh; display: grid; gap: 4px; }
+#navigation .menu ul a { font-family: var(--font-2); font-size: clamp(34px, 11vw, 56px); font-weight: 700; letter-spacing: -.02em; text-transform: uppercase; text-decoration: none; line-height: 1.05; }
+#navigation .menu .menu__meta { margin-top: auto; }
+}
+</style>
+<style data-8b-part="section:opening">
+@layer sections {
+#opening { margin-top: 0; overflow: clip; background: var(--color-4); }
+#opening .op-stage { position: sticky; top: 0; height: 100svh; margin-bottom: -100svh; overflow: hidden; }
+#opening .op-intro, #opening .op-drift, #opening .op-zoom { position: absolute; inset: 0; }
+#opening .op-zoom { transform-origin: 50% 45%; }
+#opening .op-drift { inset: -5%; }
+#opening .op-photo { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+#opening .op-video { background: #b9a88f url(assets/hero-poster.jpg) center / cover; }
+/* light brown wash over the video: brand brown warmed with the dark yellow */
+#opening .op-shade::before { content: ""; position: absolute; inset: 0; background: color-mix(in srgb, var(--color-1) 40%, var(--color-5)); mix-blend-mode: multiply; opacity: .5; }
+#opening .op-shade { position: absolute; inset: 0; background: linear-gradient(180deg, color-mix(in srgb, var(--color-4) 62%, transparent) 0%, color-mix(in srgb, var(--color-4) 18%, transparent) 34%, color-mix(in srgb, var(--color-4) 22%, transparent) 52%, color-mix(in srgb, var(--color-4) 78%, transparent) 100%); }
+#opening .op-one { position: relative; height: 100svh; min-height: 560px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: auto 1fr auto auto; column-gap: 20px; padding: calc(60px + 5svh) var(--space-2) 5svh; }
+#opening .op-upper { grid-column: 8 / -1; grid-row: 1; display: grid; gap: 22px; }
+#opening .op-meta { display: flex; gap: 40px; }
+#opening .op-meta dd { font-size: 15px; font-weight: 500; }
+#opening .op-meta dt { opacity: .78; }
+#opening .op-title { grid-column: 1 / -1; grid-row: 3; font-size: min(17vw, calc((100vw - 2 * var(--space-1) - 2 * var(--space-2)) / (var(--len) * .64))); margin-left: -.04em; white-space: nowrap;
+  background-image: linear-gradient(95deg, color-mix(in srgb, var(--color-6) 88%, transparent) 0%, color-mix(in srgb, var(--color-3) 94%, transparent) 26%, var(--color-3) 46%, color-mix(in srgb, var(--color-5) 92%, transparent) 70%, color-mix(in srgb, var(--color-2) 90%, transparent) 100%);
+  background-size: 180% 100%; background-position: 20% 0; }
+#opening .op-word { display: inline-block; }
+#opening .op-lower { grid-column: 1 / -1; grid-row: 4; display: grid; grid-template-columns: subgrid; align-items: end; margin-top: 18px; }
+#opening .op-tag { grid-column: 8 / -1; grid-row: 1; max-width: 32ch; }
+#opening .op-actions { grid-column: 1 / 7; grid-row: 1; display: flex; flex-wrap: wrap; gap: 14px; }
+@media (max-width: 860px) {
+  #opening .op-one { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr auto auto; padding: calc(56px + 3svh) var(--space-2) 4svh; }
+  #opening .op-upper, #opening .op-title, #opening .op-lower, #opening .op-tag, #opening .op-actions { grid-column: 1; }
+  #opening .op-upper { gap: 14px; }
+  #opening .op-meta { gap: 28px; }
+  #opening .op-title { white-space: normal; font-size: min(26vw, calc((100vw - 2 * var(--space-1) - 2 * var(--space-2)) / (var(--len) * .64) * 1.85)); line-height: .86; }
+  #opening .op-lower { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  #opening .op-tag { grid-row: 1; }
+  #opening .op-actions { grid-row: 2; }
+  }
+@media (prefers-reduced-motion: no-preference) {
+  #opening .op-intro { animation: op-photo-in 1.1s cubic-bezier(.2,.7,.2,1) backwards; }
+  #opening .op-drift { animation: op-drift 6s ease-in-out infinite alternate; }
+  #opening .op-title { animation: op-title-in .9s .1s cubic-bezier(.2,.7,.2,1) backwards, op-heat-flow 7s ease-in-out 1s infinite alternate; }
+  #opening .op-meta, #opening .op-upper > p, #opening .op-tag, #opening .op-actions { animation: op-rise .8s cubic-bezier(.2,.7,.2,1) backwards; }
+  #opening .op-meta { animation-delay: .25s; }
+  #opening .op-upper > p { animation-delay: .35s; }
+  #opening .op-tag { animation-delay: .45s; }
+  #opening .op-actions { animation-delay: .3s; }
+  #opening.is-offscreen .op-drift, #opening.is-offscreen .op-title { animation-play-state: paused; }
+}
+@keyframes op-photo-in { from { transform: scale(1.12); } }
+@keyframes op-drift { from { transform: translate(-2.2%, 1.6%) scale(1.02); } to { transform: translate(2.2%, -1.6%) scale(1.07); } }
+@keyframes op-title-in { from { clip-path: inset(0 0 100% 0); transform: translateY(14%); } }
+@keyframes op-heat-flow { from { background-position: 20% 0; } to { background-position: 80% 0; } }
+@keyframes op-rise { from { transform: translateY(18px); opacity: 0; } }
+}
+</style>
+<style data-8b-part="section:lineup">
+@layer sections {
+#lineup { background: var(--color-3); color: var(--color-1); padding: clamp(80px, 13svh, 150px) 0 clamp(60px, 9svh, 110px); overflow: clip; }
+#lineup .lu-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; align-items: start; margin-bottom: clamp(40px, 7svh, 80px); }
+#lineup .lu-head h2 { grid-column: 1 / 8; color: var(--color-5); background-image: none; -webkit-text-fill-color: currentColor; }
+#lineup .lu-lead { grid-column: 8 / -1; display: grid; gap: 16px; max-width: 46ch; }
+#lineup :focus-visible { outline-color: var(--color-1); }
+/* cards: a swipeable row by default; on wide screens with motion the scene pins it and slides it with the scroll */
+#lineup .lu-viewport { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 8px; }
+#lineup .lu-viewport::-webkit-scrollbar { display: none; }
+#lineup .lu-track { display: flex; gap: clamp(16px, 2vw, 28px); width: max-content; padding-inline: var(--space-2); }
+#lineup .lu-card { scroll-snap-align: center; flex: none; width: min(520px, 82vw); display: grid; grid-template-rows: auto auto auto auto auto 1fr; align-content: stretch; gap: 20px; padding: clamp(24px, 2.6vw, 36px); border-radius: 26px; background: var(--color-1); color: var(--color-3); }
+#lineup .lu-card__top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+#lineup .lu-card__name { font-family: var(--font-2); font-weight: 700; font-size: clamp(34px, 3.4vw, 54px); line-height: .95; text-transform: uppercase; letter-spacing: -.01em; color: var(--color-5); }
+#lineup .lu-card__block { display: grid; gap: 10px; padding-top: 16px; border-top: 1px solid color-mix(in srgb, currentColor 30%, transparent); }
+#lineup .lu-card__label { opacity: .75; }
+#lineup .lu-card__signs { display: grid; gap: 8px; }
+#lineup .lu-card__signs li { position: relative; padding-left: 18px; }
+#lineup .lu-card__signs li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .7; }
+#lineup .lu-card :focus-visible { outline-color: currentColor; }
+#lineup .lu-card__btn { align-self: end; justify-self: start; margin-top: 6px; }
+#lineup .lu-hint { margin-top: 18px; opacity: .7; }
+@media (max-width: 860px) {
+  #lineup .lu-head { grid-template-columns: minmax(0, 1fr); row-gap: 18px; }
+  #lineup .lu-head h2, #lineup .lu-lead { grid-column: 1; }
+}
+@media (prefers-reduced-motion: no-preference) and (min-width: 861px) {
+  #lineup[data-track] .lu-scroll { height: 340svh; }
+  #lineup[data-track] .lu-viewport { position: sticky; top: 0; height: 100svh; overflow: hidden; display: flex; align-items: center; scroll-snap-type: none; }
+  #lineup[data-track] .lu-hint { display: none; }
+}
+}
+</style>
+<style data-8b-part="section:looks">
+@layer sections {
+#looks { color: var(--color-1); padding: clamp(56px, 9svh, 100px) 0 clamp(36px, 5svh, 64px); }
+#looks .lk-head .m-text-3 { color: var(--color-1); background-image: none; -webkit-text-fill-color: currentColor; }
+#looks .lk-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; align-items: end; margin-bottom: clamp(20px, 3svh, 40px); }
+#looks .lk-head h2 { grid-column: 1 / 8; }
+#looks .lk-head p { grid-column: 8 / -1; max-width: 40ch; }
+#looks .lk-track { display: grid; gap: clamp(48px, 8svh, 90px); }
+#looks .lk-panel { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; align-items: center; padding-inline: var(--space-2); }
+#looks .lk-photo { grid-column: 2 / 7; margin: 0; aspect-ratio: 4 / 5; max-height: 76svh; overflow: hidden; clip-path: circle(80% at 50% 42%); background: var(--color-1); border: 10px solid var(--color-1); border-radius: 30px; }
+#looks .lk-photo img { border-radius: 20px; }
+#looks .lk-photo img { width: 100%; height: 100%; object-fit: cover; }
+#looks .lk-text { grid-column: 8 / -1; display: grid; gap: 16px; justify-items: start; max-width: 42ch; }
+#looks .lk-text h3 { font-size: clamp(34px, 4.2vw, 64px); }
+#looks .lk-steps { display: grid; gap: 0; width: 100%; border-top: 1px solid color-mix(in srgb, var(--color-1) 30%, transparent); }
+#looks .lk-steps li { padding: 10px 0; border-bottom: 1px solid color-mix(in srgb, var(--color-1) 30%, transparent); }
+#looks .lk-badge { color: var(--color-1); }
+@media (max-width: 860px) {
+  #looks .lk-head { grid-template-columns: minmax(0, 1fr); row-gap: 16px; }
+  #looks .lk-head h2, #looks .lk-head p { grid-column: 1; }
+  #looks .lk-panel { grid-template-columns: minmax(0, 1fr); row-gap: 20px; }
+  #looks .lk-photo, #looks .lk-text { grid-column: 1; }
+  #looks .lk-photo { max-height: 52svh; width: 100%; }
+}
+}
+</style>
+<style data-8b-part="scene-style:looks">
+@layer scenes {
+@media (prefers-reduced-motion: no-preference) and (min-width: 861px) {
+  #looks[data-track] .lk-scroll { height: 230svh; }
+  #looks[data-track] .lk-viewport { position: sticky; top: 0; height: 100svh; overflow: hidden; display: flex; align-items: center; }
+  #looks[data-track] .lk-track { display: flex; gap: 0; width: max-content; }
+  #looks[data-track] .lk-panel { width: calc(100vw - 2 * var(--space-1)); flex: none; }
+  #looks[data-track] .lk-photo { max-height: 78svh; }
+}
+}
+</style>
+<style data-8b-part="section:tickets">
+@layer sections {
+#tickets { padding: clamp(80px, 13svh, 150px) 0 clamp(80px, 12svh, 140px); overflow: clip; }
+#tickets .tk-head .m-text-3 { color: var(--color-5); background-image: none; -webkit-text-fill-color: currentColor; }
+#tickets .tk-head p { color: var(--color-5); }
+#tickets .tk-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; align-items: end; margin-bottom: clamp(40px, 7svh, 80px); }
+#tickets .tk-head h2 { grid-column: 1 / 8; }
+#tickets .tk-head p { grid-column: 8 / -1; max-width: 40ch; }
+/* carousel: two copies of the six cards slide left forever; the second copy makes the loop seamless */
+#tickets .tk-marquee { overflow: hidden; padding-block: 4px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); }
+#tickets .tk-passes { display: flex; gap: clamp(16px, 2vw, 28px); width: max-content; padding-inline: clamp(8px, 1vw, 14px); }
+#tickets .tk-passes > .tk-pass { flex: none; width: clamp(290px, 30vw, 430px); }
+@media (prefers-reduced-motion: no-preference) {
+  #tickets .tk-passes { animation: tk-glide 60s linear infinite; }
+  #tickets .tk-marquee:hover .tk-passes, #tickets .tk-marquee:focus-within .tk-passes { animation-play-state: paused; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #tickets .tk-marquee { overflow-x: auto; }
+  #tickets .tk-passes > [aria-hidden="true"] { display: none; }
+}
+@keyframes tk-glide { to { transform: translateX(calc(-50% - clamp(16px, 2vw, 28px) / 2)); } }
+#tickets .tk-pass { display: grid; grid-template-rows: auto 1fr auto; gap: 22px; padding: 28px 26px 26px; border-radius: 22px; color: var(--color-3); min-height: 0; }
+#tickets .tk-pass--day { background: var(--color-2-deep); }
+#tickets .tk-pass--weekend { background: var(--color-1); }
+#tickets .tk-pass--pit { background: var(--color-4); }
+#tickets .tk-pass :focus-visible { outline-color: var(--color-3); }
+#tickets .tk-top { display: grid; gap: 18px; justify-items: start; }
+#tickets .tk-name { font-size: clamp(40px, 4.4vw, 64px); }
+#tickets .tk-list { display: grid; align-content: start; border-top: 1px solid color-mix(in srgb, var(--color-3) 35%, transparent); }
+#tickets .tk-list li { padding: 11px 0; border-bottom: 1px solid color-mix(in srgb, var(--color-3) 35%, transparent); }
+#tickets .tk-stub { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 22px; border-top: 2px dashed color-mix(in srgb, var(--color-3) 55%, transparent); }
+#tickets .tk-price { font-size: clamp(34px, 3vw, 44px); font-weight: 500; letter-spacing: -.03em; line-height: 1; }
+#tickets .tk-note { margin-top: 26px; color: var(--color-4); }
+@media (max-width: 860px) {
+  #tickets .tk-head { grid-template-columns: minmax(0, 1fr); row-gap: 16px; }
+  #tickets .tk-head h2, #tickets .tk-head p { grid-column: 1; }
+  #tickets .tk-passes > .tk-pass { width: 78vw; }
+  #tickets .tk-pass { min-height: 0; }
+}
+}
+</style>
+<style data-8b-part="section:contact">
+@layer sections {
+#contact { position: relative; background: var(--color-2-deep); padding: clamp(90px, 14svh, 160px) 0; overflow: clip; }
+#contact .ct-grid { position: relative; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; row-gap: 40px; }
+#contact h2 { grid-column: 1 / 8; }
+#contact .ct-mail { grid-column: 1 / -1; justify-self: start; font-size: clamp(30px, 4.6vw, 70px); font-weight: 500; letter-spacing: -.035em; line-height: 1.1; padding-bottom: 6px; background-size: 300% 2px; }
+#contact .ct-list { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px 20px; }
+#contact .ct-list > div { display: grid; gap: 8px; align-content: start; padding-top: 14px; border-top: 1px solid color-mix(in srgb, var(--color-3) 45%, transparent); }
+#contact .ct-list dt { opacity: .85; }
+@media (max-width: 860px) {
+    #contact h2 { grid-column: 1 / -1; }
+  #contact .ct-mail { font-size: clamp(24px, 7.4vw, 34px); }
+  #contact .ct-list { grid-template-columns: minmax(0, 1fr); }
+}
+}
+</style>
+<style data-8b-part="section:footer">
+@layer sections {
+#footer { background: var(--color-4); padding: 72px var(--space-2) 28px; margin-bottom: 0; }
+#footer .ft-mark { font-size: min(30vw, calc((100vw - 2 * var(--space-1) - 2 * var(--space-2)) / (var(--len) * .6))); white-space: nowrap; }
+#footer .ft-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px 32px; margin-top: 40px; padding-top: 22px; border-top: 1px solid color-mix(in srgb, var(--color-3) 25%, transparent); }
+#footer .ft-links { display: flex; flex-wrap: wrap; gap: 10px 24px; }
+#footer small { opacity: .75; }
+}
+</style>
+<style data-8b-part="section:about">
+@layer sections {
+/* surf photo under a light brown wash (brand brown warmed with dark yellow) so the light type stands out */
+#about { --wash: color-mix(in srgb, var(--color-1) 72%, var(--color-5)); padding: clamp(80px, 13svh, 150px) 0;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--wash) 74%, transparent), color-mix(in srgb, var(--wash) 86%, transparent)), url(assets/about-surf.jpg) center 55% / cover no-repeat, var(--color-1); }
+@media (max-width: 860px) { #about { background-image: linear-gradient(180deg, color-mix(in srgb, var(--wash) 78%, transparent), color-mix(in srgb, var(--wash) 88%, transparent)), url(assets/about-surf-900.jpg); } }
+#about .ab-intro { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; row-gap: 26px; }
+#about .ab-intro .m-badge { grid-column: 1 / -1; justify-self: start; }
+#about h2 { grid-column: 1 / 11; font-size: clamp(40px, 5.6vw, 92px); }
+#about .ab-copy { grid-column: 6 / -1; display: grid; gap: 18px; max-width: 54ch; }
+#team { background: var(--color-2-deep); color: var(--color-6); padding: clamp(70px, 11svh, 130px) 0; }
+#team .ab-name { color: var(--color-6); background-image: none; -webkit-text-fill-color: currentColor; }
+#team :focus-visible { outline-color: var(--color-6); }
+#team .ab-team { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+#team .ab-card { display: grid; gap: 20px; align-content: start; justify-items: start; padding: 8px clamp(24px, 4vw, 64px) 8px 0; }
+#team .ab-card + .ab-card { padding: 8px 0 8px clamp(24px, 4vw, 64px); border-left: 1px solid color-mix(in srgb, var(--color-6) 40%, transparent); }
+#team .ab-role { opacity: .8; }
+#team .ab-name { font-size: clamp(64px, 8.6vw, 140px); margin-left: -.04em; }
+#team .ab-bio { max-width: 38ch; }
+#team .ab-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+@media (max-width: 860px) {
+  #about h2, #about .ab-copy { grid-column: 1 / -1; }
+  #team .ab-team { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+  #team .ab-card, #team .ab-card + .ab-card { padding: 0; border-left: 0; }
+  #team .ab-card + .ab-card { padding-top: 48px; border-top: 1px solid color-mix(in srgb, var(--color-6) 40%, transparent); }
+  #team .ab-name { font-size: clamp(64px, 24vw, 110px); }
+}
+}
+</style>
+<style data-8b-part="section:sand-city">
+@layer sections {
+.m-text-3--long { font-size: clamp(32px, 4.2vw, 64px); line-height: .95; }
+#looks .lk-text h3 { font-size: clamp(28px, 2.9vw, 44px); }
+#looks .lk-text .m-btn-2 { color: var(--color-1); }
+#looks :focus-visible { outline-color: var(--color-1); }
+#looks .lk-badge { white-space: normal; text-align: left; line-height: 1.3; padding-block: 5px; }
+#tickets .tk-pass .m-badge { white-space: normal; line-height: 1.3; padding-block: 5px; }
+#tickets .tk-name { font-size: clamp(34px, 3.4vw, 52px); }
+#tickets .tk-note { margin-top: 32px; }
+#tickets .tk-all { background: var(--color-1); color: var(--color-3); }
+#tickets .tk-all::before { background-image: linear-gradient(100deg, var(--color-1) 0 40%, color-mix(in srgb, var(--color-5) 45%, var(--color-1)) 70%, var(--color-1) 100%); }
+#tickets .tk-all::after { color: var(--color-1); }
+/* photo card: image under a black wash so the type stands out */
+#tickets .tk-list, #tickets .tk-list li { border: 0; }
+#tickets .tk-list li { padding: 7px 0; }
+#tickets .tk-pass--photo { background: linear-gradient(180deg, color-mix(in srgb, var(--color-4) 59%, transparent), color-mix(in srgb, var(--color-4) 68%, transparent)), url(assets/work/tiit-card.jpg) center 30% / cover no-repeat, var(--color-4); }
+#tickets .tk-pass--bcba { background: linear-gradient(180deg, color-mix(in srgb, var(--color-4) 72%, transparent), color-mix(in srgb, var(--color-4) 80%, transparent)), url(assets/work/bcba-card.jpg) center / cover no-repeat, var(--color-4); }
+#tickets .tk-pass--pp { background: linear-gradient(180deg, color-mix(in srgb, var(--color-4) 59%, transparent), color-mix(in srgb, var(--color-4) 68%, transparent)), url(assets/work/pp-card.jpg?v=5) left center / cover no-repeat, var(--color-4); }
+#tickets .tk-pass--md { background: linear-gradient(180deg, color-mix(in srgb, var(--color-4) 59%, transparent), color-mix(in srgb, var(--color-4) 68%, transparent)), url(assets/work/md-card.jpg) 30% center / cover no-repeat, var(--color-4); }
+#tickets .tk-pass--liudash { background: linear-gradient(180deg, color-mix(in srgb, var(--color-4) 50%, transparent), color-mix(in srgb, var(--color-4) 62%, transparent)), url(assets/work/liu-dash-card.jpg?v=3) center / cover no-repeat, var(--color-4); }
+#contact .ct-lead { grid-column: 1 / 9; max-width: 52ch; }
+#contact .ct-cta { grid-column: 1 / -1; justify-self: start; }
+/* footer: sits on the page brown, light brown type, copyright centred */
+#footer { --color-tan: #c9a882; background: transparent; color: var(--color-tan); }
+#footer .ft-mark { color: var(--color-tan); background-image: none; -webkit-text-fill-color: currentColor; }
+#footer .ft-row { justify-content: center; text-align: center; border-top-color: color-mix(in srgb, var(--color-tan) 35%, transparent); }
+#footer small { opacity: 1; }
+#footer :focus-visible { outline-color: var(--color-tan); }
+/* wave pattern under a dark blue overlay, light blue type */
+#contact { color: var(--color-6); background: var(--color-2-deep); isolation: isolate; }
+/* the wave pattern sits on its own layer and drifts slowly, like a swell */
+#contact::before { content: ""; position: absolute; inset: -8%; z-index: -1; pointer-events: none; background: url(assets/contact-waves-soft.webp) center / cover no-repeat; will-change: transform; }
+@media (prefers-reduced-motion: no-preference) {
+  #contact::before { animation: ct-swell 38s ease-in-out infinite alternate; }
+  #contact.is-offscreen::before { animation-play-state: paused; }
+}
+@keyframes ct-swell {
+  0%   { transform: translate3d(-3%, 1.5%, 0) scale(1.02); }
+  50%  { transform: translate3d(0, -1.5%, 0) scale(1.05); }
+  100% { transform: translate3d(3%, 1%, 0) scale(1.02); }
+}
+#contact h2 { color: var(--color-6); background-image: none; -webkit-text-fill-color: currentColor; }
+#contact .ct-list > div { border-top-color: color-mix(in srgb, var(--color-6) 45%, transparent); }
+#contact .ct-cta { background: var(--color-6); color: var(--color-2-deep); }
+#contact .ct-cta::before { background-image: linear-gradient(100deg, var(--color-6) 0 40%, color-mix(in srgb, var(--color-7) 55%, var(--color-6)) 70%, var(--color-6) 100%); }
+#contact .ct-cta::after { color: var(--color-6); }
+#contact :focus-visible { outline-color: var(--color-6); }
+#footer .ft-desc { max-width: 52ch; margin-top: 28px; opacity: .9; }
+@media (max-width: 860px) {
+        #contact .ct-lead { grid-column: 1 / -1; }
+}
+}
+</style>
+<style data-8b-part="section:wheel">
+@layer sections {
+/* featured work wheel: names on a curved wheel, the selected project's photo and link beside it */
+#tickets .wh { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 4vw, 64px); align-items: center; color: var(--color-1); }
+#tickets .wh-media { display: grid; gap: 18px; justify-items: start; }
+#tickets .wh-photo { position: relative; margin: 0; width: 100%; aspect-ratio: 4 / 3; border: 10px solid var(--color-1); border-radius: 30px; overflow: hidden; background: var(--color-1); }
+#tickets .wh-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 20px; transition: opacity .5s ease, scale .6s cubic-bezier(.2,.7,.2,1); }
+#tickets .wh-photo img.is-entering { opacity: 0; scale: 1.04; }
+#tickets .wh-info { display: grid; gap: 14px; justify-items: start; }
+#tickets .wh-badge { white-space: normal; line-height: 1.3; padding-block: 5px; }
+#tickets .wh-summary { max-width: 44ch; min-height: 2.7em; }
+#tickets .wh-cta { background: var(--color-1); color: var(--color-3); }
+#tickets .wh-cta::before { background-image: linear-gradient(100deg, var(--color-1) 0 40%, color-mix(in srgb, var(--color-5) 45%, var(--color-1)) 70%, var(--color-1) 100%); }
+#tickets .wh-cta::after { color: var(--color-1); }
+#tickets .wh-wheel { position: relative; }
+#tickets .wh-list { display: grid; gap: 10px; }
+#tickets .wh-item { font-family: var(--font-2); font-weight: 700; text-transform: uppercase; font-size: clamp(22px, 2.6vw, 38px); line-height: 1; letter-spacing: -.01em; color: color-mix(in srgb, var(--color-1) 38%, transparent); }
+#tickets .wh-item a { color: inherit; text-decoration: none; }
+#tickets .wh-item.is-selected { color: var(--color-1); }
+#tickets .wh-marker { display: none; }
+#tickets .wh-nav { display: none; }
+#tickets .wh-stage:focus-visible { outline: 2px solid var(--color-1); outline-offset: 4px; border-radius: 16px; }
+/* once the script runs, the list becomes the wheel */
+#tickets .wh.is-ready .wh-stage { position: relative; height: clamp(380px, 60svh, 560px); overflow: hidden; touch-action: none; user-select: none; cursor: grab;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 24%, #000 76%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 24%, #000 76%, transparent); }
+#tickets .wh.is-ready .wh-stage.is-dragging { cursor: grabbing; }
+#tickets .wh.is-ready .wh-list { display: block; }
+#tickets .wh.is-ready .wh-item { position: absolute; left: 14%; top: 50%; transform-origin: left center; white-space: nowrap; will-change: transform, opacity; }
+#tickets .wh.is-ready .wh-marker { display: block; position: absolute; left: calc(14% - 34px); top: 50%; width: 16px; height: 16px; margin-top: -8px; border-radius: 50%; background: var(--color-5); z-index: 1; }
+#tickets .wh.is-ready .wh-nav { display: flex; flex-direction: column; gap: 10px; position: absolute; right: 0; top: 50%; translate: 0 -50%; }
+#tickets .wh-nav .m-iconbtn { color: var(--color-1); }
+@media (max-width: 860px) {
+  #tickets .wh { grid-template-columns: minmax(0, 1fr); }
+  #tickets .wh.is-ready .wh-stage { height: 300px; }
+  #tickets .wh-item { font-size: clamp(16px, 5vw, 22px); }
+  #tickets .wh.is-ready .wh-item { left: 16%; }
+  #tickets .wh.is-ready .wh-marker { left: calc(16% - 26px); width: 12px; height: 12px; margin-top: -6px; }
+  #tickets .wh.is-ready .wh-nav { flex-direction: row; position: static; translate: none; justify-content: center; margin-top: 8px; }
+}
+}
+</style>
+</head>
+<body class="m-text">
+<a class="skip m-text-4" href="#main">Skip to content</a>
+<!-- navigation: top bar: logo, section links, Start a Project button; phone menu overlay -->
+<header id="navigation" data-8b-section="navigation">
+  <a class="nav__logo" href="#opening" aria-label="Sand City Designs, back to the top"><img src="assets/logo-light.png" alt="" width="1200" height="246"></a>
+  <nav aria-label="Main">
+    <ul class="nav__links">
+      <li class="nav__drop"><a class="m-link" href="#looks">Services</a>
+        <ul class="nav__sub">
+          <li><a class="m-link" href="/services/website-design-branding">Website Design &amp; Branding</a></li>
+          <li><a class="m-link" href="/services/custom-software-systems">Custom Software &amp; Systems</a></li>
+        </ul>
+      </li>
+      <li><a class="m-link" href="#tickets">Our Work</a></li>
+      <li><a class="m-link" href="#about">About</a></li>
+    </ul>
+  </nav>
+  <a class="m-btn nav__cta" href="/start-a-project"><span class="m-btn__label">Start a Project</span></a>
+  <button class="m-iconbtn nav__menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg></button>
+  <div class="menu" id="menu" hidden>
+    <button class="m-iconbtn menu__close" type="button" aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <ul>
+      <li><a href="#opening">Home</a></li>
+      <li><a href="#looks">Services</a></li>
+      <li class="menu__sub"><a href="/services/website-design-branding">Website Design &amp; Branding</a></li>
+      <li class="menu__sub"><a href="/services/custom-software-systems">Custom Software &amp; Systems</a></li>
+      <li><a href="#tickets">Our Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="/start-a-project">Start a Project</a></li>
+    </ul>
+    <p class="menu__meta m-text-4">Website design · Branding · SEO · Custom business systems</p>
+  </div>
+</header>
+<main id="main">
+<!-- opening: hero over a full-bleed looping beach video that eases in as you scroll on (animation: scene:opening) -->
+<section id="opening" class="slide" data-8b-section="opening" aria-labelledby="opening-title">
+  <div class="op-stage">
+    <div class="op-intro"><div class="op-drift"><div class="op-zoom">
+      <video class="op-photo op-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg" width="1920" height="1080" aria-hidden="true" tabindex="-1"><source src="assets/hero-720.mp4" type="video/mp4" media="(max-width: 767px)"><source src="assets/hero-1080.mp4" type="video/mp4"></video>
+    </div></div></div>
+    <div class="op-shade"></div>
+  </div>
+  <div class="op-one">
+    <div class="op-upper">
+      <dl class="op-meta">
+        <div><dt class="m-text-4">What we do</dt><dd>Design + business systems</dd></div>
+        <div><dt class="m-text-4">Based in</dt><dd>Manhattan Beach, CA</dd></div>
+      </dl>
+      <p class="m-text-5">We build thoughtful digital experiences and custom business systems that help businesses grow, connect with customers, and run more efficiently.</p>
+    </div>
+    <h1 class="op-title m-text-2" id="opening-title" style="--len:21"><span class="op-word op-word--a">Great businesses</span><br><span class="op-word op-word--b">deserve</span> <span class="op-word op-word--c">better tools.</span></h1>
+    <div class="op-lower">
+      <div class="op-actions">
+        <a class="m-btn" href="#looks"><span class="m-btn__label">Explore Our Services</span></a>
+        <a class="m-btn-2" href="/start-a-project"><span class="m-btn-2__label">Start a Project</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- lineup: the problem we solve: headline and copy, then five pain-point cards that slide sideways as you scroll (swipe on phones) (animation: scene:lineup) -->
+<section id="lineup" class="slide" data-8b-section="lineup" aria-labelledby="lineup-title">
+  <div class="lu-head wrap">
+    <h2 class="m-text-3 m-text-3--long" id="lineup-title" data-8b-motion="heat">Your business has evolved. Your digital presence should too.</h2>
+    <div class="lu-lead m-text-5" data-8b-motion="rise">
+      <p>As businesses grow, their needs change. Your website may no longer reflect the quality of your work, your online presence may not be attracting the right customers, or your team may be spending too much time managing disconnected tools and manual processes.</p>
+      <p>We help businesses bridge the gap between where they are and where they want to be through thoughtful design and technology built around their needs.</p>
+    </div>
+  </div>
+  <div class="lu-scroll">
+    <div class="lu-viewport">
+      <ol class="lu-track" aria-label="Signs your business has outgrown its tools">
+      <li class="lu-card" aria-labelledby="pain-1">
+        <div class="lu-card__top"><span class="m-badge">Website</span></div>
+        <h3 class="lu-card__name" id="pain-1">Outdated Website</h3>
+        <p class="lu-card__statement m-text-5">Your website no longer reflects your brand or the quality of your services.</p>
+        <div class="lu-card__block"><p class="m-text-4 lu-card__label">Sound familiar?</p><ul class="lu-card__signs"><li>You hesitate to share your link</li><li>It looks dated or is hard to use on a phone</li><li>Updating it feels like a chore</li></ul></div>
+        <div class="lu-card__block lu-card__help"><p class="m-text-4 lu-card__label">How we help</p><p>A redesign that reflects the quality of your work, built mobile-first and easy to keep current.</p></div>
+        <a class="m-btn lu-card__btn" href="/services/website-design-branding"><span class="m-btn__label">Website Design &amp; Branding</span></a>
+      </li>
+      <li class="lu-card" aria-labelledby="pain-2">
+        <div class="lu-card__top"><span class="m-badge">Visibility</span></div>
+        <h3 class="lu-card__name" id="pain-2">Low Visibility</h3>
+        <p class="lu-card__statement m-text-5">You're struggling to attract the right customers online.</p>
+        <div class="lu-card__block"><p class="m-text-4 lu-card__label">Sound familiar?</p><ul class="lu-card__signs"><li>You don't show up when people search for what you do</li><li>Visitors leave without getting in touch</li><li>Your brand looks different everywhere it appears</li></ul></div>
+        <div class="lu-card__block lu-card__help"><p class="m-text-4 lu-card__label">How we help</p><p>Search foundations, clear messaging and a consistent brand, so the right customers find you and reach out.</p></div>
+        <a class="m-btn lu-card__btn" href="/services/website-design-branding"><span class="m-btn__label">Website Design &amp; Branding</span></a>
+      </li>
+      <li class="lu-card" aria-labelledby="pain-3">
+        <div class="lu-card__top"><span class="m-badge">Operations</span></div>
+        <h3 class="lu-card__name" id="pain-3">Manual Processes</h3>
+        <p class="lu-card__statement m-text-5">Your business relies on spreadsheets, disconnected platforms, and repetitive manual tasks.</p>
+        <div class="lu-card__block"><p class="m-text-4 lu-card__label">Sound familiar?</p><ul class="lu-card__signs"><li>The same details get typed in more than once</li><li>Important information lives in spreadsheets and inboxes</li><li>Hours each week go to repetitive tasks</li></ul></div>
+        <div class="lu-card__block lu-card__help"><p class="m-text-4 lu-card__label">How we help</p><p>Automated workflows and connected tools that take repetitive work off your team's plate.</p></div>
+        <a class="m-btn lu-card__btn" href="/services/custom-software-systems"><span class="m-btn__label">Custom Software &amp; Systems</span></a>
+      </li>
+      <li class="lu-card" aria-labelledby="pain-4">
+        <div class="lu-card__top"><span class="m-badge">Software</span></div>
+        <h3 class="lu-card__name" id="pain-4">Software Limitations</h3>
+        <p class="lu-card__statement m-text-5">Your existing software doesn't quite fit the way your business operates.</p>
+        <div class="lu-card__block"><p class="m-text-4 lu-card__label">Sound familiar?</p><ul class="lu-card__signs"><li>You rely on workarounds to get through the day</li><li>You pay for features you never use</li><li>Your tools can't do the one thing you need most</li></ul></div>
+        <div class="lu-card__block lu-card__help"><p class="m-text-4 lu-card__label">How we help</p><p>Custom tools built around the way you operate, instead of bending your business to fit a generic platform.</p></div>
+        <a class="m-btn lu-card__btn" href="/services/custom-software-systems"><span class="m-btn__label">Custom Software &amp; Systems</span></a>
+      </li>
+      <li class="lu-card" aria-labelledby="pain-5">
+        <div class="lu-card__top"><span class="m-badge">Growth</span></div>
+        <h3 class="lu-card__name" id="pain-5">Growing Pains</h3>
+        <p class="lu-card__statement m-text-5">Your business has grown, but your digital presence and internal systems haven't kept up.</p>
+        <div class="lu-card__block"><p class="m-text-4 lu-card__label">Sound familiar?</p><ul class="lu-card__signs"><li>What worked for a small team now slows you down</li><li>Customers expect more than your systems can give</li><li>New hires struggle to learn how things work</li></ul></div>
+        <div class="lu-card__block lu-card__help"><p class="m-text-4 lu-card__label">How we help</p><p>A digital foundation that scales: a website and systems planned around where your business is headed.</p></div>
+        <a class="m-btn lu-card__btn" href="/start-a-project"><span class="m-btn__label">Start a Project</span></a>
+      </li>
+      </ol>
+    </div>
+  </div>
+  <p class="lu-hint wrap m-text-4" aria-hidden="true">Swipe to see all five →</p>
+</section>
+<!-- about: the shared intro, then Sarah and Mike side by side with their focus areas -->
+<section id="about" class="slide" data-8b-section="about" aria-labelledby="about-title">
+  <div class="ab-intro wrap">
+    <p class="m-badge" data-8b-motion="rise">About us</p>
+    <h2 class="m-text-3" id="about-title" data-8b-motion="heat">Creative thinking. Technical solutions. One collaborative approach.</h2>
+    <div class="ab-copy m-text-5" data-8b-motion="rise">
+      <p>Sand City Designs brings design and technology together to help businesses build a stronger digital foundation. From how your brand shows up online to the systems that keep your business running behind the scenes, we create solutions designed around your goals.</p>
+      <p>Together, we combine creative strategy and technical problem-solving to help businesses improve how they show up, serve their customers, and operate every day.</p>
+    </div>
+  </div>
+</section>
+<section id="team" class="slide" data-8b-section="team" aria-labelledby="team-title">
+  <h2 class="visually-hidden" id="team-title">Sarah and Mike</h2>
+  <div class="ab-team wrap" data-8b-motion="rise">
+    <article class="ab-card" aria-labelledby="sarah-title">
+      <p class="ab-role m-text-4">Design &amp; Digital Presence</p>
+      <h3 class="ab-name m-text-2" id="sarah-title" data-8b-motion="heat">Sarah</h3>
+      <p class="ab-bio m-text-5">Focuses on website design, branding, SEO, and creating cohesive digital experiences that help businesses communicate their value and attract customers.</p>
+      <ul class="ab-tags" aria-label="Sarah's focus areas"><li class="m-badge">Website design</li><li class="m-badge">Branding</li><li class="m-badge">SEO</li><li class="m-badge">Digital experiences</li></ul>
+    </article>
+    <article class="ab-card" aria-labelledby="mike-title">
+      <p class="ab-role m-text-4">Technology &amp; Business Systems</p>
+      <h3 class="ab-name m-text-2" id="mike-title" data-8b-motion="heat">Mike</h3>
+      <p class="ab-bio m-text-5">Focuses on custom software, business operations, and tailored digital tools that simplify workflows and help businesses operate more efficiently.</p>
+      <ul class="ab-tags" aria-label="Mike's focus areas"><li class="m-badge">Custom software</li><li class="m-badge">Business operations</li><li class="m-badge">Digital tools</li><li class="m-badge">Workflows</li></ul>
+    </article>
+  </div>
+</section>
+<!-- looks: services: sideways track of two service blocks, each a tall photo with services, headline, description, list and a button (animation: scene:looks) -->
+<section id="looks" class="slide slide--light" data-8b-section="looks" aria-labelledby="looks-title">
+  <div class="lk-head wrap">
+    <h2 class="m-text-3" id="looks-title" data-8b-motion="rise">What we do</h2>
+    <p class="m-text-5" data-8b-motion="rise">From how your brand shows up online to the systems that keep your business running behind the scenes.</p>
+  </div>
+  <div class="lk-scroll">
+    <div class="lk-viewport">
+      <ol class="lk-track">
+        <li class="lk-panel">
+          <figure class="lk-photo"><img style="background:#604f45" src="assets/services-beach-laptop.jpg" alt="A laptop on a red towel on the sand, facing the sea at dusk" width="1200" height="1497" loading="lazy"></figure>
+          <div class="lk-text">
+            <span class="lk-badge m-badge">01 · Website Design · Branding · SEO</span>
+            <h3 class="m-text-6">Build a stronger online presence.</h3>
+            <p>We create thoughtful, strategic digital experiences that help businesses communicate their value, reflect their brand, and connect with the right audience. From custom website design to branding and SEO, we help build an online presence that supports your business goals.</p>
+            <ul class="lk-steps m-text-4">
+              <li>Custom website design and development</li>
+              <li>Brand identity and visual direction</li>
+              <li>Search engine optimization and on-page SEO</li>
+              <li>Website redesigns and refreshes</li>
+              <li>Website maintenance and ongoing optimization</li>
+            </ul>
+            <a class="m-btn-2" href="/services/website-design-branding"><span class="m-btn-2__label">Explore Digital Presence</span></a>
+          </div>
+        </li>
+        <li class="lk-panel">
+          <figure class="lk-photo"><img style="background:#9c9588; object-position: 50% 72%" src="assets/services-laptop-studio.jpg" alt="A black laptop open on a stone counter in a bright room with a cane chair" width="1200" height="2133" loading="lazy"></figure>
+          <div class="lk-text">
+            <span class="lk-badge m-badge">02 · Custom Software · Workflow Automation · Business Operations</span>
+            <h3 class="m-text-6">Technology built around your business.</h3>
+            <p>We build tailored software and digital tools that simplify operations, connect workflows, and help businesses run more efficiently. Instead of forcing your business to adapt to generic platforms, we create solutions around the way you actually work.</p>
+            <ul class="lk-steps m-text-4">
+              <li>Custom business management platforms</li>
+              <li>Client portals and account dashboards</li>
+              <li>Scheduling, registration, and booking systems</li>
+              <li>Team, staff, and customer management tools</li>
+              <li>Automated workflows and reporting dashboards</li>
+              <li>Integrations between existing platforms</li>
+            </ul>
+            <a class="m-btn-2" href="/services/custom-software-systems"><span class="m-btn-2__label">Explore Custom Systems</span></a>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+<!-- tickets: featured work: three case study cards with category, project, what the case study covers and a button (animation: scene:tickets) -->
+<section id="tickets" class="slide slide--light" data-8b-section="tickets" aria-labelledby="tickets-title">
+  <div class="tk-head wrap">
+    <h2 class="m-text-3 m-text-3--long" id="tickets-title" data-8b-motion="rise">Thoughtful solutions. Real-world applications.</h2>
+    <p class="m-text-5" data-8b-motion="rise">Every business has different needs. Explore how we approach design and technology to create digital experiences and systems that solve real problems.</p>
+  </div>
+  <div class="wh wrap" data-wheel>
+    <div class="wh-media">
+      <figure class="wh-photo"><img src="assets/work/bcba-card.jpg" alt="The Beach City Baseball Academy logo" style="object-position: 50% 45%" width="1200" height="900"></figure>
+      <div class="wh-info">
+        <span class="m-badge wh-badge">Custom Software &amp; Business Systems</span>
+        <p class="wh-summary m-text-5">The staff portal Beach City Baseball Academy runs on: lesson scheduling, members, sales, payroll and reports.</p>
+        <a class="m-btn wh-cta" href="/work/beach-city-baseball"><span class="m-btn__label">View case study</span></a>
+      </div>
+    </div>
+    <div class="wh-wheel">
+      <div class="wh-stage" role="listbox" tabindex="0" data-lenis-prevent aria-label="Case studies: scroll, drag or use the arrow keys" aria-activedescendant="wh-item-0">
+        <span class="wh-marker" aria-hidden="true"></span>
+        <ol class="wh-list">
+        <li class="wh-item" role="option" id="wh-item-0" aria-selected="true" data-href="/work/beach-city-baseball" data-image="assets/work/bcba-card.jpg" data-pos="50% 45%" data-badge="Custom Software &amp; Business Systems" data-summary="The staff portal Beach City Baseball Academy runs on: lesson scheduling, members, sales, payroll and reports." data-alt="The Beach City Baseball Academy logo"><a href="/work/beach-city-baseball">Beach City Baseball</a></li>
+        <li class="wh-item" role="option" id="wh-item-1" aria-selected="false" data-href="/work/this-is-it-team" data-image="assets/work/tii-wheel.jpg" data-pos="55% 40%" data-badge="Website Design &amp; Branding" data-summary="The information site This Is It Team shares with people they introduce to LifeWave X39." data-alt="A woman with her hands behind her neck wearing a small patch on her upper back"><a href="/work/this-is-it-team">This Is It Team</a></li>
+        <li class="wh-item" role="option" id="wh-item-2" aria-selected="false" data-href="/work/material-distributors" data-image="assets/work/md-card.jpg" data-pos="50% 50%" data-badge="Website Design &amp; Branding" data-summary="A website for a family-owned specialty building products distributor serving construction since 1947." data-alt="Glass towers in Philadelphia at sunset"><a href="/work/material-distributors">Material Distributors</a></li>
+        <li class="wh-item" role="option" id="wh-item-3" aria-selected="false" data-href="/work/light-it-up-dashboard" data-image="assets/work/liu-wheel.jpg" data-pos="50% 50%" data-badge="Custom Software &amp; Business Systems" data-summary="A personal dashboard for every attendee: event-day info, live stream, replays, photos and more." data-alt="Welcome to Light It Up: the event title slide with purple and orange lightning"><a href="/work/light-it-up-dashboard">Light It Up Dashboard</a></li>
+        <li class="wh-item" role="option" id="wh-item-4" aria-selected="false" data-href="/work/personalized-performance" data-image="assets/work/pp-home.jpg" data-pos="50% 50%" data-badge="Website Design &amp; Branding" data-summary="A website for Luke&#x27;s personal training business in Somers Point, NJ." data-alt="A barbell on a gym floor"><a href="/work/personalized-performance">Personalized Performance</a></li>
+        <li class="wh-item" role="option" id="wh-item-5" aria-selected="false" data-href="/work/ever-clear-pools" data-image="assets/work/ec-home.jpg" data-pos="50% 60%" data-badge="Website Design &amp; Branding" data-summary="A bright, local-first website for a family-owned pool company in Telford, PA." data-alt="A sparkling pool beside a beach house"><a href="/work/ever-clear-pools">Ever-Clear Pools</a></li>
+        <li class="wh-item" role="option" id="wh-item-6" aria-selected="false" data-href="/work/light-it-up" data-image="assets/work/liu-wheel.jpg" data-pos="50% 50%" data-badge="Custom Software &amp; Business Systems" data-summary="Registration, live translation and check-in tools for This Is It Team&#x27;s event in Anaheim." data-alt="Welcome to Light It Up: the event title slide with purple and orange lightning"><a href="/work/light-it-up">Light It Up</a></li>
+        </ol>
+      </div>
+      <div class="wh-nav">
+        <button class="m-iconbtn wh-prev" type="button" aria-label="Previous project"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg></button>
+        <button class="m-iconbtn wh-next" type="button" aria-label="Next project"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+      </div>
+    </div>
+    <p class="visually-hidden wh-live" aria-live="polite"></p>
+  </div>
+</section>
+<!-- contact: final call to action over the wave pattern: headline, copy, project inquiry button, email (animation: scene:contact) -->
+<section id="contact" class="slide" data-8b-section="contact" aria-labelledby="contact-title">
+  <div class="ct-grid wrap">
+    <h2 class="m-text-3" id="contact-title">Let's build<br>something better.</h2>
+    <p class="ct-lead m-text-5">Whether you need a stronger online presence or a better way to run your business, we'd love to hear what you're working on. Tell us about your goals, challenges, and ideas, and let's explore how we can help.</p>
+    <a class="m-btn ct-cta" href="/start-a-project"><span class="m-btn__label">Tell Us About Your Project</span></a>
+    <dl class="ct-list">
+      <div><dt class="m-text-4">Email</dt><dd><a class="m-link" href="mailto:sandcitysites@gmail.com">sandcitysites@gmail.com</a></dd></div>
+    </dl>
+  </div>
+</section>
+</main>
+<!-- footer: width-filling Sand City wordmark, brand line, centred copyright and the Design: 8B credit -->
+<footer id="footer" class="slide" data-8b-section="footer">
+  <p class="ft-mark m-text-2" style="--len:9" data-8b-motion="heat">Sand City</p>
+  <p class="ft-desc m-text-5">Sand City Designs helps businesses build a stronger digital foundation through strategic website design, branding, SEO, and custom business systems.</p>
+  <div class="ft-row m-text-4">
+    <small>© 2026 Sand City Designs · Design: <a href="https://8b.com/" style="color:inherit" data-8b-credit>8B</a></small>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js"></script>
+<script data-8b-part="motion-queue">
+(() => {
+  'use strict';
+  const fonts = document.fonts ? document.fonts.ready : Promise.resolve();
+  const parsed = document.readyState === 'loading' ? new Promise(resolve => document.addEventListener('DOMContentLoaded', resolve, { once: true })) : Promise.resolve();
+  const ready = () => Promise.all([fonts, parsed]).then(() => firsts);
+  const nextTask = () => window.scheduler?.yield?.() ?? new Promise(resolve => setTimeout(resolve));
+  const refresh = () => {
+    if (typeof window.refreshScroll === 'function') return window.refreshScroll();
+    window.ScrollTrigger?.sort(); window.ScrollTrigger?.refresh();
+  };
+  const run = (setup, name) => {
+    for (const trigger of window.ScrollTrigger?.getAll() || []) if (!trigger.end && window.ScrollTrigger.getAll().includes(trigger)) trigger.refresh(0, 1);
+    const context = window.gsap.context(() => {});
+    const log = new MutationObserver(() => {});
+    log.observe(document.documentElement, { attributes: true, attributeOldValue: true, subtree: true });
+    let failure = null, records;
+    try { context.add(() => { try { setup(); } catch (error) { failure = error; } }); }
+    finally { records = log.takeRecords(); log.disconnect(); }
+    if (!failure) return true;
+    try { context.revert(); } catch (error) { console.error(name, 'revert failed', error); }
+    for (const { target, attributeName, oldValue } of records.reverse()) {
+      const now = target.getAttribute(attributeName);
+      if (oldValue == null) { if (now != null) target.removeAttribute(attributeName); }
+      else if (now !== oldValue) target.setAttribute(attributeName, oldValue);
+    }
+    console.error(name, failure);
+    return false;
+  };
+  let firsts = Promise.resolve(), tail = null, pending = 0, lazy = null, building = 0, firstCount = 0;
+  window.motionReady = ready();
+  parsed.then(() => { if (firstCount && !tail) firsts.then(refresh); });
+  window.queueMotion = (setup, { first = false, near, id } = {}) => {
+    if (!window.gsap || typeof setup !== 'function') return;
+    const name = id || document.currentScript?.getAttribute('data-8b-part') || 'motion';
+    if (near instanceof Element && window.IntersectionObserver) {
+      const watch = new IntersectionObserver(entries => {
+        if (!entries.some(entry => entry.isIntersecting)) return;
+        watch.disconnect();
+        building++;
+        lazy = (lazy || ready()).then(nextTask).then(() => run(setup, name)).finally(() => { if (!--building) refresh(); });
+      }, { rootMargin: '100% 0px' });
+      watch.observe(near);
+      return;
+    }
+    if (first) { firstCount++; firsts = firsts.then(() => fonts).then(() => { if (!run(setup, name)) refresh(); }); }
+    else {
+      pending++;
+      tail = (tail || ready()).then(nextTask).then(() => run(setup, name))
+        .finally(() => { if (!--pending) refresh(); });
+    }
+    window.motionReady = Promise.all([firsts, tail]);
+  };
+})();
+</script>
+<script data-8b-part="page-init">
+gsap.registerPlugin(ScrollTrigger);
+function navHeight() {
+  const nav = document.querySelector('[data-8b-section="navigation"]');
+  return nav ? nav.getBoundingClientRect().height : 0;
+}
+function refreshScroll() {
+  if (window.lenis) window.lenis.options.anchors = { offset: -navHeight() };
+  ScrollTrigger.sort();
+  ScrollTrigger.refresh();
+}
+gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+  const lenis = window.lenis = new Lenis({ lerp: .11, anchors: { offset: -navHeight() } });
+  const tick = time => lenis.raf(time * 1000);
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(tick);
+  gsap.ticker.lagSmoothing(0);
+  return () => { gsap.ticker.remove(tick); gsap.ticker.lagSmoothing(500, 33); lenis.destroy(); window.lenis = null; };
+});
+</script>
+<script data-8b-part="motion">
+const effects = {
+  heat(element, vars = {}) {
+    return gsap.fromTo(element, { '--heat': 0 }, { '--heat': 1, ease: 'none', ...vars });
+  },
+  rise(element, vars = {}) {
+    const items = element.children.length ? [...element.children] : [element];
+    const rules = element.querySelectorAll('[data-rule]');
+    const timeline = gsap.timeline(vars);
+    timeline.from(items, { y: 34, opacity: 0, duration: .8, ease: 'power3.out', stagger: .09 }, 0);
+    if (rules.length) timeline.from(rules, { scaleX: 0, transformOrigin: '0% 50%', duration: 1, ease: 'power2.inOut', stagger: .09 }, 0);
+    return timeline;
+  },
+  ringdraw(element, vars = {}) {
+    return gsap.timeline(vars).from(element, { scale: 1.35, rotate: -70, opacity: 0, duration: .9, ease: 'power3.out' });
+  }
+};
+const bindings = {
+  heat: { scrub: true, start: 'top 95%', end: 'top 55%' },
+  rise: { once: true, start: 'top 86%' },
+  ringdraw: { once: true, start: 'top 90%' }
+};
+document.querySelectorAll('[data-8b-section]').forEach(section => {
+  Object.keys(effects).forEach(name => {
+    const elements = [...section.querySelectorAll(`[data-8b-motion~="${name}"]`)];
+    if (!elements.length) return;
+    const id = `effect:${name}:${section.id}`;
+    queueMotion(() => gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+      elements.forEach((element, index) => {
+        const { scrub, once, start, end } = bindings[name];
+        const animation = effects[name](element, scrub ? {} : { paused: true });
+        ScrollTrigger.create({ id: `${id}:${index}`, trigger: element, start, end, scrub: scrub ? .4 : false, once: !!once, animation, toggleActions: scrub ? undefined : 'play none none none' });
+      });
+    }), { first: section.getBoundingClientRect().top < innerHeight, id });
+  });
+});
+</script>
+<script data-8b-part="section-script:navigation">
+(() => {
+  const nav = document.getElementById('navigation');
+  const menu = nav.querySelector('.menu');
+  const openButton = nav.querySelector('.nav__menu');
+  const closeButton = menu.querySelector('.menu__close');
+  let lastY = scrollY, run = 0, hidden = false;
+  addEventListener('scroll', () => {
+    const y = scrollY, delta = y - lastY;
+    lastY = y;
+    if (!delta) return;
+    if (Math.sign(delta) !== Math.sign(run)) run = 0;
+    run += delta;
+    let next = hidden;
+    if (y < 80) next = false;
+    else if (run > 30) next = true;
+    else if (run < -60) next = false;
+    if (next !== hidden) { hidden = next; nav.classList.toggle('is-hidden', hidden); }
+  }, { passive: true });
+  nav.addEventListener('focusin', () => { hidden = false; nav.classList.remove('is-hidden'); });
+  const setOpen = open => {
+    menu.hidden = !open;
+    openButton.setAttribute('aria-expanded', String(open));
+    if (open) { hidden = false; nav.classList.remove('is-hidden'); window.lenis?.stop(); closeButton.focus(); }
+    else { window.lenis?.start(); openButton.focus(); }
+  };
+  openButton.addEventListener('click', () => setOpen(true));
+  closeButton.addEventListener('click', () => setOpen(false));
+  menu.addEventListener('keydown', event => { if (event.key === 'Escape') setOpen(false); });
+  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.hidden = true; openButton.setAttribute('aria-expanded', 'false'); window.lenis?.start(); }));
+})();
+</script>
+<script data-8b-part="section-script:opening">
+(() => {
+  const section = document.getElementById('opening');
+  const video = section.querySelector('.op-video');
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  // the background video only plays while the hero is on screen, and never for people who prefer less motion
+  const sync = visible => { if (!video) return; if (visible && !still.matches) video.play().catch(() => {}); else video.pause(); };
+  still.addEventListener('change', () => sync(!section.classList.contains('is-offscreen')));
+  new IntersectionObserver(([entry]) => { section.classList.toggle('is-offscreen', !entry.isIntersecting); sync(entry.isIntersecting); }).observe(section.querySelector('.op-one'));
+})();
+</script>
+<script data-8b-part="scene:opening">
+queueMotion(() => {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    const section = document.getElementById('opening');
+    const q = selector => section.querySelector(selector);
+    const timeline = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: {
+      id: 'opening', trigger: section, start: 'top top', end: 'bottom top', scrub: .5, invalidateOnRefresh: true
+    }});
+    timeline
+      .fromTo(q('.op-zoom'), { scale: 1, y: 0 }, { scale: 1.18, y: () => innerHeight * (innerWidth < 861 ? .3 : .1), duration: 1 }, 0);
+  });
+}, { first: true, id: 'opening' });
+</script>
+<script data-8b-part="scene:lineup">
+queueMotion(() => {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference) and (min-width: 861px)', () => {
+    const section = document.getElementById('lineup');
+    const viewport = section.querySelector('.lu-viewport');
+    const track = section.querySelector('.lu-track');
+    section.setAttribute('data-track', '');
+    const travel = () => -Math.max(0, track.scrollWidth - viewport.clientWidth);
+    const timeline = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: {
+      id: 'lineup', trigger: section.querySelector('.lu-scroll'), start: 'top top', end: 'bottom bottom', scrub: .5, invalidateOnRefresh: true
+    }});
+    timeline.fromTo(track, { x: 0 }, { x: travel, duration: 1 }, 0);
+    return () => section.removeAttribute('data-track');
+  });
+});
+</script>
+<script data-8b-part="scene:looks">
+queueMotion(() => {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    const section = document.getElementById('looks');
+    if (innerWidth < 861) return;
+    const scroller = section.querySelector('.lk-scroll');
+    const track = section.querySelector('.lk-track');
+    const photos = [...section.querySelectorAll('.lk-photo')];
+    section.setAttribute('data-track', '');
+    const travel = () => -(track.scrollWidth - track.parentElement.clientWidth);
+    const timeline = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: {
+      id: 'looks', trigger: scroller, start: 'top bottom', end: 'bottom bottom', scrub: .5, invalidateOnRefresh: true
+    }});
+    timeline.fromTo(photos[0], { clipPath: 'circle(10% at 50% 42%)' }, { clipPath: 'circle(80% at 50% 42%)', duration: 1, ease: 'power2.out' }, 0);
+    timeline.fromTo(track, { x: 0 }, { x: travel, duration: 1.7 }, 1);
+    photos.slice(1).forEach((photo, index) => {
+      timeline.fromTo(photo, { clipPath: 'circle(10% at 50% 42%)' }, { clipPath: 'circle(80% at 50% 42%)', duration: .6, ease: 'power2.out' }, 1 + index * .85 + .25);
+    });
+    return () => section.removeAttribute('data-track');
+  });
+});
+</script>
+<script data-8b-part="section-script:tickets">
+(() => {
+  const root = document.querySelector('#tickets [data-wheel]');
+  if (!root) return;
+  const stage = root.querySelector('.wh-stage');
+  const items = [...root.querySelectorAll('.wh-item')];
+  const photo = root.querySelector('.wh-photo');
+  const badge = root.querySelector('.wh-badge');
+  const summary = root.querySelector('.wh-summary');
+  const cta = root.querySelector('.wh-cta');
+  const live = root.querySelector('.wh-live');
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  const narrow = matchMedia('(max-width: 860px)');
+  const count = items.length, SPACING = 15, VISIBLE = 4, DRAG_SPEED = .02, SCROLL_SPEED = .004;
+  let rotation = 0, selected = 0, velocity = 0, target = null, frame = null, drag = null;
+  const wrap = i => ((i % count) + count) % count;
+  const offsetOf = i => { let o = i - rotation; while (o > count / 2) o -= count; while (o < -count / 2) o += count; return o; };
+  const shortest = d => { d = wrap(d); return d > count / 2 ? d - count : d; };
+
+  items.forEach(item => { item.querySelector('a').tabIndex = -1; new Image().src = item.dataset.image; });
+  root.classList.add('is-ready');
+
+  function select(index) {
+    selected = index;
+    const item = items[index], data = item.dataset;
+    items.forEach((el, i) => el.setAttribute('aria-selected', String(i === index)));
+    stage.setAttribute('aria-activedescendant', item.id);
+    badge.innerHTML = data.badge;
+    summary.textContent = data.summary;
+    cta.href = data.href;
+    live.textContent = `${item.textContent.trim()}, ${index + 1} of ${count}`;
+    const img = document.createElement('img');
+    img.src = data.image; img.alt = data.alt || ''; img.style.objectPosition = data.pos || '';
+    const old = [...photo.querySelectorAll('img')];
+    if (still.matches) { old.forEach(el => el.remove()); photo.append(img); return; }
+    img.className = 'is-entering';
+    photo.append(img);
+    requestAnimationFrame(() => requestAnimationFrame(() => img.classList.remove('is-entering')));
+    setTimeout(() => old.forEach(el => el.remove()), 650);
+  }
+
+  function render() {
+    const radius = narrow.matches ? 230 : 340;
+    items.forEach((item, i) => {
+      const offset = offsetOf(i);
+      item.hidden = Math.abs(offset) > VISIBLE + .5;
+      if (item.hidden) return;
+      const angle = offset * SPACING, rad = angle * Math.PI / 180;
+      const x = -radius * (1 - Math.cos(rad)), y = radius * Math.sin(rad);
+      item.style.opacity = Math.cos(Math.min(Math.abs(offset) / VISIBLE, 1) * Math.PI / 2);
+      item.style.transform = `translate(${x}px, ${y}px) translateY(-50%) rotate(${angle}deg) scale(${1 - Math.min(Math.abs(offset) * .05, .4)})`;
+      item.classList.toggle('is-selected', Math.abs(offset) < .5);
+    });
+    const index = wrap(Math.round(rotation));
+    if (index !== selected) select(index);
+  }
+  const setRotation = r => { rotation = r; render(); };
+
+  // momentum after a flick, then an eased snap to the nearest (or requested) project
+  function animate() {
+    if (frame !== null) return;
+    const tick = () => {
+      let more = false;
+      if (!drag && target === null && Math.abs(velocity) > .0008) {
+        setRotation(rotation + velocity);
+        velocity *= still.matches ? .8 : .9;
+        more = true;
+      } else if (!drag) {
+        velocity = 0;
+        const goal = target ?? Math.round(rotation), delta = goal - rotation;
+        if (Math.abs(delta) > .001 && !still.matches) { setRotation(rotation + delta * .2); more = true; }
+        else { setRotation(goal); target = null; }
+      }
+      frame = more ? requestAnimationFrame(tick) : null;
+    };
+    frame = requestAnimationFrame(tick);
+  }
+  const goTo = index => { velocity = 0; target = Math.round(rotation) + shortest(index - wrap(Math.round(rotation))); animate(); };
+  const open = () => { location.href = items[selected].dataset.href; };
+
+  stage.addEventListener('wheel', event => {
+    if (event.ctrlKey || event.metaKey) return;
+    event.preventDefault();
+    event.stopPropagation();
+    target = null;
+    const delta = (Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX) * SCROLL_SPEED;
+    setRotation(rotation + delta);
+    velocity = delta * .2;
+    animate();
+  }, { passive: false });
+
+  stage.addEventListener('pointerdown', event => {
+    if (!event.isPrimary || event.button !== 0) return;
+    drag = { y: event.clientY, start: rotation, prev: rotation, moved: false, item: event.target.closest('.wh-item') };
+    velocity = 0; target = null;
+    stage.setPointerCapture(event.pointerId);
+  });
+  stage.addEventListener('pointermove', event => {
+    if (!drag) return;
+    const distance = event.clientY - drag.y;
+    if (!drag.moved && Math.abs(distance) < 5) return;
+    drag.moved = true;
+    stage.classList.add('is-dragging');
+    const next = drag.start - distance * DRAG_SPEED;
+    velocity = next - drag.prev; drag.prev = next;
+    setRotation(next);
+  });
+  const endDrag = event => {
+    if (!drag) return;
+    const ended = drag; drag = null;
+    stage.classList.remove('is-dragging');
+    if (stage.hasPointerCapture(event.pointerId)) stage.releasePointerCapture(event.pointerId);
+    // a tap on the selected name opens its case study; a tap on another name turns the wheel to it
+    if (!ended.moved && ended.item && event.type === 'pointerup') {
+      const index = items.indexOf(ended.item);
+      if (index === selected) return open();
+      goTo(index);
+    }
+    animate();
+  };
+  stage.addEventListener('pointerup', endDrag);
+  stage.addEventListener('pointercancel', endDrag);
+  stage.addEventListener('click', event => { if (event.target.closest('a')) event.preventDefault(); });
+
+  stage.addEventListener('keydown', event => {
+    const keys = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
+    if (event.key in keys) { event.preventDefault(); goTo(selected + keys[event.key]); }
+    else if (event.key === 'Home') { event.preventDefault(); goTo(0); }
+    else if (event.key === 'End') { event.preventDefault(); goTo(count - 1); }
+    else if (event.key === 'Enter') { event.preventDefault(); open(); }
+  });
+  root.querySelector('.wh-prev').addEventListener('click', () => goTo(selected - 1));
+  root.querySelector('.wh-next').addEventListener('click', () => goTo(selected + 1));
+  narrow.addEventListener('change', render);
+  render();
+})();
+</script>
+<script data-8b-part="section-script:contact">
+(() => {
+  const section = document.getElementById('contact');
+  new IntersectionObserver(([entry]) => section.classList.toggle('is-offscreen', !entry.isIntersecting)).observe(section);
+})();
+</script>
+<script data-8b-part="scene:contact">
+queueMotion(() => {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    const section = document.getElementById('contact');
+    gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { id: 'contact', trigger: section, start: 'top bottom', end: 'center center', scrub: .5 } })
+      .fromTo(section.querySelector('.ct-grid'), { y: 40, opacity: .4 }, { y: 0, opacity: 1, duration: .7, ease: 'power2.out' }, 0);
+  });
+});
+</script>
+</body>
+</html>
