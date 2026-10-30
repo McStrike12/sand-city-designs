@@ -14,6 +14,7 @@ Loaded from images.unsplash.com. Free to use under the [Unsplash License](https:
 | 4 | [photo-1637502875124-eb4a9843a2fa](https://images.unsplash.com/photo-1637502875124-eb4a9843a2fa) | solidpixels. | looks |
 | 5 | [photo-1460925895917-afdab827c52f](https://images.unsplash.com/photo-1460925895917-afdab827c52f) | Carlos Muza | looks, services, work |
 | 6 | Sunset waves video, [Dupe Photos](https://dupephotos.com/), re-encoded as `assets/hero-design-720.mp4` / `hero-design-1080.mp4` / `hero-design-poster.jpg` | Alex Rusciano | services/website-design-branding hero |
+| 7 | [4DTxhAmoBWs](https://unsplash.com/photos/4DTxhAmoBWs), saved as `assets/services-cta-surf.jpg` (+ `-1000`) | Reed Naliboff | services/website-design-branding closing section |
 
 ## Fonts (SIL Open Font License 1.1)
 

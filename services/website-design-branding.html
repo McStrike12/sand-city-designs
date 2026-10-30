@@ -135,7 +135,27 @@
 @keyframes wd-word { from { opacity: 0; translate: 0 18px; rotate: x 70deg; } }
 @keyframes wd-tick { to { translate: -50% 0; } }
 @media (prefers-reduced-motion: reduce) { .wd-rev__num span.is-in { animation: none; } .wd-rev__num { transition: none; } }
-.wd-cta h2 { max-width: 22ch; font-size: clamp(32px, 4.2vw, 64px); }
+/* closing call to action: surf photo under a brown wash, thin column lines, everything centred */
+.wd-cta { position: relative; isolation: isolate; overflow: clip; display: grid; place-items: center; min-height: clamp(560px, 88svh, 900px); padding: clamp(80px, 12svh, 140px) 0; color: var(--color-3); text-align: center; }
+.wd-cta__photo { position: absolute; inset: 0; z-index: -3; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; background: #9a8f7c; }
+.wd-cta::before { content: ""; position: absolute; inset: 0; z-index: -2; background: linear-gradient(180deg, color-mix(in srgb, var(--color-1) 62%, transparent), color-mix(in srgb, var(--color-1) 74%, transparent)); }
+.wd-cta__lines { position: absolute; inset: 0; z-index: -1; display: grid; grid-template-columns: 1fr 3fr 4fr 3fr 1fr; pointer-events: none; }
+.wd-cta__lines span + span { border-left: 1px solid color-mix(in srgb, var(--color-3) 22%, transparent); }
+.wd-cta__inner { display: grid; justify-items: center; gap: 22px; max-width: 1000px; }
+.wd-cta h2 { font-size: clamp(34px, 5vw, 80px); line-height: 1; color: var(--color-3); background-image: none; -webkit-text-fill-color: currentColor; }
+.wd-cta p { max-width: 42ch; }
+/* pill and round arrow move as one; colours swap on hover, and the arrow slides through */
+.wd-cta__btn { display: inline-flex; align-items: center; margin-top: 10px; color: var(--color-1); text-decoration: none; font-weight: 500; }
+.wd-cta__btn > span { background: var(--color-3); transition: background-color .5s ease, color .5s ease; }
+.wd-cta__label { padding: 15px 26px; border-radius: 999px; font-size: 16px; }
+.wd-cta__arrow { position: relative; display: block; width: 50px; height: 50px; border-radius: 50%; overflow: hidden; }
+.wd-cta__arrow svg { position: absolute; left: 50%; top: 50%; width: 20px; height: 20px; margin: -10px 0 0 -10px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: translate .5s ease; }
+.wd-cta__arrow svg + svg { translate: -40px 0; }
+.wd-cta__btn:hover > span, .wd-cta__btn:focus-visible > span { background: var(--color-1); color: var(--color-3); }
+.wd-cta__btn:hover .wd-cta__arrow svg:first-child, .wd-cta__btn:focus-visible .wd-cta__arrow svg:first-child { translate: 40px 0; }
+.wd-cta__btn:hover .wd-cta__arrow svg + svg, .wd-cta__btn:focus-visible .wd-cta__arrow svg + svg { translate: 0 0; }
+.wd-cta__btn:focus-visible { outline: 2px solid var(--color-3); outline-offset: 4px; border-radius: 999px; }
+@media (prefers-reduced-motion: reduce) { .wd-cta__btn > span, .wd-cta__arrow svg { transition: none; } }
 @media (prefers-reduced-motion: reduce) {
   .wd-plan__more, .wd-svc.is-ready .wd-svc__media img { transition: none; }
 }
@@ -150,6 +170,8 @@
   .wd-plan__toggle { flex-wrap: wrap; row-gap: 4px; padding: 20px 22px; }
   .wd-plan__price { margin-left: 0; flex-basis: 100%; }
   .wd-plan__body { padding: 0 22px 22px; }
+  .wd-cta__lines { grid-template-columns: 1fr 2fr 1fr; }
+  .wd-cta__lines span:nth-child(n + 4) { display: none; }
   .wd-rev__stage { grid-template-columns: minmax(0, 1fr); }
   .wd-rev__rail { display: none; }
   .wd-rev__main { padding-left: 0; }
@@ -295,12 +317,13 @@
     <div class="wd-rev__ticker" aria-hidden="true"><div><span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span></div></div>
   </div>
 </section>
-<section class="slide pg-cta pg--blue wd-cta" aria-labelledby="cta-title">
-  <div class="pg-cta__rings" aria-hidden="true"><span></span><span></span><span></span></div>
-  <div class="wrap pg-cta__grid">
+<section class="slide wd-cta" aria-labelledby="cta-title">
+  <img class="wd-cta__photo" src="/assets/services-cta-surf.jpg" srcset="/assets/services-cta-surf-1000.jpg 1000w, /assets/services-cta-surf.jpg 2000w" sizes="100vw" alt="" width="2000" height="1333" loading="lazy">
+  <div class="wd-cta__lines" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="wrap wd-cta__inner">
     <h2 class="m-text-3" id="cta-title">Helping small business owners build a stronger online presence through impactful design and SEO.</h2>
     <p class="m-text-5">Stand out online with confidence</p>
-    <a class="m-btn" href="/start-a-project"><span class="m-btn__label">Let's Connect</span></a>
+    <a class="wd-cta__btn" href="/start-a-project"><span class="wd-cta__label">Let's Connect</span><span class="wd-cta__arrow"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
   </div>
 </section>
 </main>
