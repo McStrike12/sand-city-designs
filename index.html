@@ -316,7 +316,10 @@ button { font: inherit; color: inherit; }
 #lineup .lu-card__signs li { position: relative; padding-left: 18px; }
 #lineup .lu-card__signs li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .7; }
 #lineup .lu-card :focus-visible { outline-color: currentColor; }
-#lineup .lu-card__btn { align-self: end; justify-self: start; margin-top: 6px; }
+/* one brown button under the intro, in place of a button on every card */
+#lineup .lu-cta { justify-self: start; margin-top: 6px; background: var(--color-1); color: var(--color-3); }
+#lineup .lu-cta::before { background-image: linear-gradient(100deg, var(--color-1) 0 40%, color-mix(in srgb, var(--color-5) 45%, var(--color-1)) 70%, var(--color-1) 100%); }
+#lineup .lu-cta::after { color: var(--color-1); }
 #lineup .lu-hint { margin-top: 18px; opacity: .7; }
 @media (max-width: 860px) {
   #lineup .lu-head { grid-template-columns: minmax(0, 1fr); row-gap: 18px; }
@@ -606,6 +609,7 @@ button { font: inherit; color: inherit; }
     <div class="lu-lead m-text-5" data-8b-motion="rise">
       <p>As businesses grow, their needs change. Your website may no longer reflect the quality of your work, your online presence may not be attracting the right customers, or your team may be spending too much time managing disconnected tools and manual processes.</p>
       <p>We help businesses bridge the gap between where they are and where they want to be through thoughtful design and technology built around their needs.</p>
+      <a class="m-btn lu-cta" href="/start-a-project"><span class="m-btn__label">Tell Us About Your Project</span></a>
     </div>
   </div>
   <div class="lu-scroll">
@@ -617,7 +621,6 @@ button { font: inherit; color: inherit; }
         <p class="lu-card__statement m-text-5">Your website no longer reflects your brand or the quality of your services.</p>
         <div class="lu-card__block"><p class="m-text-4 lu-card__label">Sound familiar?</p><ul class="lu-card__signs"><li>You hesitate to share your link</li><li>It looks dated or is hard to use on a phone</li><li>Updating it feels like a chore</li></ul></div>
         <div class="lu-card__block lu-card__help"><p class="m-text-4 lu-card__label">How we help</p><p>A redesign that reflects the quality of your work, built mobile-first and easy to keep current.</p></div>
-        <a class="m-btn lu-card__btn" href="/start-a-project"><span class="m-btn__label">Inquire About a Custom Website</span></a>
       </li>
       <li class="lu-card" aria-labelledby="pain-2">
         <div class="lu-card__top"><span class="m-badge">Visibility</span></div>
@@ -625,7 +628,6 @@ button { font: inherit; color: inherit; }
         <p class="lu-card__statement m-text-5">You're struggling to attract the right customers online.</p>
         <div class="lu-card__block"><p class="m-text-4 lu-card__label">Sound familiar?</p><ul class="lu-card__signs"><li>You don't show up when people search for what you do</li><li>Visitors leave without getting in touch</li><li>Your brand looks different everywhere it appears</li></ul></div>
         <div class="lu-card__block lu-card__help"><p class="m-text-4 lu-card__label">How we help</p><p>Search foundations, clear messaging and a consistent brand, so the right customers find you and reach out.</p></div>
-        <a class="m-btn lu-card__btn" href="/start-a-project"><span class="m-btn__label">Inquire About a Custom Website</span></a>
       </li>
       <li class="lu-card" aria-labelledby="pain-3">
         <div class="lu-card__top"><span class="m-badge">Operations</span></div>
@@ -633,7 +635,6 @@ button { font: inherit; color: inherit; }
         <p class="lu-card__statement m-text-5">Your business relies on spreadsheets, disconnected platforms, and repetitive manual tasks.</p>
         <div class="lu-card__block"><p class="m-text-4 lu-card__label">Sound familiar?</p><ul class="lu-card__signs"><li>The same details get typed in more than once</li><li>Important information lives in spreadsheets and inboxes</li><li>Hours each week go to repetitive tasks</li></ul></div>
         <div class="lu-card__block lu-card__help"><p class="m-text-4 lu-card__label">How we help</p><p>Automated workflows and connected tools that take repetitive work off your team's plate.</p></div>
-        <a class="m-btn lu-card__btn" href="/start-a-project"><span class="m-btn__label">Inquire About Custom Software</span></a>
       </li>
       <li class="lu-card" aria-labelledby="pain-4">
         <div class="lu-card__top"><span class="m-badge">Software</span></div>
@@ -641,7 +642,6 @@ button { font: inherit; color: inherit; }
         <p class="lu-card__statement m-text-5">Your existing software doesn't quite fit the way your business operates.</p>
         <div class="lu-card__block"><p class="m-text-4 lu-card__label">Sound familiar?</p><ul class="lu-card__signs"><li>You rely on workarounds to get through the day</li><li>You pay for features you never use</li><li>Your tools can't do the one thing you need most</li></ul></div>
         <div class="lu-card__block lu-card__help"><p class="m-text-4 lu-card__label">How we help</p><p>Custom tools built around the way you operate, instead of bending your business to fit a generic platform.</p></div>
-        <a class="m-btn lu-card__btn" href="/start-a-project"><span class="m-btn__label">Inquire About Custom Software</span></a>
       </li>
       <li class="lu-card" aria-labelledby="pain-5">
         <div class="lu-card__top"><span class="m-badge">Growth</span></div>
@@ -649,7 +649,6 @@ button { font: inherit; color: inherit; }
         <p class="lu-card__statement m-text-5">Your business has grown, but your digital presence and internal systems haven't kept up.</p>
         <div class="lu-card__block"><p class="m-text-4 lu-card__label">Sound familiar?</p><ul class="lu-card__signs"><li>What worked for a small team now slows you down</li><li>Customers expect more than your systems can give</li><li>New hires struggle to learn how things work</li></ul></div>
         <div class="lu-card__block lu-card__help"><p class="m-text-4 lu-card__label">How we help</p><p>A digital foundation that scales: a website and systems planned around where your business is headed.</p></div>
-        <a class="m-btn lu-card__btn" href="/start-a-project"><span class="m-btn__label">Start a Project</span></a>
       </li>
       </ol>
     </div>
