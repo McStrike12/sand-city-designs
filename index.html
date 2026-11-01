@@ -300,7 +300,8 @@ button { font: inherit; color: inherit; }
 @layer sections {
 #lineup { background: var(--color-3); color: var(--color-1); padding: clamp(56px, 9svh, 100px) 0 clamp(60px, 9svh, 110px); overflow: clip; }
 #lineup .lu-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; align-items: start; margin-bottom: clamp(40px, 7svh, 80px); }
-#lineup .lu-head h2 { grid-column: 1 / 8; color: var(--color-5); background-image: none; -webkit-text-fill-color: currentColor; }
+#lineup .lu-title { grid-column: 1 / 8; display: grid; gap: clamp(22px, 3svh, 32px); justify-items: start; }
+#lineup .lu-head h2 { color: var(--color-5); background-image: none; -webkit-text-fill-color: currentColor; }
 #lineup .lu-lead { grid-column: 8 / -1; display: grid; gap: 16px; max-width: 46ch; }
 #lineup :focus-visible { outline-color: var(--color-1); }
 /* cards: a swipeable row by default; on wide screens with motion the scene pins it and slides it with the scroll */
@@ -316,14 +317,14 @@ button { font: inherit; color: inherit; }
 #lineup .lu-card__signs li { position: relative; padding-left: 18px; }
 #lineup .lu-card__signs li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .7; }
 #lineup .lu-card :focus-visible { outline-color: currentColor; }
-/* one brown button under the intro, in place of a button on every card */
-#lineup .lu-cta { justify-self: start; margin-top: 6px; background: var(--color-1); color: var(--color-3); }
+/* one brown button under the heading, in place of a button on every card */
+#lineup .lu-cta { background: var(--color-1); color: var(--color-3); }
 #lineup .lu-cta::before { background-image: linear-gradient(100deg, var(--color-1) 0 40%, color-mix(in srgb, var(--color-5) 45%, var(--color-1)) 70%, var(--color-1) 100%); }
 #lineup .lu-cta::after { color: var(--color-1); }
 #lineup .lu-hint { margin-top: 18px; opacity: .7; }
 @media (max-width: 860px) {
   #lineup .lu-head { grid-template-columns: minmax(0, 1fr); row-gap: 18px; }
-  #lineup .lu-head h2, #lineup .lu-lead { grid-column: 1; }
+  #lineup .lu-title, #lineup .lu-lead { grid-column: 1; }
 }
 @media (prefers-reduced-motion: no-preference) and (min-width: 861px) {
   #lineup[data-track] .lu-scroll { height: 340svh; }
@@ -605,11 +606,13 @@ button { font: inherit; color: inherit; }
 <!-- lineup: the problem we solve: headline and copy, then five pain-point cards that slide sideways as you scroll (swipe on phones) (animation: scene:lineup) -->
 <section id="lineup" class="slide" data-8b-section="lineup" aria-labelledby="lineup-title">
   <div class="lu-head wrap">
-    <h2 class="m-text-3 m-text-3--long" id="lineup-title" data-8b-motion="heat">Your business has evolved. Your digital presence should too.</h2>
+    <div class="lu-title">
+      <h2 class="m-text-3 m-text-3--long" id="lineup-title" data-8b-motion="heat">Your business has evolved. Your digital presence should too.</h2>
+      <a class="m-btn lu-cta" href="/start-a-project"><span class="m-btn__label">Tell Us About Your Project</span></a>
+    </div>
     <div class="lu-lead m-text-5" data-8b-motion="rise">
       <p>As businesses grow, their needs change. Your website may no longer reflect the quality of your work, your online presence may not be attracting the right customers, or your team may be spending too much time managing disconnected tools and manual processes.</p>
       <p>We help businesses bridge the gap between where they are and where they want to be through thoughtful design and technology built around their needs.</p>
-      <a class="m-btn lu-cta" href="/start-a-project"><span class="m-btn__label">Tell Us About Your Project</span></a>
     </div>
   </div>
   <div class="lu-scroll">
