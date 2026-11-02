@@ -74,9 +74,10 @@
 .wd-svc__media img { width: 100%; height: 100%; object-fit: cover; }
 /* client reviews: one quote at a time, all brown on light yellow. Without JS every quote shows, stacked. */
 .wd-rev { color: var(--color-1); overflow: clip; }
+.wd-rev .wd-rev__head { display: block; text-align: center; }
 .wd-rev .pg-sec__head h2 { color: var(--color-1); background-image: none; -webkit-text-fill-color: currentColor; }
 .wd-rev :focus-visible { outline-color: var(--color-1); }
-.wd-rev__stage { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); max-width: 1080px; }
+.wd-rev__stage { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); max-width: 1080px; margin-inline: auto; }
 /* oversized faint number behind the quote; drifts a little with the pointer */
 .wd-rev__num { position: absolute; left: -2vw; top: 50%; z-index: 0; pointer-events: none; user-select: none; font-family: var(--font-2); font-weight: 700; font-size: clamp(180px, 28vw, 420px); line-height: .8; letter-spacing: -.04em; color: color-mix(in srgb, var(--color-1) 6%, transparent); translate: var(--px, 0) calc(-50% + var(--py, 0px)); transition: translate .6s cubic-bezier(.22,1,.36,1); }
 .wd-rev__num span { display: block; }
@@ -218,9 +219,11 @@
   <div class="wrap wd-approach">
     <h2 class="m-text-3" id="approach-title">My Approach</h2>
     <div class="wd-approach__copy m-text-5">
-      <p>I design strategic, visually refined websites for service-based businesses that want to create a stronger online presence and stand out in their industry.</p>
-      <p>My approach blends elevated design with intentional structure, helping your website not only look professional, but also support visibility on Google and guide potential clients toward taking action.</p>
-      <p>Whether you're a wellness professional, creative entrepreneur, local business, or growing brand, I create custom websites tailored to your goals, audience, and long-term growth.</p>
+      <p>Your website should be working for your business, not holding it back.</p>
+      <p>Maybe your website no longer reflects the quality of your work, visitors aren't turning into inquiries, or your business is getting lost among competitors. Maybe it looks good but isn't doing much to improve your visibility or bring in new clients.</p>
+      <p>That's where my approach comes in.</p>
+      <p>Before designing anything, I take a deep dive into your business. I want to understand how it operates, what makes it unique, who you're trying to reach, and where you want to go, almost as if it were my own. Through research and strategy, I identify exactly what your website needs, from its visual direction and messaging to its structure, functionality, and SEO.</p>
+      <p>The result? A custom website that looks good, feels good, and performs well, giving you confidence in how your business shows up online.</p>
     </div>
   </div>
 </section>
@@ -257,7 +260,7 @@
 </section>
 <section class="slide pg-sec slide--light wd-rev" aria-labelledby="reviews-title" data-reviews>
   <div class="wrap">
-    <div class="pg-sec__head"><h2 class="m-text-3" id="reviews-title">Client Reviews</h2><p class="m-text-5">Graciously shared</p></div>
+    <div class="pg-sec__head wd-rev__head"><h2 class="m-text-3" id="reviews-title">Client Reviews</h2></div>
     <div class="wd-rev__stage">
       <div class="wd-rev__num" aria-hidden="true"><span>01</span></div>
       <div class="wd-rev__rail" aria-hidden="true"><span class="wd-rev__label">Testimonials</span><span class="wd-rev__track"><span class="wd-rev__fill"></span></span></div>
@@ -290,7 +293,7 @@
         </div>
       </div>
     </div>
-    <div class="wd-rev__ticker" aria-hidden="true"><div><span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span> <span>Client reviews •</span><span>Graciously shared •</span></div></div>
+    <div class="wd-rev__ticker" aria-hidden="true"><div><span>Client reviews •</span><span>Client reviews •</span> <span>Client reviews •</span><span>Client reviews •</span> <span>Client reviews •</span><span>Client reviews •</span> <span>Client reviews •</span><span>Client reviews •</span> <span>Client reviews •</span><span>Client reviews •</span> <span>Client reviews •</span><span>Client reviews •</span> <span>Client reviews •</span><span>Client reviews •</span> <span>Client reviews •</span><span>Client reviews •</span> <span>Client reviews •</span><span>Client reviews •</span> <span>Client reviews •</span><span>Client reviews •</span> <span>Client reviews •</span><span>Client reviews •</span> <span>Client reviews •</span><span>Client reviews •</span></div></div>
   </div>
 </section>
 <section class="slide wd-cta" aria-labelledby="cta-title">
