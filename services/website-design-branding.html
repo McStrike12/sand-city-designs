@@ -48,7 +48,7 @@
 .wd-approach__text { display: flex; flex-direction: column; justify-content: space-between; gap: 48px; padding: clamp(36px, 5vw, 72px); background: color-mix(in srgb, var(--color-3) 45%, var(--color-7)); color: var(--color-1); }
 .wd-approach__copy { display: grid; gap: 16px; max-width: 60ch; }
 .wd-approach__lede { font-weight: 500; }
-.wd-approach__foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.wd-approach__foot { display: grid; gap: 26px; justify-items: start; }
 .wd-approach h2 { font-size: clamp(56px, 9vw, 150px); line-height: .86; color: var(--color-1); background-image: none; -webkit-text-fill-color: currentColor; }
 .wd-approach .m-btn { background: var(--color-1); color: var(--color-3); }
 .wd-approach .m-btn::before { background-image: linear-gradient(100deg, var(--color-1) 0 40%, color-mix(in srgb, var(--color-5) 45%, var(--color-1)) 70%, var(--color-1) 100%); }
@@ -238,13 +238,13 @@
 <section class="slide wd-approach-sec" aria-labelledby="approach-title">
   <div class="wd-approach">
     <div class="wd-approach__text">
-      <div class="wd-approach__copy m-text-5">
-        <p class="wd-approach__lede">Your website should be working for your business, not holding it back.</p>
-        <p>Before designing anything, I take a deep dive into your business. I want to understand how it operates, what makes it unique, who you're trying to reach, and where you want to go, almost as if it were my own. Through research and strategy, I identify exactly what your website needs, from its visual direction and messaging to its structure, functionality, and SEO.</p>
-        <p>The result? A custom website that looks good, feels good, and performs well, giving you confidence in how your business shows up online.</p>
-      </div>
+      <h2 class="m-text-3" id="approach-title">My<br>Approach</h2>
       <div class="wd-approach__foot">
-        <h2 class="m-text-3" id="approach-title">My<br>Approach</h2>
+        <div class="wd-approach__copy m-text-5">
+          <p class="wd-approach__lede">Your website should be working for your business, not holding it back.</p>
+          <p>Before designing anything, I take a deep dive into your business. I want to understand how it operates, what makes it unique, who you're trying to reach, and where you want to go, almost as if it were my own. Through research and strategy, I identify exactly what your website needs, from its visual direction and messaging to its structure, functionality, and SEO.</p>
+          <p>The result? A custom website that looks good, feels good, and performs well, giving you confidence in how your business shows up online.</p>
+        </div>
         <a class="m-btn" href="/start-a-project"><span class="m-btn__label">Start Your Website</span></a>
       </div>
     </div>
