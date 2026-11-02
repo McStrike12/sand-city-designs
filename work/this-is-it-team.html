@@ -22,6 +22,30 @@
 <link rel="preload" href="https://fonts.gstatic.com/s/astasans/v3/XoHk2Y74XaWovvhMb0cduPcs.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/Hero-Bold.otf" as="font" type="font/otf" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
+<style>
+/* hero: headline centred on top; the phone below starts tilted back and, as you scroll, straightens and climbs over the text.
+   --p (0 to 1) is set by the script from how far the section has scrolled. */
+.ph-hero { --p: 0; padding: 0; height: 200svh; }
+/* the stage holds still while the section scrolls past, so the motion plays out on screen */
+.ph-hero__stage { position: sticky; top: 0; height: 100svh; overflow: hidden; padding-top: calc(60px + clamp(28px, 6svh, 72px)); perspective: 1200px; }
+.ph-hero__title { position: relative; z-index: 0; display: grid; justify-items: center; gap: 22px; text-align: center; translate: 0 calc(var(--p) * -24px); }
+.ph-hero__title .m-badge { white-space: normal; line-height: 1.3; padding-block: 5px; }
+.ph-hero__title h1 { font-size: clamp(44px, 7vw, 112px); }
+.ph-hero__title p.m-text-5 { max-width: 60ch; }
+.ph-hero__phone { position: relative; z-index: 1; margin-top: clamp(28px, 4svh, 48px); transform-origin: 50% 0; translate: 0 calc(var(--p) * -42%); rotate: x calc((1 - var(--p)) * 22deg); scale: calc(.94 + var(--p) * .06); }
+.ph-phone { position: relative; width: clamp(200px, min(19vw, 30svh), 270px); margin-inline: auto; }
+.ph-phone__btn { position: absolute; width: 3px; border-radius: 2px; background: color-mix(in srgb, var(--color-3) 30%, transparent); }
+.ph-phone__btn--a { left: -2px; top: 16%; height: 28px; } .ph-phone__btn--b { left: -2px; top: 24%; height: 44px; } .ph-phone__btn--c { right: -2px; top: 22%; height: 56px; }
+.ph-phone__body { aspect-ratio: 9 / 19.5; padding: 6px; border-radius: 42px; background: color-mix(in srgb, var(--color-1) 70%, #000); border: 1px solid color-mix(in srgb, var(--color-3) 18%, transparent); box-shadow: 0 10px 20px rgb(0 0 0 / .25), 0 40px 60px -20px rgb(0 0 0 / .5); }
+.ph-phone__screen { position: relative; height: 100%; overflow: hidden; border-radius: 36px; background: #0b2a4a; }
+.ph-phone__screen img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+.ph-phone__island { position: absolute; z-index: 1; left: 50%; top: 9px; width: 68px; height: 18px; translate: -50% 0; border-radius: 99px; background: #000; }
+@media (prefers-reduced-motion: reduce) {
+  .ph-hero { height: auto; }
+  .ph-hero__stage { position: static; height: auto; padding-bottom: clamp(56px, 9svh, 100px); }
+  .ph-hero__title, .ph-hero__phone { translate: none; rotate: none; scale: none; }
+}
+</style>
 </head>
 <body class="m-text">
 <a class="skip m-text-4" href="#main">Skip to content</a>
@@ -50,13 +74,23 @@
   </div>
 </header>
 <main id="main">
-<section class="slide pg-hero pg-hero--media pg--brown" aria-labelledby="page-title">
-  <div class="wrap pg-hero__grid">
-    <p class="m-badge">Case study · Website Design &amp; Branding</p>
-    <h1 class="m-text-3" id="page-title">This Is It Team</h1>
-    <p class="pg-hero__lead m-text-5">This Is It Team is a community of LifeWave brand partners. Sarah designed and built thisisitinfo.com, an information hub they share with people they introduce to the LifeWave X39 patch, so every conversation can point to one clear, polished place.</p>
-    <div class="pg-hero__actions"><a class="m-btn" href="https://thisisitinfo.com/" target="_blank" rel="noopener"><span class="m-btn__label">Visit the site</span></a></div>
-    <figure class="pg-hero__photo cs-hero-shot"><img src="/assets/work/tii-phone.jpg" alt="The This Is It Team information site on a phone" width="600" height="1298"></figure>
+<section class="slide pg--brown ph-hero" aria-labelledby="page-title" data-phone-hero>
+  <div class="ph-hero__stage">
+    <div class="wrap ph-hero__title">
+      <p class="m-badge">Case study · Website Design &amp; Branding</p>
+      <h1 class="m-text-3" id="page-title">This Is It Team</h1>
+      <p class="m-text-5">This Is It Team is a community of LifeWave brand partners. Sarah designed and built thisisitinfo.com, an information hub they share with people they introduce to the LifeWave X39 patch, so every conversation can point to one clear, polished place.</p>
+      <a class="m-btn" href="https://thisisitinfo.com/" target="_blank" rel="noopener"><span class="m-btn__label">Visit the site</span></a>
+    </div>
+    <div class="ph-hero__phone">
+      <div class="ph-phone">
+        <span class="ph-phone__btn ph-phone__btn--a" aria-hidden="true"></span><span class="ph-phone__btn ph-phone__btn--b" aria-hidden="true"></span><span class="ph-phone__btn ph-phone__btn--c" aria-hidden="true"></span>
+        <div class="ph-phone__body"><div class="ph-phone__screen">
+          <span class="ph-phone__island" aria-hidden="true"></span>
+          <img src="/assets/work/tii-phone-screen.jpg" alt="The This Is It Team information site on a phone: Have you been patched? over two boxes of LifeWave X39" width="600" height="1128">
+        </div></div>
+      </div>
+    </div>
   </div>
 </section>
 <section class="slide pg--brown" style="padding: 0 0 clamp(40px, 6svh, 70px)"><div class="wrap"><figure class="pg-media cs-browser"><img src="/assets/work/tii-home.jpg" alt="The site's hero: Have you been patched? beside two boxes of LifeWave X39 on a deep blue background" width="1440" height="900"></figure></div></section>
@@ -152,6 +186,24 @@
   closeButton.addEventListener('click', () => setOpen(false));
   menu.addEventListener('keydown', event => { if (event.key === 'Escape') setOpen(false); });
   menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.hidden = true; openButton.setAttribute('aria-expanded', 'false'); window.lenis?.start(); }));
+})();
+</script>
+<script>
+// phone hero: 0 when the section's top is at the top of the screen, 1 once it has scrolled through
+(() => {
+  const hero = document.querySelector('[data-phone-hero]');
+  if (!hero || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let frame = 0;
+  const update = () => {
+    frame = 0;
+    const rect = hero.getBoundingClientRect();
+    const travel = Math.max(1, rect.height - innerHeight);
+    hero.style.setProperty('--p', Math.min(1, Math.max(0, -rect.top / travel)).toFixed(4));
+  };
+  const queue = () => { if (!frame) frame = requestAnimationFrame(update); };
+  addEventListener('scroll', queue, { passive: true });
+  addEventListener('resize', queue);
+  update();
 })();
 </script>
 </body>
