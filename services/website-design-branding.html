@@ -41,9 +41,22 @@
 .wd-hero { position: relative; isolation: isolate; overflow: clip; min-height: 100svh; display: grid; align-content: center; }
 .wd-hero__video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; background: #8c7a66 url(/assets/hero-design-poster.jpg) center / cover; }
 .wd-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, color-mix(in srgb, var(--color-1) 84%, transparent) 0 38%, color-mix(in srgb, var(--color-1) 55%, transparent) 62%, color-mix(in srgb, var(--color-1) 22%, transparent)); }
-.wd-approach { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; row-gap: 24px; align-items: start; }
-.wd-approach h2 { grid-column: 1 / 7; font-size: clamp(40px, 5vw, 80px); }
-.wd-approach__copy { grid-column: 7 / -1; display: grid; gap: 18px; max-width: 58ch; }
+/* my approach: one centred, outlined panel on brown with a soft brand-colour glow behind the text */
+.wd-approach-sec { background: var(--color-1); color: var(--color-3); }
+.wd-approach { position: relative; isolation: isolate; overflow: hidden; display: grid; place-items: center; padding: clamp(48px, 7vw, 96px) clamp(22px, 5vw, 72px); border: 1px solid color-mix(in srgb, var(--color-3) 22%, transparent); border-radius: 28px; text-align: center; }
+.wd-approach::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; top: 30%; height: 80%; border-radius: 50%; background: linear-gradient(90deg, color-mix(in srgb, var(--color-2) 45%, transparent) 15%, color-mix(in srgb, var(--color-3) 10%, transparent) 55%, color-mix(in srgb, var(--color-5) 40%, transparent) 90%); filter: blur(70px); }
+.wd-approach__inner { display: grid; justify-items: center; gap: 26px; max-width: 760px; }
+.wd-approach h2 { font-size: clamp(40px, 5vw, 80px); color: var(--color-5); background-image: none; -webkit-text-fill-color: currentColor; }
+.wd-approach__copy { display: grid; gap: 16px; }
+.wd-approach__lede { font-family: var(--font-2); font-weight: 700; font-size: clamp(22px, 2.2vw, 32px); line-height: 1.15; }
+.wd-approach__copy p:not(.wd-approach__lede) { opacity: .92; }
+/* same pill + round arrow as the closing section; on brown the hover turns dark yellow, and the arrow slides across */
+.wd-approach .wd-cta__btn:hover > span, .wd-approach .wd-cta__btn:focus-visible > span { background: var(--color-5); color: var(--color-1); }
+.wd-approach .wd-cta__btn:focus-visible { outline-color: var(--color-3); }
+@media (prefers-reduced-motion: no-preference) {
+  .wd-approach.is-hidden .wd-approach__inner { opacity: 0; translate: 0 5%; }
+  .wd-approach .wd-approach__inner { transition: opacity 1s ease .3s, translate 1s ease .3s; }
+}
 /* services: feature showcase on cream, brown type. Left: heading, chips and the two services as an accordion;
    right: one tall photo. Works as plain open/close without JS. */
 .wd-svc { background: color-mix(in srgb, var(--color-3) 45%, var(--color-7)); color: var(--color-1); }
@@ -155,7 +168,6 @@
   .wd-problems { grid-template-columns: minmax(0, 1fr); }
   .wd-hero { min-height: 0; }
   .wd-hero::before { background: color-mix(in srgb, var(--color-1) 80%, transparent); }
-  .wd-approach h2, .wd-approach__copy { grid-column: 1 / -1; }
   .wd-svc__list, .wd-svc__media { grid-column: 1 / -1; }
   .wd-svc__media { height: auto; aspect-ratio: 4 / 5; margin-top: 0 !important; }
   .wd-plan summary { position: relative; flex-wrap: wrap; row-gap: 4px; padding-right: 28px; }
@@ -215,16 +227,21 @@
     <p class="pg-hero__lead m-text-5">My goal is to create websites that not only reflect your brand beautifully, but also support the growth of your business long-term.</p>
   </div>
 </section>
-<section class="slide pg-sec slide--light" aria-labelledby="approach-title">
-  <div class="wrap wd-approach">
+<section class="slide pg-sec wd-approach-sec" aria-labelledby="approach-title">
+  <div class="wrap">
+  <div class="wd-approach" data-reveal>
+    <div class="wd-approach__inner">
     <h2 class="m-text-3" id="approach-title">My Approach</h2>
     <div class="wd-approach__copy m-text-5">
-      <p>Your website should be working for your business, not holding it back.</p>
+      <p class="wd-approach__lede">Your website should be working for your business, not holding it back.</p>
       <p>Maybe your website no longer reflects the quality of your work, visitors aren't turning into inquiries, or your business is getting lost among competitors. Maybe it looks good but isn't doing much to improve your visibility or bring in new clients.</p>
       <p>That's where my approach comes in.</p>
       <p>Before designing anything, I take a deep dive into your business. I want to understand how it operates, what makes it unique, who you're trying to reach, and where you want to go, almost as if it were my own. Through research and strategy, I identify exactly what your website needs, from its visual direction and messaging to its structure, functionality, and SEO.</p>
       <p>The result? A custom website that looks good, feels good, and performs well, giving you confidence in how your business shows up online.</p>
     </div>
+    <a class="wd-cta__btn" href="/start-a-project"><span class="wd-cta__label">Start Your Website</span><span class="wd-cta__arrow"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
+    </div>
+  </div>
   </div>
 </section>
 <section class="slide pg-sec wd-svc" aria-labelledby="services-title" data-svc>
@@ -355,6 +372,19 @@
   if (still.matches) video.removeAttribute('autoplay');
   new IntersectionObserver(([entry]) => sync(entry.isIntersecting)).observe(video);
   still.addEventListener('change', () => sync(true));
+})();
+</script>
+<script>
+// my approach: the panel's content rises in the first time it scrolls into view
+(() => {
+  const panel = document.querySelector('[data-reveal]');
+  if (!panel) return;
+  panel.classList.add('is-hidden');
+  new IntersectionObserver(([entry], observer) => {
+    if (!entry.isIntersecting) return;
+    panel.classList.remove('is-hidden');
+    observer.disconnect();
+  }, { threshold: .2 }).observe(panel);
 })();
 </script>
 <script>
