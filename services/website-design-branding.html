@@ -142,6 +142,12 @@
 /* closing call to action: surf photo under a brown wash, thin column lines, everything centred */
 .wd-cta { position: relative; isolation: isolate; overflow: clip; display: grid; place-items: center; min-height: clamp(420px, 60svh, 620px); padding: clamp(64px, 9svh, 100px) 0; color: var(--color-3); text-align: center; }
 .wd-cta__photo { position: absolute; inset: 0; z-index: -3; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; background: #9a8f7c; }
+/* the photo stays put while the section scrolls over it: fixed to the screen, and clipped to the section
+   (clip-path also clips fixed children, which works on iPhone where background-attachment: fixed does not) */
+@media (prefers-reduced-motion: no-preference) {
+  .wd-cta { clip-path: inset(0); }
+  .wd-cta__photo { position: fixed; height: 100vh; }
+}
 .wd-cta::before { content: ""; position: absolute; inset: 0; z-index: -2; background: linear-gradient(180deg, color-mix(in srgb, var(--color-1) 62%, transparent), color-mix(in srgb, var(--color-1) 74%, transparent)); }
 .wd-cta__lines { position: absolute; inset: 0; z-index: -1; display: grid; grid-template-columns: 1fr 3fr 4fr 3fr 1fr; pointer-events: none; }
 .wd-cta__lines span + span { border-left: 1px solid color-mix(in srgb, var(--color-3) 22%, transparent); }
