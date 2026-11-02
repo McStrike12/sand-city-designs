@@ -16,6 +16,7 @@ Loaded from images.unsplash.com. Free to use under the [Unsplash License](https:
 | 8 | [W0EMrG5nsgY](https://unsplash.com/photos/W0EMrG5nsgY), saved as `assets/services-laptop-sofa.jpg` | Karolina Grabowska | services/website-design-branding services section |
 | 6 | Sunset waves video, [Dupe Photos](https://dupephotos.com/), re-encoded as `assets/hero-design-720.mp4` / `hero-design-1080.mp4` / `hero-design-poster.jpg` | Alex Rusciano | services/website-design-branding hero |
 | 7 | [4DTxhAmoBWs](https://unsplash.com/photos/4DTxhAmoBWs), saved as `assets/services-cta-surf.jpg` (+ `-1000`) | Reed Naliboff | services/website-design-branding closing section |
+| 9 | Laptop with a Pinterest board, [Dupe Photos](https://dupephotos.com/), saved as `assets/services-approach-laptop.jpg` | Mirren Alford | services/website-design-branding My Approach |
 
 ## Fonts (SIL Open Font License 1.1)
 

@@ -41,20 +41,23 @@
 .wd-hero { position: relative; isolation: isolate; overflow: clip; min-height: 100svh; display: grid; align-content: center; }
 .wd-hero__video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; background: #8c7a66 url(/assets/hero-design-poster.jpg) center / cover; }
 .wd-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, color-mix(in srgb, var(--color-1) 84%, transparent) 0 38%, color-mix(in srgb, var(--color-1) 55%, transparent) 62%, color-mix(in srgb, var(--color-1) 22%, transparent)); }
-/* my approach: one centred, outlined panel on brown with a soft brand-colour glow behind the text */
-.wd-approach-sec { background: var(--color-1); color: var(--color-3); padding: clamp(40px, 6svh, 72px) 0; }
-.wd-approach { position: relative; isolation: isolate; overflow: hidden; display: grid; place-items: center; padding: clamp(36px, 4.5vw, 64px) clamp(22px, 4vw, 64px); border: 1px solid color-mix(in srgb, var(--color-3) 22%, transparent); border-radius: 28px; text-align: center; }
-.wd-approach::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; top: 30%; height: 80%; border-radius: 50%; background: linear-gradient(90deg, color-mix(in srgb, var(--color-2) 45%, transparent) 15%, color-mix(in srgb, var(--color-3) 10%, transparent) 55%, color-mix(in srgb, var(--color-5) 40%, transparent) 90%); filter: blur(70px); }
-.wd-approach__inner { display: grid; justify-items: center; gap: 20px; max-width: 1100px; }
-.wd-approach h2 { font-size: clamp(40px, 5vw, 80px); color: var(--color-5); background-image: none; -webkit-text-fill-color: currentColor; }
-.wd-approach__copy { display: grid; gap: 12px; }
-.wd-approach__lede { font-family: var(--font-2); font-weight: 700; font-size: clamp(22px, 2.2vw, 32px); line-height: 1.15; }
-.wd-approach__copy p:not(.wd-approach__lede) { opacity: .92; }
-.wd-approach .m-btn { margin-top: 6px; }
-@media (prefers-reduced-motion: no-preference) {
-  .wd-approach.is-hidden .wd-approach__inner { opacity: 0; translate: 0 5%; }
-  .wd-approach .wd-approach__inner { transition: opacity 1s ease .3s, translate 1s ease .3s; }
-}
+/* my approach: editorial split. Left: cream panel, small uppercase copy at the top, a big stacked heading at the bottom;
+   right: the laptop photo in grainy black and white */
+.wd-approach-sec { padding: 0; overflow: clip; background: var(--color-1); }
+.wd-approach { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); min-height: clamp(560px, 82svh, 820px); }
+.wd-approach__text { display: flex; flex-direction: column; justify-content: space-between; gap: 48px; padding: clamp(36px, 5vw, 72px); background: color-mix(in srgb, var(--color-3) 45%, var(--color-7)); color: var(--color-1); }
+.wd-approach__copy { display: grid; gap: 14px; max-width: 64ch; margin-inline: auto; text-align: center; text-transform: uppercase; font-size: clamp(13px, 1vw, 15px); line-height: 1.55; letter-spacing: .06em; }
+.wd-approach__lede { font-weight: 600; letter-spacing: .08em; }
+.wd-approach__foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.wd-approach h2 { font-size: clamp(56px, 9vw, 150px); line-height: .86; color: var(--color-1); background-image: none; -webkit-text-fill-color: currentColor; }
+.wd-approach .m-btn { background: var(--color-1); color: var(--color-3); }
+.wd-approach .m-btn::before { background-image: linear-gradient(100deg, var(--color-1) 0 40%, color-mix(in srgb, var(--color-5) 45%, var(--color-1)) 70%, var(--color-1) 100%); }
+.wd-approach .m-btn::after { color: var(--color-1); }
+.wd-approach :focus-visible { outline-color: var(--color-1); }
+/* the photo: black and white, a touch of contrast, and a fine grain laid over it */
+.wd-approach__photo { position: relative; margin: 0; overflow: hidden; background: #8a8a86; }
+.wd-approach__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 55% 40%; filter: grayscale(1) contrast(1.08) brightness(.98); }
+.wd-approach__photo::after { content: ""; position: absolute; inset: -50%; pointer-events: none; opacity: .32; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1.4 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 /* services: feature showcase on cream, brown type. Left: heading, chips and the two services as an accordion;
    right: one tall photo. Works as plain open/close without JS. */
 .wd-svc { background: color-mix(in srgb, var(--color-3) 45%, var(--color-7)); color: var(--color-1); }
@@ -166,6 +169,8 @@
   .wd-problems { grid-template-columns: minmax(0, 1fr); }
   .wd-hero { min-height: 0; }
   .wd-hero::before { background: color-mix(in srgb, var(--color-1) 80%, transparent); }
+  .wd-approach { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .wd-approach__photo { order: -1; aspect-ratio: 4 / 3; }
   .wd-svc__list, .wd-svc__media { grid-column: 1 / -1; }
   .wd-svc__media { height: auto; aspect-ratio: 4 / 5; margin-top: 0 !important; }
   .wd-plan summary { position: relative; flex-wrap: wrap; row-gap: 4px; padding-right: 28px; }
@@ -224,19 +229,20 @@
     </ul>
   </div>
 </section>
-<section class="slide pg-sec wd-approach-sec" aria-labelledby="approach-title">
-  <div class="wrap">
-  <div class="wd-approach" data-reveal>
-    <div class="wd-approach__inner">
-    <h2 class="m-text-3" id="approach-title">My Approach</h2>
-    <div class="wd-approach__copy m-text-5">
-      <p class="wd-approach__lede">Your website should be working for your business, not holding it back.</p>
-      <p>Before designing anything, I take a deep dive into your business. I want to understand how it operates, what makes it unique, who you're trying to reach, and where you want to go, almost as if it were my own. Through research and strategy, I identify exactly what your website needs, from its visual direction and messaging to its structure, functionality, and SEO.</p>
-      <p>The result? A custom website that looks good, feels good, and performs well, giving you confidence in how your business shows up online.</p>
+<section class="slide wd-approach-sec" aria-labelledby="approach-title">
+  <div class="wd-approach">
+    <div class="wd-approach__text">
+      <div class="wd-approach__copy">
+        <p class="wd-approach__lede">Your website should be working for your business, not holding it back.</p>
+        <p>Before designing anything, I take a deep dive into your business. I want to understand how it operates, what makes it unique, who you're trying to reach, and where you want to go, almost as if it were my own. Through research and strategy, I identify exactly what your website needs, from its visual direction and messaging to its structure, functionality, and SEO.</p>
+        <p>The result? A custom website that looks good, feels good, and performs well, giving you confidence in how your business shows up online.</p>
+      </div>
+      <div class="wd-approach__foot">
+        <h2 class="m-text-3" id="approach-title">My<br>Approach</h2>
+        <a class="m-btn" href="/start-a-project"><span class="m-btn__label">Start Your Website</span></a>
+      </div>
     </div>
-    <a class="m-btn" href="/start-a-project"><span class="m-btn__label">Start Your Website</span></a>
-    </div>
-  </div>
+    <figure class="wd-approach__photo"><img src="/assets/services-approach-laptop.jpg" alt="A MacBook open to a board of saved brand and typography inspiration" width="1050" height="1400" loading="lazy"></figure>
   </div>
 </section>
 <section class="slide pg-sec wd-svc" aria-labelledby="services-title" data-svc>
@@ -367,19 +373,6 @@
   if (still.matches) video.removeAttribute('autoplay');
   new IntersectionObserver(([entry]) => sync(entry.isIntersecting)).observe(video);
   still.addEventListener('change', () => sync(true));
-})();
-</script>
-<script>
-// my approach: the panel's content rises in the first time it scrolls into view
-(() => {
-  const panel = document.querySelector('[data-reveal]');
-  if (!panel) return;
-  panel.classList.add('is-hidden');
-  new IntersectionObserver(([entry], observer) => {
-    if (!entry.isIntersecting) return;
-    panel.classList.remove('is-hidden');
-    observer.disconnect();
-  }, { threshold: .2 }).observe(panel);
 })();
 </script>
 <script>
