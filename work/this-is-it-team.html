@@ -110,10 +110,10 @@
 .ph-browser__screen { flex: 1; position: relative; overflow: hidden; container-type: size; background: #fff; }
 .ph-browser__screen img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
 @media (prefers-reduced-motion: no-preference) {
-  .ph-browser__screen img { animation: ph-scroll 18s ease-in-out .3s infinite alternate; }
+  .ph-browser__screen img { animation: ph-scroll 75s ease-in-out .3s infinite alternate; }
   .ph-browser:hover .ph-browser__screen img { animation-play-state: paused; }
 }
-@keyframes ph-scroll { 0%, 2% { translate: 0 0; } 94%, 100% { translate: 0 calc(-100% + 100cqh); } }
+@keyframes ph-scroll { 0%, 1% { translate: 0 0; } 97%, 100% { translate: 0 calc(-100% + 100cqh); } }
 /* phone */
 .ph-phone { position: relative; flex: none; height: var(--dev-h); aspect-ratio: 9 / 19.5; }
 .ph-phone__btn { position: absolute; width: 3px; border-radius: 2px; background: color-mix(in srgb, var(--color-3) 30%, transparent); }
@@ -169,13 +169,13 @@
     <div class="wrap ph-devices">
       <figure class="ph-browser">
         <div class="ph-browser__bar" aria-hidden="true"><span></span><span></span><span></span><span class="ph-browser__url">thisisitinfo.com</span></div>
-        <div class="ph-browser__screen"><img src="/assets/work/tii-desktop-scroll.jpg" alt="The This Is It Team site on desktop, scrolling from the Have you been patched? header through How X39 Works and X39 Explained to the footer" width="1100" height="1829"></div>
+        <div class="ph-browser__screen"><img src="/assets/work/tii-desktop-scroll.jpg" alt="The full This Is It Team homepage on desktop, scrolling from top to bottom" width="1000" height="8467"></div>
       </figure>
       <div class="ph-phone" role="img" aria-label="The same site on a phone">
         <span class="ph-phone__btn ph-phone__btn--a" aria-hidden="true"></span><span class="ph-phone__btn ph-phone__btn--b" aria-hidden="true"></span><span class="ph-phone__btn ph-phone__btn--c" aria-hidden="true"></span>
         <div class="ph-phone__body"><div class="ph-phone__screen">
           <span class="ph-phone__island" aria-hidden="true"></span>
-          <img src="/assets/work/tii-phone-screen.jpg" alt="The This Is It Team information site on a phone: Have you been patched? over two boxes of LifeWave X39" width="600" height="1128">
+          <img src="/assets/work/tii-phone-screen.jpg" alt="The This Is It Team information site on a phone: Have you been patched? over two boxes of LifeWave X39" width="600" height="1056">
         </div></div>
       </div>
     </div>
