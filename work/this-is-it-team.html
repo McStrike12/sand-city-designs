@@ -25,6 +25,43 @@
 <style>
 /* hero: headline centred on top; under it the desktop site (left) and the phone site (right), same height, bottoms lined up.
    The desktop screen slowly scrolls through a stitched capture of the site; it pauses on hover and stays still with reduced motion. */
+/* the project: steps on the left (client, challenge, approach, solution, outcome), the chosen one's write-up on the right.
+   Steps advance on their own until the visitor interacts, hovers or focuses; never with reduced motion. Without JS everything shows stacked. */
+.fs { color: var(--color-1); }
+.fs :focus-visible { outline-color: var(--color-1); }
+.fs__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 80px); align-items: start; }
+.fs__list { display: none; gap: 6px; }
+.fs.is-ready .fs__list { display: grid; }
+.fs__step { position: relative; display: flex; align-items: center; gap: 20px; width: 100%; padding: 16px 0 18px; border: 0; background: none; color: inherit; text-align: left; cursor: pointer; opacity: .4; transition: opacity .4s; }
+.fs__step:hover, .fs__step.is-active { opacity: 1; }
+.fs__dot { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 2px solid currentColor; font-weight: 700; font-size: 17px; transition: background-color .3s, color .3s, scale .3s; }
+.fs__check { display: none; }
+.fs__step.is-done .fs__num { display: none; } .fs__step.is-done .fs__check { display: block; }
+.fs__step.is-active .fs__dot { background: var(--color-1); color: var(--color-3); border-color: var(--color-1); scale: 1.1; }
+.fs__title { font-family: var(--font-2); font-weight: 700; font-size: clamp(24px, 2.6vw, 40px); line-height: 1; text-transform: uppercase; letter-spacing: -.01em; }
+.fs__bar { position: absolute; left: 64px; right: 0; bottom: 4px; height: 2px; background: color-mix(in srgb, var(--color-1) 12%, transparent); transform-origin: left; }
+.fs__bar::after { content: ""; position: absolute; inset: 0; background: var(--color-1); transform-origin: left; scale: 0 1; }
+.fs.is-playing .fs__step.is-active .fs__bar::after { animation: fs-fill var(--fs-dur, 8s) linear forwards; }
+@keyframes fs-fill { to { scale: 1 1; } }
+.fs__panels { display: grid; gap: 40px; }
+.fs.is-ready .fs__panels { gap: 0; padding: clamp(26px, 3vw, 44px); border-radius: 24px; background: color-mix(in srgb, var(--color-3) 45%, var(--color-7)); box-shadow: 0 10px 30px color-mix(in srgb, var(--color-1) 10%, transparent); }
+.fs__panel { display: grid; gap: 14px; align-content: start; font-size: clamp(16px, 1.25vw, 19px); line-height: 1.5; }
+.fs__panel ul { display: grid; gap: 8px; padding-left: 1.1em; list-style: disc; }
+.fs__heading { font-size: clamp(28px, 3vw, 44px); }
+.fs.is-ready .fs__panel { grid-area: 1 / 1; }
+.fs.is-ready .fs__panel:not(.is-active) { visibility: hidden; opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .fs.is-ready .fs__panel.is-active { animation: fs-in .5s ease-in-out; }
+}
+@keyframes fs-in { from { opacity: 0; translate: 0 40px; transform: perspective(900px) rotateX(-12deg); } }
+@media (max-width: 860px) {
+  .fs__grid { grid-template-columns: minmax(0, 1fr); }
+  .fs__list { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+  .fs__step { flex-direction: column; gap: 8px; padding: 0 0 12px; text-align: center; }
+  .fs__dot { width: 36px; height: 36px; font-size: 15px; }
+  .fs__title { font-size: 11px; font-family: var(--font-1); font-weight: 600; letter-spacing: .02em; }
+  .fs__bar { left: 10%; right: 10%; bottom: 0; }
+}
 .ph-hero { --dev-h: clamp(380px, 56svh, 580px); padding: calc(60px + clamp(48px, 8svh, 96px)) 0 clamp(56px, 9svh, 100px); }
 .ph-hero__title { display: grid; justify-items: center; gap: 22px; text-align: center; }
 .ph-hero__title .m-badge { white-space: normal; line-height: 1.3; padding-block: 5px; }
@@ -109,34 +146,68 @@
       </div>
     </div>
 </section>
-<section class="slide pg-sec slide--light">
-  <div class="wrap">
-  <div class="cs-block"><h2 class="m-text-3">The client</h2><div class="cs-block__body">
-    <p>This Is It Team is a network of LifeWave brand partners who introduce people to the X39 patch. Their members share the product in conversations, on calls and at events, and needed somewhere to send people afterwards.</p>
-  </div></div>
-  <div class="cs-block"><h2 class="m-text-3">The challenge</h2><div class="cs-block__body">
-    <p>When someone hears about X39 for the first time, they have questions: what is it, how do you use it, who's behind it. The team needed one link that answers those questions clearly and consistently, no matter which member shared it.</p>
-    <ul>
-      <li>Introduce the product in a clean, premium way.</li>
-      <li>Organize a lot of information, including instructions, explainer videos, patents and company background, without overwhelming visitors.</li>
-    </ul>
-  </div></div>
-  <div class="cs-block"><h2 class="m-text-3">The approach</h2><div class="cs-block__body">
-    <p>Sarah took her cues from the product's own packaging: deep blues, crisp white space and bold, modern type. The page moves from a big first impression to plain, practical information, in the order a curious visitor would ask their questions.</p>
-  </div></div>
-  <div class="cs-block"><h2 class="m-text-3">The solution</h2><div class="cs-block__body">
-    <ul>
-      <li><strong>A bold hero:</strong> "Have You Been Patched?" beside the product, with Elevate, Activate and Regenerate as a quick visual tagline.</li>
-      <li><strong>A product introduction</strong> with lifestyle photography showing how the patch is worn.</li>
-      <li><strong>How to Wear X39:</strong> simple, icon-led instructions anyone can follow.</li>
-      <li><strong>X39 Explained:</strong> a hub of explainer videos, plus sections for patents and studies, results and case reports.</li>
-      <li><strong>Company background</strong> on LifeWave and its founder.</li>
-      <li><strong>Built for sharing:</strong> a "Join our X39 calls" button in the header, a language switcher, and a closing note sending visitors back to the person who referred them.</li>
-    </ul>
-  </div></div>
-  <div class="cs-block"><h2 class="m-text-3">The outcome</h2><div class="cs-block__body">
-    <p>This Is It Team members now have one polished link to share. Every introduction leads to the same clear information, and back to the member who made it.</p>
-  </div></div>
+<section class="slide pg-sec slide--light fs" aria-label="The project" data-steps>
+  <div class="wrap fs__grid">
+    <div class="fs__list" role="tablist" aria-label="The project" aria-orientation="vertical">
+      <button class="fs__step is-active" type="button" role="tab" id="fs-tab-0" aria-controls="fs-panel-0" aria-selected="true">
+        <span class="fs__dot" aria-hidden="true"><span class="fs__num">1</span><span class="fs__check">✓</span></span>
+        <span class="fs__title">The client</span>
+        <span class="fs__bar" aria-hidden="true"></span>
+      </button>
+      <button class="fs__step" type="button" role="tab" id="fs-tab-1" aria-controls="fs-panel-1" aria-selected="false" tabindex="-1">
+        <span class="fs__dot" aria-hidden="true"><span class="fs__num">2</span><span class="fs__check">✓</span></span>
+        <span class="fs__title">The challenge</span>
+        <span class="fs__bar" aria-hidden="true"></span>
+      </button>
+      <button class="fs__step" type="button" role="tab" id="fs-tab-2" aria-controls="fs-panel-2" aria-selected="false" tabindex="-1">
+        <span class="fs__dot" aria-hidden="true"><span class="fs__num">3</span><span class="fs__check">✓</span></span>
+        <span class="fs__title">The approach</span>
+        <span class="fs__bar" aria-hidden="true"></span>
+      </button>
+      <button class="fs__step" type="button" role="tab" id="fs-tab-3" aria-controls="fs-panel-3" aria-selected="false" tabindex="-1">
+        <span class="fs__dot" aria-hidden="true"><span class="fs__num">4</span><span class="fs__check">✓</span></span>
+        <span class="fs__title">The solution</span>
+        <span class="fs__bar" aria-hidden="true"></span>
+      </button>
+      <button class="fs__step" type="button" role="tab" id="fs-tab-4" aria-controls="fs-panel-4" aria-selected="false" tabindex="-1">
+        <span class="fs__dot" aria-hidden="true"><span class="fs__num">5</span><span class="fs__check">✓</span></span>
+        <span class="fs__title">The outcome</span>
+        <span class="fs__bar" aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="fs__panels">
+      <div class="fs__panel is-active" role="tabpanel" id="fs-panel-0" aria-labelledby="fs-tab-0">
+        <h2 class="fs__heading m-text-3">The client</h2>
+        <p>This Is It Team is a network of LifeWave brand partners who introduce people to the X39 patch. Their members share the product in conversations, on calls and at events, and needed somewhere to send people afterwards.</p>
+      </div>
+      <div class="fs__panel" role="tabpanel" id="fs-panel-1" aria-labelledby="fs-tab-1">
+        <h2 class="fs__heading m-text-3">The challenge</h2>
+        <p>When someone hears about X39 for the first time, they have questions: what is it, how do you use it, who's behind it. The team needed one link that answers those questions clearly and consistently, no matter which member shared it.</p>
+        <ul>
+          <li>Introduce the product in a clean, premium way.</li>
+          <li>Organize a lot of information, including instructions, explainer videos, patents and company background, without overwhelming visitors.</li>
+        </ul>
+      </div>
+      <div class="fs__panel" role="tabpanel" id="fs-panel-2" aria-labelledby="fs-tab-2">
+        <h2 class="fs__heading m-text-3">The approach</h2>
+        <p>Sarah took her cues from the product's own packaging: deep blues, crisp white space and bold, modern type. The page moves from a big first impression to plain, practical information, in the order a curious visitor would ask their questions.</p>
+      </div>
+      <div class="fs__panel" role="tabpanel" id="fs-panel-3" aria-labelledby="fs-tab-3">
+        <h2 class="fs__heading m-text-3">The solution</h2>
+        <ul>
+          <li><strong>A bold hero:</strong> "Have You Been Patched?" beside the product, with Elevate, Activate and Regenerate as a quick visual tagline.</li>
+          <li><strong>A product introduction</strong> with lifestyle photography showing how the patch is worn.</li>
+          <li><strong>How to Wear X39:</strong> simple, icon-led instructions anyone can follow.</li>
+          <li><strong>X39 Explained:</strong> a hub of explainer videos, plus sections for patents and studies, results and case reports.</li>
+          <li><strong>Company background</strong> on LifeWave and its founder.</li>
+          <li><strong>Built for sharing:</strong> a "Join our X39 calls" button in the header, a language switcher, and a closing note sending visitors back to the person who referred them.</li>
+        </ul>
+      </div>
+      <div class="fs__panel" role="tabpanel" id="fs-panel-4" aria-labelledby="fs-tab-4">
+        <h2 class="fs__heading m-text-3">The outcome</h2>
+        <p>This Is It Team members now have one polished link to share. Every introduction leads to the same clear information, and back to the member who made it.</p>
+      </div>
+    </div>
   </div>
 </section>
 <section class="slide pg-sec pg--black">
@@ -199,6 +270,55 @@
   closeButton.addEventListener('click', () => setOpen(false));
   menu.addEventListener('keydown', event => { if (event.key === 'Escape') setOpen(false); });
   menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.hidden = true; openButton.setAttribute('aria-expanded', 'false'); window.lenis?.start(); }));
+})();
+</script>
+<script>
+// the project steps: one write-up at a time; advances every 8s until the visitor clicks, hovers or focuses
+(() => {
+  const root = document.querySelector('[data-steps]');
+  if (!root) return;
+  const tabs = [...root.querySelectorAll('[role="tab"]')];
+  const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
+  const DURATION = 8000;
+  let active = 0, timer = null, stopped = matchMedia('(prefers-reduced-motion: reduce)').matches, held = false, visible = false;
+  root.style.setProperty('--fs-dur', `${DURATION / 1000}s`);
+  const show = (index, focus) => {
+    index = (index + tabs.length) % tabs.length;
+    tabs.forEach((tab, i) => {
+      tab.classList.toggle('is-active', i === index);
+      tab.classList.toggle('is-done', i < index);
+      tab.setAttribute('aria-selected', String(i === index));
+      tab.tabIndex = i === index ? 0 : -1;
+      panels[i].classList.toggle('is-active', i === index);
+    });
+    active = index;
+    if (focus) tabs[index].focus();
+    restart();
+  };
+  function restart() {
+    clearTimeout(timer);
+    root.classList.remove('is-playing');
+    if (stopped || held || !visible) return;
+    root.offsetWidth;
+    root.classList.add('is-playing');
+    timer = setTimeout(() => show(active + 1), DURATION);
+  }
+  tabs.forEach((tab, i) => tab.addEventListener('click', () => { stopped = true; show(i); }));
+  root.querySelector('[role="tablist"]').addEventListener('keydown', event => {
+    const next = { ArrowDown: active + 1, ArrowRight: active + 1, ArrowUp: active - 1, ArrowLeft: active - 1, Home: 0, End: tabs.length - 1 }[event.key];
+    if (next === undefined) return;
+    event.preventDefault();
+    stopped = true;
+    show(next, true);
+  });
+  root.addEventListener('pointerenter', () => { held = true; restart(); });
+  root.addEventListener('pointerleave', () => { held = false; restart(); });
+  root.addEventListener('focusin', () => { held = true; restart(); });
+  root.addEventListener('focusout', event => { if (!root.contains(event.relatedTarget)) { held = false; restart(); } });
+  new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; restart(); }, { threshold: .4 }).observe(root);
+  root.querySelectorAll('.fs__heading').forEach(h => h.classList.add('visually-hidden'));
+  root.classList.add('is-ready');
+  show(0);
 })();
 </script>
 </body>
