@@ -23,27 +23,41 @@
 <link rel="preload" href="/assets/Hero-Bold.otf" as="font" type="font/otf" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
 <style>
-/* hero: headline centred on top; the phone below starts tilted back and, as you scroll, straightens and climbs over the text.
-   --p (0 to 1) is set by the script from how far the section has scrolled. */
-.ph-hero { --p: 0; padding: 0; height: 200svh; }
-/* the stage holds still while the section scrolls past, so the motion plays out on screen */
-.ph-hero__stage { position: sticky; top: 0; height: 100svh; overflow: hidden; padding-top: calc(60px + clamp(28px, 6svh, 72px)); perspective: 1200px; }
-.ph-hero__title { position: relative; z-index: 0; display: grid; justify-items: center; gap: 22px; text-align: center; translate: 0 calc(var(--p) * -24px); }
+/* hero: headline centred on top; under it the desktop site (left) and the phone site (right), same height, bottoms lined up.
+   The desktop screen slowly scrolls through a stitched capture of the site; it pauses on hover and stays still with reduced motion. */
+.ph-hero { --dev-h: clamp(380px, 56svh, 580px); padding: calc(60px + clamp(48px, 8svh, 96px)) 0 clamp(56px, 9svh, 100px); }
+.ph-hero__title { display: grid; justify-items: center; gap: 22px; text-align: center; }
 .ph-hero__title .m-badge { white-space: normal; line-height: 1.3; padding-block: 5px; }
 .ph-hero__title h1 { font-size: clamp(44px, 7vw, 112px); }
 .ph-hero__title p.m-text-5 { max-width: 60ch; }
-.ph-hero__phone { position: relative; z-index: 1; margin-top: clamp(28px, 4svh, 48px); transform-origin: 50% 0; translate: 0 calc(var(--p) * -42%); rotate: x calc((1 - var(--p)) * 22deg); scale: calc(.94 + var(--p) * .06); }
-.ph-phone { position: relative; width: clamp(200px, min(19vw, 30svh), 270px); margin-inline: auto; }
+.ph-devices { display: flex; justify-content: center; align-items: flex-end; gap: clamp(20px, 3vw, 44px); margin-top: clamp(36px, 6svh, 64px); }
+/* browser window */
+.ph-browser { flex: none; height: var(--dev-h); width: calc((var(--dev-h) - 34px) * 1.6); display: flex; flex-direction: column; overflow: hidden; border-radius: 16px; background: color-mix(in srgb, var(--color-1) 70%, #000); border: 1px solid color-mix(in srgb, var(--color-3) 18%, transparent); box-shadow: 0 10px 20px rgb(0 0 0 / .25), 0 40px 60px -20px rgb(0 0 0 / .5); }
+.ph-browser__bar { flex: none; display: flex; align-items: center; gap: 7px; height: 34px; padding: 0 14px; }
+.ph-browser__bar span:not(.ph-browser__url) { width: 10px; height: 10px; border-radius: 50%; background: color-mix(in srgb, var(--color-3) 30%, transparent); }
+.ph-browser__url { margin-left: 12px; padding: 3px 14px; border-radius: 99px; font-size: 12px; color: color-mix(in srgb, var(--color-3) 75%, transparent); background: color-mix(in srgb, var(--color-3) 10%, transparent); }
+.ph-browser__screen { flex: 1; position: relative; overflow: hidden; container-type: size; background: #fff; }
+.ph-browser__screen img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
+@media (prefers-reduced-motion: no-preference) {
+  .ph-browser__screen img { animation: ph-scroll 26s ease-in-out 1s infinite alternate; }
+  .ph-browser:hover .ph-browser__screen img { animation-play-state: paused; }
+}
+@keyframes ph-scroll { 0%, 8% { translate: 0 0; } 92%, 100% { translate: 0 calc(-100% + 100cqh); } }
+/* phone */
+.ph-phone { position: relative; flex: none; height: var(--dev-h); aspect-ratio: 9 / 19.5; }
 .ph-phone__btn { position: absolute; width: 3px; border-radius: 2px; background: color-mix(in srgb, var(--color-3) 30%, transparent); }
 .ph-phone__btn--a { left: -2px; top: 16%; height: 28px; } .ph-phone__btn--b { left: -2px; top: 24%; height: 44px; } .ph-phone__btn--c { right: -2px; top: 22%; height: 56px; }
-.ph-phone__body { aspect-ratio: 9 / 19.5; padding: 6px; border-radius: 42px; background: color-mix(in srgb, var(--color-1) 70%, #000); border: 1px solid color-mix(in srgb, var(--color-3) 18%, transparent); box-shadow: 0 10px 20px rgb(0 0 0 / .25), 0 40px 60px -20px rgb(0 0 0 / .5); }
-.ph-phone__screen { position: relative; height: 100%; overflow: hidden; border-radius: 36px; background: #0b2a4a; }
+.ph-phone__body { height: 100%; padding: 6px; border-radius: 40px; background: color-mix(in srgb, var(--color-1) 70%, #000); border: 1px solid color-mix(in srgb, var(--color-3) 18%, transparent); box-shadow: 0 10px 20px rgb(0 0 0 / .25), 0 40px 60px -20px rgb(0 0 0 / .5); }
+.ph-phone__screen { position: relative; height: 100%; overflow: hidden; border-radius: 34px; background: #0b2a4a; }
 .ph-phone__screen img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
-.ph-phone__island { position: absolute; z-index: 1; left: 50%; top: 9px; width: 68px; height: 18px; translate: -50% 0; border-radius: 99px; background: #000; }
-@media (prefers-reduced-motion: reduce) {
-  .ph-hero { height: auto; }
-  .ph-hero__stage { position: static; height: auto; padding-bottom: clamp(56px, 9svh, 100px); }
-  .ph-hero__title, .ph-hero__phone { translate: none; rotate: none; scale: none; }
+.ph-phone__island { position: absolute; z-index: 1; left: 50%; top: 9px; width: 30%; height: 16px; translate: -50% 0; border-radius: 99px; background: #000; }
+/* narrower screens: the pair shrinks to fit side by side; on phones the browser goes full width with the phone tucked under it */
+@media (max-width: 1100px) { .ph-hero { --dev-h: clamp(300px, 40vw, 440px); } }
+@media (max-width: 640px) {
+  .ph-devices { flex-direction: column; align-items: center; }
+  .ph-browser { height: auto; width: 100%; }
+  .ph-browser__screen { flex: none; aspect-ratio: 16 / 10; }
+  .ph-phone { height: auto; width: 46%; }
 }
 </style>
 </head>
@@ -74,16 +88,19 @@
   </div>
 </header>
 <main id="main">
-<section class="slide pg--brown ph-hero" aria-labelledby="page-title" data-phone-hero>
-  <div class="ph-hero__stage">
+<section class="slide pg--brown ph-hero" aria-labelledby="page-title">
     <div class="wrap ph-hero__title">
       <p class="m-badge">Case study · Website Design &amp; Branding</p>
       <h1 class="m-text-3" id="page-title">This Is It Team</h1>
       <p class="m-text-5">This Is It Team is a community of LifeWave brand partners. Sarah designed and built thisisitinfo.com, an information hub they share with people they introduce to the LifeWave X39 patch, so every conversation can point to one clear, polished place.</p>
       <a class="m-btn" href="https://thisisitinfo.com/" target="_blank" rel="noopener"><span class="m-btn__label">Visit the site</span></a>
     </div>
-    <div class="ph-hero__phone">
-      <div class="ph-phone">
+    <div class="wrap ph-devices">
+      <figure class="ph-browser">
+        <div class="ph-browser__bar" aria-hidden="true"><span></span><span></span><span></span><span class="ph-browser__url">thisisitinfo.com</span></div>
+        <div class="ph-browser__screen"><img src="/assets/work/tii-desktop-scroll.jpg" alt="The This Is It Team site on desktop, scrolling from the Have you been patched? header through How X39 Works and X39 Explained to the footer" width="1100" height="1829"></div>
+      </figure>
+      <div class="ph-phone" role="img" aria-label="The same site on a phone">
         <span class="ph-phone__btn ph-phone__btn--a" aria-hidden="true"></span><span class="ph-phone__btn ph-phone__btn--b" aria-hidden="true"></span><span class="ph-phone__btn ph-phone__btn--c" aria-hidden="true"></span>
         <div class="ph-phone__body"><div class="ph-phone__screen">
           <span class="ph-phone__island" aria-hidden="true"></span>
@@ -91,7 +108,6 @@
         </div></div>
       </div>
     </div>
-  </div>
 </section>
 <section class="slide pg--brown" style="padding: 0 0 clamp(40px, 6svh, 70px)"><div class="wrap"><figure class="pg-media cs-browser"><img src="/assets/work/tii-home.jpg" alt="The site's hero: Have you been patched? beside two boxes of LifeWave X39 on a deep blue background" width="1440" height="900"></figure></div></section>
 <section class="slide pg-sec slide--light">
@@ -186,24 +202,6 @@
   closeButton.addEventListener('click', () => setOpen(false));
   menu.addEventListener('keydown', event => { if (event.key === 'Escape') setOpen(false); });
   menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.hidden = true; openButton.setAttribute('aria-expanded', 'false'); window.lenis?.start(); }));
-})();
-</script>
-<script>
-// phone hero: 0 when the section's top is at the top of the screen, 1 once it has scrolled through
-(() => {
-  const hero = document.querySelector('[data-phone-hero]');
-  if (!hero || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  let frame = 0;
-  const update = () => {
-    frame = 0;
-    const rect = hero.getBoundingClientRect();
-    const travel = Math.max(1, rect.height - innerHeight);
-    hero.style.setProperty('--p', Math.min(1, Math.max(0, -rect.top / travel)).toFixed(4));
-  };
-  const queue = () => { if (!frame) frame = requestAnimationFrame(update); };
-  addEventListener('scroll', queue, { passive: true });
-  addEventListener('resize', queue);
-  update();
 })();
 </script>
 </body>
