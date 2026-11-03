@@ -39,10 +39,10 @@
 .ph-browser__screen { flex: 1; position: relative; overflow: hidden; container-type: size; background: #fff; }
 .ph-browser__screen img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
 @media (prefers-reduced-motion: no-preference) {
-  .ph-browser__screen img { animation: ph-scroll 26s ease-in-out 1s infinite alternate; }
+  .ph-browser__screen img { animation: ph-scroll 18s ease-in-out .3s infinite alternate; }
   .ph-browser:hover .ph-browser__screen img { animation-play-state: paused; }
 }
-@keyframes ph-scroll { 0%, 8% { translate: 0 0; } 92%, 100% { translate: 0 calc(-100% + 100cqh); } }
+@keyframes ph-scroll { 0%, 2% { translate: 0 0; } 94%, 100% { translate: 0 calc(-100% + 100cqh); } }
 /* phone */
 .ph-phone { position: relative; flex: none; height: var(--dev-h); aspect-ratio: 9 / 19.5; }
 .ph-phone__btn { position: absolute; width: 3px; border-radius: 2px; background: color-mix(in srgb, var(--color-3) 30%, transparent); }
