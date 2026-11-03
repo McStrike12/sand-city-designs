@@ -23,13 +23,25 @@
 <link rel="preload" href="/assets/Hero-Bold.otf" as="font" type="font/otf" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
 <style>
+/* this case study wears This Is It Team's own colours (taken from thisisitinfo.com): the site tokens are remapped,
+   so navy replaces brown, white replaces light yellow, and their sky blue replaces dark yellow */
+:root {
+  --color-1: #07274b; /* their navy */
+  --color-2: #18508f; /* their mid blue */
+  --color-3: #ffffff; /* white */
+  --color-5: #75b2de; /* their sky blue */
+  --color-6: #cfe4f4; /* pale sky blue */
+}
+#footer { --color-tan: #75b2de; }
+</style>
+<style>
 /* hero: headline centred on top; under it the desktop site (left) and the phone site (right), same height, bottoms lined up.
    The desktop screen slowly scrolls through a stitched capture of the site; it pauses on hover and stays still with reduced motion. */
 /* the project: steps on the left (client, challenge, approach, solution, outcome), the chosen one's write-up on the right.
    Steps advance on their own until the visitor interacts, hovers or focuses; never with reduced motion. Without JS everything shows stacked. */
 .fs { color: var(--color-1); }
 .fs :focus-visible { outline-color: var(--color-1); }
-.fs__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 80px); align-items: start; }
+.fs__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 80px); align-items: center; }
 .fs__list { display: none; gap: 6px; }
 .fs.is-ready .fs__list { display: grid; }
 .fs__step { position: relative; display: flex; align-items: center; gap: 20px; width: 100%; padding: 16px 0 18px; border: 0; background: none; color: inherit; text-align: left; cursor: pointer; opacity: .4; transition: opacity .4s; }
@@ -44,11 +56,11 @@
 .fs.is-playing .fs__step.is-active .fs__bar::after { animation: fs-fill var(--fs-dur, 8s) linear forwards; }
 @keyframes fs-fill { to { scale: 1 1; } }
 .fs__panels { display: grid; gap: 40px; }
-.fs.is-ready .fs__panels { gap: 0; padding: clamp(26px, 3vw, 44px); border-radius: 24px; background: color-mix(in srgb, var(--color-3) 45%, var(--color-7)); box-shadow: 0 10px 30px color-mix(in srgb, var(--color-1) 10%, transparent); }
+.fs.is-ready .fs__panels { gap: 0; }
 .fs__panel { display: grid; gap: 14px; align-content: start; font-size: clamp(16px, 1.25vw, 19px); line-height: 1.5; }
 .fs__panel ul { display: grid; gap: 8px; padding-left: 1.1em; list-style: disc; }
 .fs__heading { font-size: clamp(28px, 3vw, 44px); }
-.fs.is-ready .fs__panel { grid-area: 1 / 1; }
+.fs.is-ready .fs__panel { grid-area: 1 / 1; align-content: center; }
 .fs.is-ready .fs__panel:not(.is-active) { visibility: hidden; opacity: 0; }
 @media (prefers-reduced-motion: no-preference) {
   .fs.is-ready .fs__panel.is-active { animation: fs-in .5s ease-in-out; }
@@ -56,6 +68,7 @@
 @keyframes fs-in { from { opacity: 0; translate: 0 40px; transform: perspective(900px) rotateX(-12deg); } }
 @media (max-width: 860px) {
   .fs__grid { grid-template-columns: minmax(0, 1fr); }
+  .fs.is-ready .fs__panel { align-content: start; }
   .fs__list { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
   .fs__step { flex-direction: column; gap: 8px; padding: 0 0 12px; text-align: center; }
   .fs__dot { width: 36px; height: 36px; font-size: 15px; }
