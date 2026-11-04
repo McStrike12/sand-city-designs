@@ -129,7 +129,8 @@
 @media (prefers-reduced-motion: no-preference) { .ph-hint svg { animation: ph-nudge 1.6s ease-in-out infinite; } }
 @keyframes ph-nudge { 50% { translate: 0 3px; } }
 /* phone */
-.ph-phone { position: relative; flex: none; height: var(--dev-h); aspect-ratio: 9 / 19.5; }
+/* frame shaped to the screenshot (600x1056 plus the 6px bezel) so the whole width of the site shows */
+.ph-phone { position: relative; flex: none; height: var(--dev-h); aspect-ratio: 612 / 1068; }
 .ph-phone__btn { position: absolute; width: 3px; border-radius: 2px; background: color-mix(in srgb, var(--color-3) 30%, transparent); }
 .ph-phone__btn--a { left: -2px; top: 16%; height: 28px; } .ph-phone__btn--b { left: -2px; top: 24%; height: 44px; } .ph-phone__btn--c { right: -2px; top: 22%; height: 56px; }
 .ph-phone__body { height: 100%; padding: 6px; border-radius: 40px; background: color-mix(in srgb, var(--color-1) 70%, #000); border: 1px solid color-mix(in srgb, var(--color-3) 18%, transparent); box-shadow: 0 10px 20px rgb(0 0 0 / .25), 0 40px 60px -20px rgb(0 0 0 / .5); }
