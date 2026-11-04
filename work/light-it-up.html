@@ -22,6 +22,134 @@
 <link rel="preload" href="https://fonts.gstatic.com/s/astasans/v3/XoHk2Y74XaWovvhMb0cduPcs.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/Hero-Bold.otf" as="font" type="font/otf" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
+<style>
+/* this case study wears Light It Up's own colours (taken from their site): the site tokens are remapped. Their near-black for the page, with the event artwork's purple and hot pink. */
+:root {
+  --color-1: #12161c;
+  --color-2: #6b2fa8;
+  --color-3: #f5f7fa;
+  --color-5: #f0566e;
+  --color-6: #f3dcf0;
+}
+#footer { --color-tan: #f0566e; }
+</style>
+<style>
+/* hero: headline centred on top; under it the desktop site (left) and the phone site (right), same height, bottoms lined up.
+   The desktop screen slowly scrolls through a stitched capture of the site; it pauses on hover and stays still with reduced motion. */
+/* the project: steps on the left (client, challenge, approach, solution, outcome), the chosen one's write-up on the right.
+   Steps advance on their own until the visitor interacts, hovers or focuses; never with reduced motion. Without JS everything shows stacked. */
+.fs { color: var(--color-1); }
+.fs :focus-visible { outline-color: var(--color-1); }
+.fs__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 80px); align-items: center; }
+.fs__list { display: none; gap: 6px; }
+.fs.is-ready .fs__list { display: grid; }
+.fs__step { position: relative; display: flex; align-items: center; gap: 20px; width: 100%; padding: 16px 0 18px; border: 0; background: none; color: inherit; text-align: left; cursor: pointer; opacity: .4; transition: opacity .4s; }
+.fs__step:hover, .fs__step.is-active { opacity: 1; }
+.fs__dot { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 2px solid currentColor; font-weight: 700; font-size: 17px; transition: background-color .3s, color .3s, scale .3s; }
+.fs__check { display: none; }
+.fs__step.is-done .fs__num { display: none; } .fs__step.is-done .fs__check { display: block; }
+.fs__step.is-active .fs__dot { background: var(--color-1); color: var(--color-3); border-color: var(--color-1); scale: 1.1; }
+.fs__title { font-family: var(--font-2); font-weight: 700; font-size: clamp(24px, 2.6vw, 40px); line-height: 1; text-transform: uppercase; letter-spacing: -.01em; }
+.fs__bar { position: absolute; left: 64px; right: 0; bottom: 4px; height: 2px; background: color-mix(in srgb, var(--color-1) 12%, transparent); transform-origin: left; }
+.fs__bar::after { content: ""; position: absolute; inset: 0; background: var(--color-1); transform-origin: left; scale: 0 1; }
+.fs.is-playing .fs__step.is-active .fs__bar::after { animation: fs-fill var(--fs-dur, 8s) linear forwards; }
+@keyframes fs-fill { to { scale: 1 1; } }
+.fs__panels { display: grid; gap: 40px; }
+.fs.is-ready .fs__panels { gap: 0; }
+.fs__panel { display: grid; gap: 14px; align-content: start; font-size: clamp(16px, 1.25vw, 19px); line-height: 1.5; }
+.fs__panel ul { display: grid; gap: 8px; padding-left: 1.1em; list-style: disc; }
+.fs__heading { font-size: clamp(28px, 3vw, 44px); }
+.fs.is-ready .fs__panel { grid-area: 1 / 1; align-content: center; }
+.fs.is-ready .fs__panel:not(.is-active) { visibility: hidden; opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .fs.is-ready .fs__panel.is-active { animation: fs-in .5s ease-in-out; }
+}
+@keyframes fs-in { from { opacity: 0; translate: 0 40px; transform: perspective(900px) rotateX(-12deg); } }
+@media (max-width: 860px) {
+  .fs__grid { grid-template-columns: minmax(0, 1fr); }
+  .fs.is-ready .fs__panel { align-content: start; }
+  .fs__list { grid-template-columns: repeat(var(--steps, 5), minmax(0, 1fr)); gap: 4px; }
+  .fs__step { flex-direction: column; gap: 8px; padding: 0 0 12px; text-align: center; }
+  .fs__dot { width: 36px; height: 36px; font-size: 15px; }
+  .fs__title { font-size: 11px; font-family: var(--font-1); font-weight: 600; letter-spacing: .02em; }
+  .fs__bar { left: 10%; right: 10%; bottom: 0; }
+}
+/* mobile gallery: phone mockups glide across the page in a seamless, never-ending loop (the set is doubled);
+   a swipeable row with reduced motion */
+.mg-sec { background: var(--color-6); color: var(--color-1); }
+.mg-sec .pg-sec__head h2 { color: var(--color-1); background-image: none; -webkit-text-fill-color: currentColor; }
+/* extra room top and bottom so the phones' shadows aren't clipped */
+.mg { overflow: hidden; padding: 24px 0 96px; margin-bottom: -60px; }
+.mg__track { display: flex; width: max-content; }
+.mg__set { display: flex; gap: clamp(20px, 3vw, 44px); padding-right: clamp(20px, 3vw, 44px); }
+.mg__phone { width: clamp(200px, 19vw, 270px); aspect-ratio: 615 / 1100; padding: 6px; border-radius: 38px; background: color-mix(in srgb, var(--color-1) 70%, #000); border: 1px solid color-mix(in srgb, var(--color-3) 18%, transparent); box-shadow: 0 8px 16px color-mix(in srgb, var(--color-1) 22%, transparent), 0 30px 50px -18px color-mix(in srgb, var(--color-1) 45%, transparent); }
+.mg__screen { position: relative; height: 100%; overflow: hidden; border-radius: 32px; background: #0b2a4a; }
+.mg__screen img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+.mg__island { position: absolute; z-index: 1; left: 50%; top: 8px; width: 30%; height: 15px; translate: -50% 0; border-radius: 99px; background: #000; }
+@media (prefers-reduced-motion: no-preference) {
+  .mg__track { animation: mg-slide 56s linear infinite; }
+}
+@keyframes mg-slide { to { translate: -50% 0; } }
+/* app and desktop screens glide in wide browser-shaped frames instead of phones */
+.mg--wide .mg__phone { width: clamp(300px, 34vw, 520px); aspect-ratio: 16 / 10; padding: 6px; border-radius: 14px; }
+.mg--wide .mg__screen { border-radius: 9px; }
+.mg--wide .mg__island { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .mg { overflow-x: auto; scroll-snap-type: x mandatory; padding-inline: var(--space-2); }
+  .mg__set[aria-hidden] { display: none; }
+  .mg__item { scroll-snap-align: start; }
+}
+/* closing call to action: a radial glow in This Is It Team's colours, rising from below the section (the page's navy centre,
+   so it flows on from the section above,
+   then mid blue, sky blue, pale blue and white rings) that eases in and breathes slowly; still with reduced motion */
+@property --glow { syntax: '<percentage>'; inherits: false; initial-value: 125%; }
+.glow-cta { isolation: isolate; background: var(--color-1); }
+.glow-cta__bg { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.glow-cta__bg::before { content: ""; position: absolute; inset: 0;
+  background: radial-gradient(var(--glow) var(--glow) at 50% 0%, var(--color-1) 46%, var(--color-2) 60%, var(--color-5) 70%, var(--color-6) 80%, #ffffff 90%, var(--color-5) 100%); }
+.glow-cta .pg-cta__grid { position: relative; }
+@media (prefers-reduced-motion: no-preference) {
+  .glow-cta__bg::before { animation: glow-in 2s cubic-bezier(.25,.1,.25,1) both, glow-breathe 9s ease-in-out 2s infinite alternate; }
+}
+@keyframes glow-in { from { opacity: 0; scale: 1.5; } }
+@keyframes glow-breathe { from { --glow: 120%; } to { --glow: 132%; } }
+.ph-hero { --dev-h: clamp(380px, 56svh, 580px); padding: calc(60px + clamp(48px, 8svh, 96px)) 0 clamp(56px, 9svh, 100px); }
+.ph-hero__title { display: grid; justify-items: center; gap: 22px; text-align: center; }
+.ph-hero__title .m-badge { white-space: normal; line-height: 1.3; padding-block: 5px; }
+.ph-hero__title h1 { font-size: clamp(44px, 7vw, 112px); }
+.ph-hero__title p.m-text-5 { max-width: 60ch; }
+.ph-devices { display: flex; justify-content: center; align-items: flex-end; gap: clamp(20px, 3vw, 44px); margin-top: clamp(36px, 6svh, 64px); }
+/* browser window */
+.ph-browser { flex: none; height: var(--dev-h); width: calc((var(--dev-h) - 34px) * 1.6); display: flex; flex-direction: column; overflow: hidden; border-radius: 16px; background: color-mix(in srgb, var(--color-1) 70%, #000); border: 1px solid color-mix(in srgb, var(--color-3) 18%, transparent); box-shadow: 0 10px 20px rgb(0 0 0 / .25), 0 40px 60px -20px rgb(0 0 0 / .5); }
+.ph-browser__bar { flex: none; display: flex; align-items: center; gap: 7px; height: 34px; padding: 0 14px; }
+.ph-browser__bar span:not(.ph-browser__url) { width: 10px; height: 10px; border-radius: 50%; background: color-mix(in srgb, var(--color-3) 30%, transparent); }
+.ph-browser__url { margin-left: 12px; padding: 3px 14px; border-radius: 99px; font-size: 12px; color: color-mix(in srgb, var(--color-3) 75%, transparent); background: color-mix(in srgb, var(--color-3) 10%, transparent); }
+/* the browser screen scrolls on its own scrollbar: visitors scroll inside it to explore the whole site */
+.ph-browser__screen { flex: 1; position: relative; overflow-y: auto; overscroll-behavior: contain; background: #fff; scrollbar-width: thin; scrollbar-color: color-mix(in srgb, var(--color-1) 45%, transparent) transparent; }
+.ph-browser__screen img { display: block; width: 100%; height: auto; }
+.ph-browser__screen:focus-visible { outline: 3px solid var(--color-5); outline-offset: -3px; }
+.ph-hint { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 18px; font-size: 13px; letter-spacing: .04em; opacity: .8; }
+.ph-hint svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+@media (prefers-reduced-motion: no-preference) { .ph-hint svg { animation: ph-nudge 1.6s ease-in-out infinite; } }
+@keyframes ph-nudge { 50% { translate: 0 3px; } }
+/* phone */
+/* frame shaped to the screenshot (600x1056 plus the 6px bezel) so the whole width of the site shows */
+.ph-phone { position: relative; flex: none; height: var(--dev-h); aspect-ratio: 612 / 1068; }
+.ph-phone__btn { position: absolute; width: 3px; border-radius: 2px; background: color-mix(in srgb, var(--color-3) 30%, transparent); }
+.ph-phone__btn--a { left: -2px; top: 16%; height: 28px; } .ph-phone__btn--b { left: -2px; top: 24%; height: 44px; } .ph-phone__btn--c { right: -2px; top: 22%; height: 56px; }
+.ph-phone__body { height: 100%; padding: 6px; border-radius: 40px; background: color-mix(in srgb, var(--color-1) 70%, #000); border: 1px solid color-mix(in srgb, var(--color-3) 18%, transparent); box-shadow: 0 10px 20px rgb(0 0 0 / .25), 0 40px 60px -20px rgb(0 0 0 / .5); }
+.ph-phone__screen { position: relative; height: 100%; overflow: hidden; border-radius: 34px; background: #0b2a4a; }
+.ph-phone__screen img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+.ph-phone__island { position: absolute; z-index: 1; left: 50%; top: 9px; width: 30%; height: 16px; translate: -50% 0; border-radius: 99px; background: #000; }
+/* narrower screens: the pair shrinks to fit side by side; on phones the browser goes full width with the phone tucked under it */
+@media (max-width: 1100px) { .ph-hero { --dev-h: clamp(300px, 40vw, 440px); } }
+@media (max-width: 640px) {
+  .ph-devices { flex-direction: column; align-items: center; }
+  .ph-browser { height: auto; width: 100%; }
+  .ph-browser__screen { flex: none; aspect-ratio: 16 / 10; }
+  .ph-phone { height: auto; width: 46%; }
+}
+</style>
 </head>
 <body class="m-text">
 <a class="skip m-text-4" href="#main">Skip to content</a>
@@ -50,55 +178,112 @@
   </div>
 </header>
 <main id="main">
-<section class="slide pg-hero pg-hero--media pg--brown" aria-labelledby="page-title">
-  <div class="wrap pg-hero__grid">
-    <p class="m-badge">Case study · Custom Software &amp; Business Systems</p>
-    <h1 class="m-text-3" id="page-title">Light It Up</h1>
-    <p class="pg-hero__lead m-text-5">Light It Up is a free one-day event from This Is It Team, held in Anaheim, California on October 18, 2026, for attendees in the room and online around the world. Mike designed and built the system behind it: the registration page, a personal attendee dashboard, live translation, and the tools the team uses to run the day.</p>
-    <div class="pg-hero__actions"><a class="m-btn" href="https://lightitup.thisisitteam.com/" target="_blank" rel="noopener"><span class="m-btn__label">Visit the event page</span></a></div>
-    <figure class="pg-hero__photo cs-hero-shot"><img src="/assets/work/liu-phone.jpg" alt="The Light It Up registration page on a phone" width="600" height="1298"></figure>
+<section class="slide pg--brown ph-hero" aria-labelledby="page-title">
+    <div class="wrap ph-hero__title">
+      <p class="m-badge">Case study · Custom Software &amp; Business Systems</p>
+      <h1 class="m-text-3" id="page-title">Light It Up</h1>
+      <p class="m-text-5">Light It Up is a free one-day event from This Is It Team, held in Anaheim, California on October 18, 2026, for attendees in the room and online around the world. Mike designed and built the system behind it: the registration page, a personal attendee dashboard, live translation, and the tools the team uses to run the day.</p>
+      <a class="m-btn" href="https://lightitup.thisisitteam.com/" target="_blank" rel="noopener"><span class="m-btn__label">Visit the event page</span></a>
+    </div>
+    <div class="wrap ph-devices">
+      <figure class="ph-browser">
+        <div class="ph-browser__bar" aria-hidden="true"><span></span><span></span><span></span><span class="ph-browser__url">lightitup.thisisitteam.com</span></div>
+        <div class="ph-browser__screen" tabindex="0" role="region" aria-label="The Light It Up homepage: scroll inside to explore it" data-lenis-prevent><img src="/assets/work/liu-site-full.jpg" alt="The full Light It Up event page on desktop, scroll inside to explore" width="1000" height="1276"></div>
+      </figure>
+      <div class="ph-phone" role="img" aria-label="The same site on a phone">
+        <span class="ph-phone__btn ph-phone__btn--a" aria-hidden="true"></span><span class="ph-phone__btn ph-phone__btn--b" aria-hidden="true"></span><span class="ph-phone__btn ph-phone__btn--c" aria-hidden="true"></span>
+        <div class="ph-phone__body"><div class="ph-phone__screen">
+          <span class="ph-phone__island" aria-hidden="true"></span>
+          <img src="/assets/work/liu-phone-hero.jpg" alt="The Light It Up event page on a phone: the event artwork and Missed the event? with a replay sign-up button" width="600" height="1055">
+        </div></div>
+      </div>
+    </div>
+    <p class="wrap ph-hint"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg>Scroll inside the browser to explore the full site</p>
+</section>
+<section class="slide pg-sec slide--light fs" aria-label="The project" data-steps style="--steps: 5">
+  <div class="wrap fs__grid">
+    <div class="fs__list" role="tablist" aria-label="The project" aria-orientation="vertical">
+      <button class="fs__step is-active" type="button" role="tab" id="fs-tab-0" aria-controls="fs-panel-0" aria-selected="true">
+        <span class="fs__dot" aria-hidden="true"><span class="fs__num">1</span><span class="fs__check">✓</span></span>
+        <span class="fs__title">The client</span>
+        <span class="fs__bar" aria-hidden="true"></span>
+      </button>
+      <button class="fs__step" type="button" role="tab" id="fs-tab-1" aria-controls="fs-panel-1" aria-selected="false" tabindex="-1">
+        <span class="fs__dot" aria-hidden="true"><span class="fs__num">2</span><span class="fs__check">✓</span></span>
+        <span class="fs__title">The challenge</span>
+        <span class="fs__bar" aria-hidden="true"></span>
+      </button>
+      <button class="fs__step" type="button" role="tab" id="fs-tab-2" aria-controls="fs-panel-2" aria-selected="false" tabindex="-1">
+        <span class="fs__dot" aria-hidden="true"><span class="fs__num">3</span><span class="fs__check">✓</span></span>
+        <span class="fs__title">The approach</span>
+        <span class="fs__bar" aria-hidden="true"></span>
+      </button>
+      <button class="fs__step" type="button" role="tab" id="fs-tab-3" aria-controls="fs-panel-3" aria-selected="false" tabindex="-1">
+        <span class="fs__dot" aria-hidden="true"><span class="fs__num">4</span><span class="fs__check">✓</span></span>
+        <span class="fs__title">The solution</span>
+        <span class="fs__bar" aria-hidden="true"></span>
+      </button>
+      <button class="fs__step" type="button" role="tab" id="fs-tab-4" aria-controls="fs-panel-4" aria-selected="false" tabindex="-1">
+        <span class="fs__dot" aria-hidden="true"><span class="fs__num">5</span><span class="fs__check">✓</span></span>
+        <span class="fs__title">The outcome</span>
+        <span class="fs__bar" aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="fs__panels">
+      <div class="fs__panel is-active" role="tabpanel" id="fs-panel-0" aria-labelledby="fs-tab-0">
+        <h2 class="fs__heading m-text-3">The client</h2>
+        <p>This Is It Team runs events for a large international community. Light It Up was a free Sunday experience at the ACC North Building in Anaheim, held right after the Luminate conference, with a free virtual option for anyone who couldn't be there in person.</p>
+      </div>
+      <div class="fs__panel" role="tabpanel" id="fs-panel-1" aria-labelledby="fs-tab-1">
+        <h2 class="fs__heading m-text-3">The challenge</h2>
+        <p>One event, two audiences and many languages. The team needed more than a sign-up form.</p>
+        <ul>
+          <li>Free registration for both in-person and virtual attendees.</li>
+          <li>One place for each attendee to find the live stream, replays, photos and event-day details.</li>
+          <li>Support for attendees who speak languages other than English, before and during the event.</li>
+          <li>Simple tools for the team to check people in, add walk-ins and keep everyone informed.</li>
+        </ul>
+      </div>
+      <div class="fs__panel" role="tabpanel" id="fs-panel-2" aria-labelledby="fs-tab-2">
+        <h2 class="fs__heading m-text-3">The approach</h2>
+        <p>Instead of stitching together a ticketing site, a video host and an email tool, Mike built one connected system around the way This Is It Team runs its events. Every attendee gets one account tied to their email, and everything they need lives behind it.</p>
+        <p>The look matches the event's own artwork, so registration, the dashboard and the translation page all feel like part of Light It Up.</p>
+      </div>
+      <div class="fs__panel" role="tabpanel" id="fs-panel-3" aria-labelledby="fs-tab-3">
+        <h2 class="fs__heading m-text-3">The solution</h2>
+        <ul>
+          <li><strong>Registration page:</strong> the event artwork, date and venue, a live countdown, free RSVP for in-person attendees and a separate free virtual-access path, all switchable between English, Spanish, Portuguese, German, French and Chinese.</li>
+          <li><strong>Attendee dashboard:</strong> a personal portal where each attendee signs in with a password or an emailed sign-in link and finds a welcome page, the live stream, replays, event photos, a shop, in-person details with a venue map, and their account settings.</li>
+          <li><strong>Live translation page:</strong> a no-login page, reachable by QR code in the room, where attendees put in their earbuds and pick their language to listen to live interpretation.</li>
+          <li><strong>Team dashboard:</strong> a secure admin area with two-step login for managing events, QR tickets, a phone-camera check-in scanner that keeps working offline, walk-in registration, stream links for each language, past-event photos and announcement emails to in-person and virtual registrants.</li>
+        </ul>
+      </div>
+      <div class="fs__panel" role="tabpanel" id="fs-panel-4" aria-labelledby="fs-tab-4">
+        <h2 class="fs__heading m-text-3">The outcome</h2>
+        <p>This Is It Team now runs its events on its own platform. Light It Up went from registration to live stream to replay in one place, and the same system also powers their paid Fearless event, with secure online checkout.</p>
+      </div>
+    </div>
   </div>
 </section>
-<section class="slide pg--brown" style="padding: 0 0 clamp(40px, 6svh, 70px)"><div class="wrap"><figure class="pg-media cs-browser"><img src="/assets/work/liu-landing.jpg" alt="The Light It Up registration page: the event artwork with the date, time and venue, and an RSVP button" width="1440" height="900"></figure></div></section>
-<section class="slide pg-sec slide--light">
+<section class="slide pg-sec mg-sec">
   <div class="wrap">
-  <div class="cs-block"><h2 class="m-text-3">The client</h2><div class="cs-block__body">
-    <p>This Is It Team runs events for a large international community. Light It Up was a free Sunday experience at the ACC North Building in Anaheim, held right after the Luminate conference, with a free virtual option for anyone who couldn't be there in person.</p>
-  </div></div>
-  <div class="cs-block"><h2 class="m-text-3">The challenge</h2><div class="cs-block__body">
-    <p>One event, two audiences and many languages. The team needed more than a sign-up form.</p>
-    <ul>
-      <li>Free registration for both in-person and virtual attendees.</li>
-      <li>One place for each attendee to find the live stream, replays, photos and event-day details.</li>
-      <li>Support for attendees who speak languages other than English, before and during the event.</li>
-      <li>Simple tools for the team to check people in, add walk-ins and keep everyone informed.</li>
-    </ul>
-  </div></div>
-  <div class="cs-block"><h2 class="m-text-3">The approach</h2><div class="cs-block__body">
-    <p>Instead of stitching together a ticketing site, a video host and an email tool, Mike built one connected system around the way This Is It Team runs its events. Every attendee gets one account tied to their email, and everything they need lives behind it.</p>
-    <p>The look matches the event's own artwork, so registration, the dashboard and the translation page all feel like part of Light It Up.</p>
-  </div></div>
-  <div class="cs-block"><h2 class="m-text-3">The solution</h2><div class="cs-block__body">
-    <ul>
-      <li><strong>Registration page:</strong> the event artwork, date and venue, a live countdown, free RSVP for in-person attendees and a separate free virtual-access path, all switchable between English, Spanish, Portuguese, German, French and Chinese.</li>
-      <li><strong>Attendee dashboard:</strong> a personal portal where each attendee signs in with a password or an emailed sign-in link and finds a welcome page, the live stream, replays, event photos, a shop, in-person details with a venue map, and their account settings.</li>
-      <li><strong>Live translation page:</strong> a no-login page, reachable by QR code in the room, where attendees put in their earbuds and pick their language to listen to live interpretation.</li>
-      <li><strong>Team dashboard:</strong> a secure admin area with two-step login for managing events, QR tickets, a phone-camera check-in scanner that keeps working offline, walk-in registration, stream links for each language, past-event photos and announcement emails to in-person and virtual registrants.</li>
-    </ul>
-  </div></div>
-  <div class="cs-block"><h2 class="m-text-3">The outcome</h2><div class="cs-block__body">
-    <p>This Is It Team now runs its events on its own platform. Light It Up went from registration to live stream to replay in one place, and the same system also powers their paid Fearless event, with secure online checkout.</p>
-  </div></div>
+  <div class="pg-sec__head"><h2 class="m-text-3 m-text-3--long">Around the site</h2></div>
   </div>
-</section>
-<section class="slide pg-sec pg--black">
-  <div class="wrap">
-  <div class="pg-sec__head"><h2 class="m-text-3 m-text-3--long">Screenshots</h2></div><div class="cs-shots cs-shots--img">
-    <figure class="cs-img"><img src="/assets/work/liu-portal-login.jpg" alt="The attendee dashboard sign-in screen next to the Light It Up artwork" width="1200" height="750" loading="lazy"></figure>
-    <figure class="cs-img"><img src="/assets/work/liu-listen.jpg" alt="The live translation page with a button for each language" width="1200" height="750" loading="lazy"></figure>
-    <figure class="cs-img"><img src="/assets/work/liu-virtual.jpg" alt="The registration page's countdown and free virtual access section" width="1200" height="933" loading="lazy"></figure>
-    <figure class="cs-img"><img src="/assets/work/liu-landing.jpg" alt="The Light It Up registration page" width="1440" height="900" loading="lazy"></figure>
-  </div>
+  <div class="mg mg--wide" aria-label="Around the site">
+    <div class="mg__track">
+      <ul class="mg__set">
+        <li class="mg__item"><div class="mg__phone"><div class="mg__screen"><span class="mg__island" aria-hidden="true"></span><img src="/assets/work/liu-landing.jpg" alt="The site: the registration page with the event artwork, date, time and venue" width="1440" height="900" loading="lazy"></div></div></li>
+        <li class="mg__item"><div class="mg__phone"><div class="mg__screen"><span class="mg__island" aria-hidden="true"></span><img src="/assets/work/liu-virtual.jpg" alt="The site: the countdown and free virtual access section" width="1200" height="933" loading="lazy"></div></div></li>
+        <li class="mg__item"><div class="mg__phone"><div class="mg__screen"><span class="mg__island" aria-hidden="true"></span><img src="/assets/work/liu-listen.jpg" alt="The site: the live translation page with a button for each language" width="1200" height="750" loading="lazy"></div></div></li>
+        <li class="mg__item"><div class="mg__phone"><div class="mg__screen"><span class="mg__island" aria-hidden="true"></span><img src="/assets/work/liu-portal-login.jpg" alt="The site: the attendee dashboard sign-in" width="1200" height="750" loading="lazy"></div></div></li>
+      </ul>
+      <ul class="mg__set" aria-hidden="true">
+        <li class="mg__item"><div class="mg__phone"><div class="mg__screen"><span class="mg__island" aria-hidden="true"></span><img src="/assets/work/liu-landing.jpg" alt="" width="1440" height="900" loading="lazy"></div></div></li>
+        <li class="mg__item"><div class="mg__phone"><div class="mg__screen"><span class="mg__island" aria-hidden="true"></span><img src="/assets/work/liu-virtual.jpg" alt="" width="1200" height="933" loading="lazy"></div></div></li>
+        <li class="mg__item"><div class="mg__phone"><div class="mg__screen"><span class="mg__island" aria-hidden="true"></span><img src="/assets/work/liu-listen.jpg" alt="" width="1200" height="750" loading="lazy"></div></div></li>
+        <li class="mg__item"><div class="mg__phone"><div class="mg__screen"><span class="mg__island" aria-hidden="true"></span><img src="/assets/work/liu-portal-login.jpg" alt="" width="1200" height="750" loading="lazy"></div></div></li>
+      </ul>
+    </div>
   </div>
 </section>
 <section class="slide pg-sec pg--brown">
@@ -106,8 +291,8 @@
   <div class="cs-next"><div><p class="m-text-4">Next project</p><h2 class="m-text-3 m-text-3--long">Light It Up Dashboard</h2></div><a class="m-btn" href="/work/light-it-up-dashboard"><span class="m-btn__label">View case study</span></a></div>
   </div>
 </section>
-<section class="slide pg-cta pg--blue" aria-labelledby="cta-title">
-  <div class="pg-cta__rings" aria-hidden="true"><span></span><span></span><span></span></div>
+<section class="slide pg-cta glow-cta" aria-labelledby="cta-title">
+  <div class="glow-cta__bg" aria-hidden="true"></div>
   <div class="wrap pg-cta__grid">
     <h2 class="m-text-3" id="cta-title">Let's build<br>something better.</h2>
     <p class="m-text-5">Whether you need a stronger online presence or a better way to run your business, we'd love to hear what you're working on.</p>
@@ -152,6 +337,55 @@
   closeButton.addEventListener('click', () => setOpen(false));
   menu.addEventListener('keydown', event => { if (event.key === 'Escape') setOpen(false); });
   menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.hidden = true; openButton.setAttribute('aria-expanded', 'false'); window.lenis?.start(); }));
+})();
+</script>
+<script>
+// the project steps: one write-up at a time; advances every 8s until the visitor clicks, hovers or focuses
+(() => {
+  const root = document.querySelector('[data-steps]');
+  if (!root) return;
+  const tabs = [...root.querySelectorAll('[role="tab"]')];
+  const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
+  const DURATION = 8000;
+  let active = 0, timer = null, stopped = matchMedia('(prefers-reduced-motion: reduce)').matches, held = false, visible = false;
+  root.style.setProperty('--fs-dur', `${DURATION / 1000}s`);
+  const show = (index, focus) => {
+    index = (index + tabs.length) % tabs.length;
+    tabs.forEach((tab, i) => {
+      tab.classList.toggle('is-active', i === index);
+      tab.classList.toggle('is-done', i < index);
+      tab.setAttribute('aria-selected', String(i === index));
+      tab.tabIndex = i === index ? 0 : -1;
+      panels[i].classList.toggle('is-active', i === index);
+    });
+    active = index;
+    if (focus) tabs[index].focus();
+    restart();
+  };
+  function restart() {
+    clearTimeout(timer);
+    root.classList.remove('is-playing');
+    if (stopped || held || !visible) return;
+    root.offsetWidth;
+    root.classList.add('is-playing');
+    timer = setTimeout(() => show(active + 1), DURATION);
+  }
+  tabs.forEach((tab, i) => tab.addEventListener('click', () => { stopped = true; show(i); }));
+  root.querySelector('[role="tablist"]').addEventListener('keydown', event => {
+    const next = { ArrowDown: active + 1, ArrowRight: active + 1, ArrowUp: active - 1, ArrowLeft: active - 1, Home: 0, End: tabs.length - 1 }[event.key];
+    if (next === undefined) return;
+    event.preventDefault();
+    stopped = true;
+    show(next, true);
+  });
+  root.addEventListener('pointerenter', () => { held = true; restart(); });
+  root.addEventListener('pointerleave', () => { held = false; restart(); });
+  root.addEventListener('focusin', () => { held = true; restart(); });
+  root.addEventListener('focusout', event => { if (!root.contains(event.relatedTarget)) { held = false; restart(); } });
+  new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; restart(); }, { threshold: .4 }).observe(root);
+  root.querySelectorAll('.fs__heading').forEach(h => h.classList.add('visually-hidden'));
+  root.classList.add('is-ready');
+  show(0);
 })();
 </script>
 </body>
