@@ -96,13 +96,14 @@
   .mg__set[aria-hidden] { display: none; }
   .mg__item { scroll-snap-align: start; }
 }
-/* closing call to action: a radial glow in This Is It Team's colours, rising from below the section (dark navy centre,
+/* closing call to action: a radial glow in This Is It Team's colours, rising from below the section (the page's navy centre,
+   so it flows on from the section above,
    then mid blue, sky blue, pale blue and white rings) that eases in and breathes slowly; still with reduced motion */
 @property --glow { syntax: '<percentage>'; inherits: false; initial-value: 125%; }
 .glow-cta { isolation: isolate; background: var(--color-1); }
 .glow-cta__bg { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
 .glow-cta__bg::before { content: ""; position: absolute; inset: 0;
-  background: radial-gradient(var(--glow) var(--glow) at 50% 20%, #04172f 35%, var(--color-2) 52%, var(--color-5) 64%, var(--color-6) 76%, #ffffff 88%, var(--color-5) 100%); }
+  background: radial-gradient(var(--glow) var(--glow) at 50% 0%, var(--color-1) 46%, var(--color-2) 60%, var(--color-5) 70%, var(--color-6) 80%, #ffffff 90%, var(--color-5) 100%); }
 .glow-cta .pg-cta__grid { position: relative; }
 @media (prefers-reduced-motion: no-preference) {
   .glow-cta__bg::before { animation: glow-in 2s cubic-bezier(.25,.1,.25,1) both, glow-breathe 9s ease-in-out 2s infinite alternate; }
